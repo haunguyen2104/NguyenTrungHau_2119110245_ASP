@@ -1,0 +1,51 @@
+﻿@*@model List<Shop.Context.Category_2119110245>*@
+@model Shop.Models.HomeModel
+@{
+    ViewBag.Title = "Danh mục sản phẩm";
+    Layout = "~/Views/Shared/_Layout01.cshtml";
+}
+
+<style>
+    .card-title {
+        text-align: Bcenter;
+    }
+</style>
+
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
+        <div class="container">
+
+            <nav class="row">
+                @foreach (var item in Model.listCategory)
+                {
+                   
+                    <div class="col-md-3">
+                        <div class="card card-category">
+                            <a href="@Url.Action("ProductCategoryGrid","Product",new { id=item.CategoryId})" class="img-wrap" style="background: #e3dfdf; width:100%">
+                                <img src="~/Public/images/category/@item.Avatar">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="@Url.Action("ProductCategoryGrid","Product",new { id=item.CategoryId})">@item.CategoryName</a></h4>
+                                <ul class="list-menu">
+                                    @*@{
+                                        var lstPro = Model.listProduct.ToList();
+                                        var sum = lstPro.Where(n => n.CategoryId == item.CategoryId).Sum(n => n.Quantity);
+                                       // var sum = pro.;
+
+                                    }
+                                    <li><a>Số lượng: @sum</a></li>*@
+                                    @*<li><a href="">Cook & Hold ovens</a></li>
+                                    <li><a href="">Scherf Ice cream</a></li>
+                                    <li><a href="">Another category</a></li>
+                                    <li><a href="">Great items name</a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- col.// -->
+                }
+            </nav> <!-- row.// -->
+
+
+        </div> <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->

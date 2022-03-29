@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Shop.Context.Category_2119110245>
+
+@{
+    ViewBag.Title = "Tất cả danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Slug)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowOnHomePage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </th>
+        <th  style="width:90px">Thao tác</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avatar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowOnHomePage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deleted)
+        </td>
+        <td style="width:90px;">
+            
+            <a href="@Url.Action("Edit","Category", new { id = item.CategoryId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="@Url.Action("Details","Category", new { id = item.CategoryId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+            <a href="@Url.Action("Delete","Category", new { id = item.CategoryId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+
+        </td>
+    </tr>
+}
+
+</table>

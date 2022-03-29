@@ -1,0 +1,80 @@
+﻿@model List<Shop.Product_2119110245>
+@{
+    ViewBag.Title = "Offers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<b class="screen-overlay"></b>
+
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg-light">
+    <div class="container">
+        <h2 class="title-page">Deals and offers</h2>
+    </div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION PAGETOP END// ========================= -->
+
+
+<section class="section-content bg-white padding-y">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-banner overlay-gradient"
+                     style="min-height:320px; background-image: url('../images/banners/banner1.jpg');">
+                    <div class="card-img-overlay white">
+                        <h3 class="card-title">Great Bundle only for 99$ <br> It is hassle free </h3>
+                        <p class="card-text" style="max-width: 400px">
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit, sed do eiusmod
+                            tempor incididunt.
+                        </p>
+                        <a href="" class="btn btn-warning">Learn more</a>
+                    </div>
+                </div> <!-- card-banner //end -->
+            </div> <!-- col.// -->
+            <div class="col-md-4">
+                <div class="card-banner"
+                     style="height:320px; background-image: url('../images/banners/banner8.jpg');">
+                    <article class="caption bottom">
+                        <h5 class="card-title">Watches</h5>
+                        <p>No matter how far along you are in your sophistication as an amateur.</p>
+                    </article>
+                </div><!-- card-banner //end -->
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+
+        <br>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                var sale = @item.PriceDiscount * 100 / @item.Price;
+                float sl = (float)sale;
+
+                <div class="col-md-3">
+                    <article class="card card-product-grid">
+                        <div class="img-wrap">
+                            <b class="badge badge-danger mr-1">SAVE @Math.Round(100 - sl, 2)%</b>
+                            <a href="@Url.Action("Detail","Product",new { @id =item.Id})">
+                                <img src="~/Public/images/product/@item.Avatar">
+                            </a>
+                        </div>
+                        <div class="info-wrap">
+                            <a href="@Url.Action("Detail","Product",new { @id =item.Id})" class="title">@item.Name</a>
+                            <div class="price-wrap my-2">
+                                <span class="price">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup></span>
+                                <del class="price-old">@Convert.ToDecimal(item.Price).ToString("#,##0")<sup>đ</sup></del>
+                            </div> <!-- price-wrap.// -->
+                            <a href="#" class="btn btn-block btn-primary">Order now</a>
+                        </div>
+                    </article>
+                </div> <!-- col.// -->
+            }
+
+        </div> <!-- row.// -->
+    </div> <!-- container .//  -->
+
+</section>
+<!-- ========================= SECTION DEAL END// ========================= -->

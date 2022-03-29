@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Shop.Context.Slider_2119110245>
+
+@{
+    ViewBag.Title = "Tất cả slider";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avatar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelete)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","Slider", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="@Url.Action("Details","Slider", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+            <a href="@Url.Action("Delete","Slider", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

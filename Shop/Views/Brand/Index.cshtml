@@ -1,0 +1,39 @@
+﻿@model List<Shop.Context.Brand_2119110245>
+@{
+    ViewBag.Title = "Thương hiệu";
+    Layout = "~/Views/Shared/_Layout01.cshtml";
+}
+
+<style>
+    .card-title {
+        text-align: center;
+    }
+</style>
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+
+        <nav class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card card-category" style="min-height: auto">
+                        <a href="@Url.Action("ProductBrandList","Product",new { id=item.BrandId})" class="img-wrap" style="background: #e3dfdf; height:100px;">
+                            <img src="~/Public/images/brand/@item.Avatar">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="@Url.Action("ProductBrandList","Product",new { id=item.BrandId})" class="brand___name">@item.BrandName</a></h4>
+                            <ul class="list-menu">
+                                <li><a href="">Product Info </a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- col.// -->
+            }
+        </nav> <!-- row.// -->
+
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

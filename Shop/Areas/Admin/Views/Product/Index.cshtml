@@ -1,0 +1,93 @@
+﻿@*@using PagedList
+    @using PagedList.Mvc
+    @model PagedList.IPagedList<Shop.Context.Product_2119110245>*@
+@model IEnumerable<Shop.Context.Product_2119110245>
+@*@model IEnumerable<Shop.Context.Product>*@
+
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .width__table {
+        overflow: scroll;
+    }
+
+    .btn-new {
+        margin: 5px 0;
+    }
+
+    .search__product {
+        max-width: 410px;
+        margin: 0 auto;
+        margin-left: calc(100vw - 550px);
+        margin-bottom: 10px;
+        margin-top: -37px;
+    }
+</style>
+
+
+<a href="@Url.Action("Create","Product")" class="btn btn-default btn-new"><i class="fa fa-plus" style="color:green; font-weight:600;"></i> Thêm mới</a>
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p class="search__product">
+        Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
+        <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+<div class="card-body">
+
+    <table class="table table-bordered table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th class="text-center" style="width:20px;">STT</th>
+                <th class="text-center" style="width:100px;">Hình</th>
+
+                <th>  Tên sản phẩm</th>
+                <th> Danh mục sản phẩm  </th>
+                <th> Ngày tạo</th>
+                <th class="text-center" style="width:180px;">Chức năng</th>
+                <th class="text-center" style="width:20px;">ID </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        <input type="checkbox" name="checkId" value="" />
+                    </td>
+                    <td><img src="~/Public/images/product/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.CategoryId </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+                    </td>
+                    <td class="text-center">
+
+                        <a href="@Url.Action("Edit","Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details","Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Delete","Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+
+
+                    </td>
+                    <td>@item.Id</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+@*
+    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, currentFilter = ViewBag.CurrentFilter }))
+
+*@
