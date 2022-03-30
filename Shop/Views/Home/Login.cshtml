@@ -3,12 +3,14 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+<!--Nhúng fontawesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="row justify-content-md-center">
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                Login
+            <div class="card-header" style="text-align:center;font-weight:bold;font-size:25px;">
+                Đăng nhập
             </div>
             <div class="card-body">
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
@@ -21,10 +23,19 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
                     </div>
+
+
+                    if (TempData["error"] != null)
+                    {
+                        <span style="color:red;">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            @TempData["error"]
+                        </span>
+                    }
                     <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                        <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
                     </div>
                 }
             </div>

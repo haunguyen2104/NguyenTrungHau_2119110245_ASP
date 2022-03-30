@@ -1,7 +1,7 @@
-﻿@*@using PagedList
-    @using PagedList.Mvc
-    @model PagedList.IPagedList<Shop.Context.Product_2119110245>*@
-@model IEnumerable<Shop.Context.Product_2119110245>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Shop.Context.Product_2119110245>
+@*@model IEnumerable<Shop.Context.Product_2119110245>*@
 @*@model IEnumerable<Shop.Context.Product>*@
 
 @{
@@ -9,21 +9,49 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
+    .card-body {
+        font-family: 'Poppins', sans-serif;
+    }
+
     .width__table {
         overflow: scroll;
     }
 
     .btn-new {
+        font-family: 'Poppins', sans-serif;
         margin: 5px 0;
+        margin-left: 15px;
     }
 
     .search__product {
         max-width: 410px;
         margin: 0 auto;
-        margin-left: calc(100vw - 550px);
+        font-family: 'Poppins', sans-serif;
+        margin-left: calc(100vw - 600px);
         margin-bottom: 10px;
         margin-top: -37px;
     }
+
+    #SearchString {
+        width: 200px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 0.5px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #ccc;
+        border: none;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 5px;
+        padding: 5px;
+        color: black;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
 </style>
 
 
@@ -32,7 +60,8 @@
 {
     <p class="search__product">
         Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
-        <input type="submit" value="Tìm kiếm" />
+        <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
+        <a href="@Url.Action("Index","Product")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả sản phẩm</a>
     </p>
 }
 <div class="card-body">
@@ -52,13 +81,13 @@
         </thead>
 
         <tbody>
+
             @foreach (var item in Model)
             {
-
+               
                 <tr>
-
                     <td>
-                        <input type="checkbox" name="checkId" value="" />
+                         <input type="checkbox" name="checkId" value="" />
                     </td>
                     <td><img src="~/Public/images/product/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
                     <td>@item.Name</td>
@@ -69,9 +98,9 @@
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit","Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details","Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("Delete","Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
 
                     </td>
@@ -84,10 +113,182 @@
     </table>
 </div>
 
-@*
-    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, currentFilter = ViewBag.CurrentFilter }))
+<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
 
-*@
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, currentFilter = ViewBag.CurrentFilter }))
+
+
+<style>
+
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+        margin-left: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+        .pagination > li {
+            display: inline;
+        }
+
+            .pagination > li > a,
+            .pagination > li > span {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.428571429;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #ddd;
+            }
+
+            .pagination > li:first-child > a,
+            .pagination > li:first-child > span {
+                margin-left: 0;
+                border-bottom-left-radius: 4px;
+                border-top-left-radius: 4px;
+            }
+
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {
+                margin-left: 0;
+                border-bottom-right-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+
+            .pagination > li > a:hover,
+            .pagination > li > a:focus, .pagination > li > span:hover,
+            .pagination > li > span:focus {
+                background-color: #eee
+            }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #fff;
+            cursor: default;
+            background-color: #ffa600;
+            border-color: #ffa600;
+        }
+
+        .pagination > .disabled > a,
+        .pagination > .disabled > span,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #999;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+    .pagination-lg > li > a,
+    .pagination-lg > li > span {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+
+    .pagination-lg > li:first-child > a
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+
+    .pagination-lg > li:last-child > a
+    .pagination-lg > li:last-child > span {
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination-sm > li:first-child > a
+    .pagination-sm > li:first-child > span {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    .pagination-sm > li:last-child > a
+    .pagination-sm > li:last-child > span {
+        border-bottom-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        text-align: center;
+        list-style: none;
+    }
+
+        .pager:before, .pager:after {
+            display: table;
+            content: " ";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager:before, .pager:after {
+            display: table;
+            content: " ";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager li {
+            display: inline;
+        }
+
+            .pager li > a,
+            .pager li > span {
+                display: inline-block;
+                padding: 5px 14px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+            }
+
+                .pager li > a:hover, .pager li:active:focus {
+                    text-decoration: none;
+                    background-color: #eee;
+                }
+
+        .pager .next > a,
+        .pager .next > span {
+            float: right;
+        }
+
+        .pager .previous > a,
+        .pager .previous > span {
+            float: left;
+        }
+
+        .pager .disabled > a,
+        .pager .disabled > a:hover,
+        .pager .disabled > a:focus,
+        .pager .disabled > span {
+            color: #999;
+            cursor: not-allowed;
+            background-color: #fff;
+        }
+
+    a {
+        color: #ffa600;
+    }
+</style>

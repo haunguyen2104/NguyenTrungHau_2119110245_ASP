@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Shop.Models
+namespace Shop.Context
 {
     public partial class ProductMasterData
     {

@@ -11,7 +11,9 @@ namespace Shop.Context
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class Slider_2119110245
     {
         public int Id { get; set; }
@@ -19,5 +21,7 @@ namespace Shop.Context
         public string Avatar { get; set; }
         public string Class { get; set; }
         public Nullable<bool> IsDelete { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

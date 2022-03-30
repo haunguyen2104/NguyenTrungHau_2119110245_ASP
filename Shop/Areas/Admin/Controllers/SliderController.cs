@@ -16,5 +16,6 @@ namespace Shop.Areas.Admin.Controllers
             var listSlider = objWebsiteBanHangEntities.Slider_2119110245.ToList();
             return View(listSlider);
         }
+
     }
 }
