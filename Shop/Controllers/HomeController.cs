@@ -94,7 +94,8 @@ namespace Shop.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
+            TempData["error"] = "Sai thông tin tài khoản hoặc mật khẩu";
+                    //ViewBag.error = "Login failed";
                     return RedirectToAction("Login");
                 }
             }

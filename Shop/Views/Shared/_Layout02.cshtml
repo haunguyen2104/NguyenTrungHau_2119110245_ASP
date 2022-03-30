@@ -50,17 +50,17 @@
                     <div class="col-xl-6 col-lg-5 col-md-6">
                         <form action="#" class="search-header">
                             <div class="input-group w-100">
-                                <select class="custom-select border-right" name="category_name">
+                                @*<select class="custom-select border-right" name="category_name">
                                     <option value="">All type</option>
                                     <option value="codex">Special</option>
                                     <option value="comments">Only best</option>
                                     <option value="content">Latest</option>
-                                </select>
-                                <input type="text" class="form-control" placeholder="Search">
+                                </select>*@
+                                <input type="text" class="form-control" placeholder="Tìm kiếm">
 
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i> Search
+                                        <i class="fa fa-search"></i> Tìm kiếm
                                     </button>
                                 </div>
                             </div>
@@ -68,41 +68,129 @@
                     </div> <!-- col.// -->
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-user"></i>
-                                        <span class="notify">3</span>
-                                    </div>
-                                    <small class="text"> My profile </small>
-                                </a>
-                            </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-comment-dots"></i>
-                                        <span class="notify">1</span>
-                                    </div>
-                                    <small class="text"> Message </small>
-                                </a>
-                            </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-store"></i>
-                                    </div>
-                                    <small class="text"> Orders </small>
-                                </a>
-                            </div>
-                            <div class="widget-header">
-                                <a href="@Url.Action("Index","Cart")" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span class="notify" id="CartCount">@Session["count"]</span>
-                                    </div>
-                                    <small class="text"> Cart </small>
-                                </a>
-                            </div><!--Cart //-->
+                            @if (Session["Id"] != null)
+                            {
+                                if (Session["IsAdmin"] != null)
+                                {
+                                    <div class="widget-header mr-3">
+                                        <a href="~/Admin/Home/Index" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                                            </div>
+                                            <small class="text"> Dashboard </small>
+                                        </a>
+                                    </div>//Dashboard
+                                    <div class="widget-header mr-3">
+                                        <a href="#" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-user"></i>
+                                                <span class="notify">3</span>
+                                            </div>
+                                            <small class="text"> My profile </small>
+                                        </a>
+                                    </div><!--My profile //-->
+
+
+                                    <div class="widget-header mr-3">
+                                        <a href="#" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-comment-dots"></i>
+                                                <span class="notify">1</span>
+                                            </div>
+                                            <small class="text"> Message </small>
+                                        </a>
+                                    </div><!--Message //-->
+
+
+
+
+                                    <div class="widget-header">
+                                        <a href="@Url.Action("Logout","Home")" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-sign-out-alt"></i>
+                                            </div>
+                                            <small class="text"> Logout </small>
+                                        </a>
+                                    </div><!--Logout //-->
+                                }
+                                else
+                                {
+                                    <div class="widget-header mr-3">
+                                        <a href="#" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-user"></i>
+                                                <span class="notify">3</span>
+                                            </div>
+                                            <small class="text"> My profile </small>
+                                        </a>
+                                    </div><!--My profile //-->
+
+
+                                    <div class="widget-header mr-3">
+                                        <a href="#" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-comment-dots"></i>
+                                                <span class="notify">1</span>
+                                            </div>
+                                            <small class="text"> Message </small>
+                                        </a>
+                                    </div><!--Message //-->
+
+
+
+                                    <div class="widget-header mr-3">
+                                        <a href="#" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-store"></i>
+                                            </div>
+                                            <small class="text"> Orders </small>
+                                        </a>
+                                    </div><!--Orders //-->
+                                    <div class="widget-header">
+                                        <a href="@Url.Action("Index","Cart")" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                @if (Session["count"].ToString() == "0")
+                                                {
+                                                    <span class="" id="CartCount">@Session["count"]</span> }
+                                                else
+                                                {
+                                                    <span class="notify" id="CartCount">@Session["count"]</span>
+                                                }
+                                            </div>
+                                            <small class="text"> Cart </small>
+                                        </a>
+                                    </div><!--Cart //-->
+                                    <div class="widget-header">
+                                        <a href="@Url.Action("Logout","Home")" class="widget-view">
+                                            <div class="icon-area">
+                                                <i class="fa fa-sign-out-alt"></i>
+                                            </div>
+                                            <small class="text"> Logout </small>
+                                        </a>
+                                    </div><!--Logout //-->
+                                }
+                            }
+                            else
+                            {
+                                <div class="widget-header">
+                                    <a href="@Url.Action("Login","Home")" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-sign-in-alt"></i>
+                                        </div>
+                                        <small class="text"> Login </small>
+                                    </a>
+                                </div><!--Login //-->
+                                <div class="widget-header">
+                                    <a href="@Url.Action("Register","Home")" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-cash-register"></i>
+                                        </div>
+                                        <small class="text"> Đăng ký </small>
+                                    </a>
+                                </div><!--Register //-->
+                            }
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
@@ -118,7 +206,6 @@
 
     </div>
     <!-- container end.// -->
-
     <!-- ========================= FOOTER ========================= -->
     <footer class="section-footer bg-secondary">
         <div class="container">

@@ -164,6 +164,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\OrderDetail_2119110245.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Order_2119110245.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -2951,13 +2954,6 @@
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
-    <EntityDeploy Include="Context\dbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Context\dbModel.edmx.diagram">
-      <DependentUpon>dbModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
@@ -2985,6 +2981,13 @@
     <Content Include="Public\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Public\ckeditor\SECURITY.md" />
     <Content Include="Public\ckeditor\skins\moono-lisa\readme.md" />
+    <EntityDeploy Include="Context\dbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Context\dbModel.edmx.diagram">
+      <DependentUpon>dbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

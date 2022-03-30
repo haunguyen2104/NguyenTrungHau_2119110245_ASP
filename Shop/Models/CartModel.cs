@@ -8,7 +8,7 @@ namespace Shop.Models
 {
     public class CartModel
     {
-        public Product Product { get; set; }
+        public Product_2119110245 Product { get; set; }
         public int Quantity { get; set; }
     }
 }

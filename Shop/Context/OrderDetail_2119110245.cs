@@ -12,12 +12,11 @@ namespace Shop.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_2119110245
+    public partial class OrderDetail_2119110245
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> Status { get; set; }
-        public Nullable<System.DateTime> CreateOnUtc { get; set; }
+        public Nullable<int> OrderId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> Quantity { get; set; }
     }
 }

@@ -20,7 +20,7 @@
                                 <li><a href="@Url.Action("ProductCategoryList","Product",new { id=item.CategoryId})">@item.CategoryName</a></li>
                             }
                             <li class="has-submenu">
-                                <a href="@Url.Action("Index","Category")">More Category</a>
+                                <a href="@Url.Action("Index","Category")">Tất cả danh mục</a>
                                 @*<ul class="submenu">
                                         <li><a href="#">Submenu name</a></li>
                                         <li><a href="#">Great submenu</a></li>
@@ -71,14 +71,14 @@
                 </div> <!-- col.// -->
                 <div class="col-md d-none d-lg-block flex-grow-1">
                     <aside class="special-home-right">
-                        <h6 class="bg-blue text-center text-white mb-0 p-2">Popular category</h6>
+                        <h6 class="bg-blue text-center text-white mb-0 p-2">Danh mục phổ biến</h6>
                         @foreach (var it in Model.listCategory.Where(n => n.ShowOnHomePage == true).Take(3))
                         {
 
                             <div class="card-banner border-bottom">
                                 <div class="py-3" style="width:80%">
                                     <h6 class="card-title">@it.CategoryName </h6>
-                                    <a href="@Url.Action("ProductCategoryGrid","Product", new { id=it.CategoryId})" class="btn btn-secondary btn-sm"> Source now </a>
+                                    <a href="@Url.Action("ProductCategoryGrid","Product", new { id=it.CategoryId})" class="btn btn-secondary btn-sm"> Xem chi tiết </a>
                                 </div>
                                 <img src="~/Public/images/category/@it.Avatar" height="80" class="img-bg">
                             </div>
@@ -99,14 +99,14 @@
     <div class="card card-deal">
         <div class="col-heading content-body">
             <header class="section-heading">
-                <h3 class="section-title">Deals and offers</h3>
+                <h3 class="section-title">Ưu đãi cực sốc</h3>
                 <p>Hygiene equipments</p>
             </header><!-- sect-heading -->
             <div class="timer">
-                <div> <span class="num">04</span> <small>Days</small></div>
-                <div> <span class="num">12</span> <small>Hours</small></div>
-                <div> <span class="num">58</span> <small>Min</small></div>
-                <div> <span class="num">02</span> <small>Sec</small></div>
+                <div> <span class="num">04</span> <small>Ngày</small></div>
+                <div> <span class="num">12</span> <small>Giờ</small></div>
+                <div> <span class="num">58</span> <small>Phút</small></div>
+                <div> <span class="num">02</span> <small>Giây</small></div>
             </div>
         </div> <!-- col.// -->
         <div class="row no-gutters items-wrap">
@@ -134,7 +134,7 @@
 <!-- =============== SECTION 1 =============== -->
 <section class="padding-bottom">
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Smartphone</h4>
+        <h4 class="title-section text-uppercase">Điện thoại</h4>
     </header>
 
     <div class="card card-home-category">
@@ -142,9 +142,9 @@
             <div class="col-md-3">
 
                 <div class="home-category-banner bg-light-orange">
-                    <h5 class="title">Smartphone - the best product of all time</h5>
-                    <p>A smartphone is considered as a mobile computer combined with a digital camera and handheld game console, as it has a separate operating system designed to properly display web pages in a normal manner. often with many other functions of a computer such as design, graphics, video games, as well as photography and videography. </p>
-                    <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                    <h5 class="title">Điện thoại - Tốt nhất mọi thời đại</h5>
+                    <p>@*A smartphone is considered as a mobile computer combined with a digital camera and handheld game console, as it has a separate operating system designed to properly display web pages in a normal manner. often with many other functions of a computer such as design, graphics, video games, as well as photography and videography.*@ </p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
                     <img src="~/Public/images/category/category-dien-thoai.jpg" class="img-bg">
                 </div>
 
@@ -206,9 +206,9 @@
             <div class="col-md-3">
 
                 <div class="home-category-banner bg-light-orange">
-                    <h5 class="title">The best accessory for your device.</h5>
-                    <p>Accessories are indispensable devices for people who are using smart devices such as phones, computers and other electronic devices.... </p>
-                    <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                    <h5 class="title">Laptop cho mọi người.</h5>
+                    <p>@*Accessories are indispensable devices for people who are using smart devices such as phones, computers and other electronic devices....*@ </p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
                     <img src="~/Public/images/items/14.jpg" class="img-bg">
                 </div>
 
@@ -248,63 +248,64 @@
 <!-- =============== SECTION REQUEST =============== -->
 
 <section class="padding-bottom">
+    @*
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">Request for Quotation</h4>
+        </header>
 
-    <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Request for Quotation</h4>
-    </header>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card-banner banner-quote overlay-gradient" style="background-image: url('images/banners/banner9.jpg');">
-                <div class="card-img-overlay white">
-                    <h3 class="card-title">An easy way to send request to suppliers</h3>
-                    <p class="card-text" style="max-width: 400px">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt.
-                    </p>
-                    <a href="" class="btn btn-primary rounded-pill">Learn more</a>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-banner banner-quote overlay-gradient" style="background-image: url('images/banners/banner9.jpg');">
+                    <div class="card-img-overlay white">
+                        <h3 class="card-title">An easy way to send request to suppliers</h3>
+                        <p class="card-text" style="max-width: 400px">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt.
+                        </p>
+                        <a href="" class="btn btn-primary rounded-pill">Learn more</a>
+                    </div>
                 </div>
-            </div>
-        </div> <!-- col // -->
-        <div class="col-md-4">
+            </div> <!-- col // -->
+            <div class="col-md-4">
 
-            <div class="card card-body">
-                <h4 class="title py-3">One Request, Multiple Quotes</h4>
-                <form>
-                    <div class="form-group">
-                        <input class="form-control" name="" placeholder="What are you looking for?" type="text">
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="Quantity" name="" type="text">
-
-                            <select class="custom-select form-control">
-                                <option>Pieces</option>
-                                <option>Litres</option>
-                                <option>Tons</option>
-                                <option>Gramms</option>
-                            </select>
+                <div class="card card-body">
+                    <h4 class="title py-3">One Request, Multiple Quotes</h4>
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" name="" placeholder="What are you looking for?" type="text">
                         </div>
-                    </div>
-                    <div class="form-group text-muted">
-                        <p>Select template type:</p>
-                        <label class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="option1">
-                            <span class="form-check-label">Request price</span>
-                        </label>
-                        <label class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="option2">
-                            <dspaniv class="form-check-label">Request a sample</span>
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-warning">Request for quote</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="Quantity" name="" type="text">
 
-        </div> <!-- col // -->
-    </div> <!-- row // -->
+                                <select class="custom-select form-control">
+                                    <option>Pieces</option>
+                                    <option>Litres</option>
+                                    <option>Tons</option>
+                                    <option>Gramms</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group text-muted">
+                            <p>Select template type:</p>
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="option1">
+                                <span class="form-check-label">Request price</span>
+                            </label>
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="option2">
+                                <dspaniv class="form-check-label">Request a sample</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-warning">Request for quote</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div> <!-- col // -->
+        </div> <!-- row // -->
+    *@
 </section>
 
 <!-- =============== SECTION REQUEST .//END =============== -->
@@ -312,7 +313,7 @@
 <section class="padding-bottom-sm">
 
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Recommended items</h4>
+        <h4 class="title-section text-uppercase">Sản phẩm đề xuất</h4>
     </header>
 
     <div class="row row-sm">
@@ -386,7 +387,7 @@
 <section class="padding-bottom">
 
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Choose brand</h4>
+        <h4 class="title-section text-uppercase">Thương hiệu</h4>
     </header>
 
     <ul class="row mt-4">
@@ -394,7 +395,7 @@
         {
             <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" style="width:80px;" src="~/Public/images/brand/@item.Avatar"> <span>@item.BrandName</span> </a></li>
         }
-        <li class="col-md col-6"><a href="@Url.Action("Index","Brand")" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span>More brand</span> </a></li>
+        <li class="col-md col-6"><a href="@Url.Action("Index","Brand")" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span>Thương hiệu</span> </a></li>
     </ul>
 </section>
 <!-- =============== SECTION REGION .//END =============== -->
