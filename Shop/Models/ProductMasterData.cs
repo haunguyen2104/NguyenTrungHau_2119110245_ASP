@@ -5,48 +5,52 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Shop.Context
+namespace Shop.Models
 {
-    public partial class ProductMasterData
+    public class ProductMasterData
     {
+        //Thêm các trường
         public int Id { get; set; }
-        [Required(ErrorMessage ="Vui lòng nhập tên sản phẩm!")]
-        [Display(Name="Tên sản phẩm")]
+        [Display(Name = "Tên sản phẩm")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!")]
-        [Display(Name = "Tên sản phẩm đẩy đủ")]
+        [Display(Name = "Tên sản phẩm đầy đủ")]
         public string FullName { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn hình ảnh!")]
         [Display(Name = "Hình ảnh")]
         public string Avatar { get; set; }
-        [Required]
-        [Display(Name = "Loại sản phẩm")]
+        [Display(Name = "Danh mục")]
         public Nullable<int> CategoryId { get; set; }
-        [Required]
         [Display(Name = "Thương hiệu")]
         public Nullable<int> BrandId { get; set; }
         [Display(Name = "Mô tả ngắn")]
         public string ShoetDes { get; set; }
-        [Display(Name = "Mô tả đầy đủ")]
+        [Required(ErrorMessage = "Vui lòng nhập mô tả!")]
+        [Display(Name = "Chi tiết")]
         public string FullDescription { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm!")]
-        [Display(Name = "Giá")]
+        [Required(ErrorMessage = "Vui lòng giá sản phẩm!")]
+        [Display(Name = "Giá sản phẩm")]
         public Nullable<double> Price { get; set; }
         [Display(Name = "Giá khuyến mãi")]
         public Nullable<double> PriceDiscount { get; set; }
         [Display(Name = "Loại sản phẩm")]
+
         public Nullable<int> TypeId { get; set; }
-        [Display(Name = "Slug")]
         public string Slug { get; set; }
+        [Display(Name = "Xoá")]
+
         public Nullable<bool> Deleted { get; set; }
+        [Display(Name = "Hiển thị trang chủ")]
+
         public Nullable<bool> ShowOnHomePage { get; set; }
+        [Display(Name = "Hiển thị")]
+
         public Nullable<int> DisplayOrder { get; set; }
+        [Display(Name = "Ngày tạo")]
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
+        [Display(Name = "Ngày cập nhật")]
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập số lượng sản phẩm!")]
         [Display(Name = "Số lượng")]
         public Nullable<int> Quantity { get; set; }
-
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }

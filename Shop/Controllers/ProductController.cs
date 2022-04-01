@@ -23,11 +23,13 @@ namespace Shop.Controllers
            var objProCate = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.CategoryId == id).ToList();
             //Lấy danh mục 
            var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).ToList();
-
+            var lstBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
             ProductCategoryModel objProductCategoryModel = new ProductCategoryModel();
             objProductCategoryModel.Id = id;
             objProductCategoryModel.listProduct = objProCate;
             objProductCategoryModel.listCategory = objCate;
+            objProductCategoryModel.listBrand = lstBrand;
+
             return View(objProductCategoryModel);
         } public ActionResult ProductCategoryGrid(int id)
         {
@@ -46,7 +48,7 @@ namespace Shop.Controllers
         }
         public ActionResult ProductBrandGrid(int id)
         {
-            // Lấy sản phẩm theo category
+            // Lấy sản phẩm theo thương hiệu
             var objProBrand = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.BrandId == id).ToList();
             //Lấy thương hiệu 
             var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandId == id).ToList();
@@ -62,14 +64,17 @@ namespace Shop.Controllers
         public ActionResult ProductBrandList(int id)
         {
             // Lấy sản phẩm theo category
-            var objProBrand = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.BrandId == id).ToList();
+            var lstProBrand = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.BrandId == id).ToList();
             //Lấy thương hiệu 
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandId == id).ToList();
+            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(x=>x.BrandId==id).ToList();
+
+            var objCate = objWebsiteBanHangEntities.Category_2119110245.ToList();
 
             ProductBrandModel objProductBrandModel = new ProductBrandModel();
             objProductBrandModel.Id = id;
-            objProductBrandModel.listProduct = objProBrand;
+            objProductBrandModel.listProduct = lstProBrand;
             objProductBrandModel.listBrand = objBrand;
+            objProductBrandModel.listCategory = objCate;
             return View(objProductBrandModel);
         }
         public ActionResult Offers()

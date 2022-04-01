@@ -34,6 +34,17 @@
                             @TempData["error"]
                         </span>
                     }
+                    @*else
+                    {
+                        if(TempData["success"]!=null)
+                        {
+                        <span style="color:#0f0;">
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            @TempData["success"]
+                        </span>
+                        }
+                    }*@
                     <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
                     </div>

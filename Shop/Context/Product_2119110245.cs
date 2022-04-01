@@ -19,7 +19,6 @@ namespace Shop.Context
     {
 
         public int Id { get; set; }
-        //[Display(Name="Ten san pham")]
         public string Name { get; set; }
         public string FullName { get; set; }
         public string Avatar { get; set; }

@@ -49,14 +49,16 @@ namespace Shop.Controllers
                 {
                     //_user.Password = GetMD5(_user.Password);
                     _user.Password = ConvertMD5.GetMD5(_user.Password);
+                    _user.IsAdmin = 0;
                     objWebsiteBanHangEntities.Configuration.ValidateOnSaveEnabled = false;
                     objWebsiteBanHangEntities.User_2119110245.Add(_user);
                     objWebsiteBanHangEntities.SaveChanges();
-                    return RedirectToAction("Index");
+                    //TempData["success"] = "Đăng ký thành công";
+                    return RedirectToAction("Login");
                 }
                 else
                 {
-                    ViewBag.error = "Email already exists";
+                    TempData["error"] = "Thông tin tài khoản đã tồn tại";
                     return View();
                 }
 
@@ -90,6 +92,8 @@ namespace Shop.Controllers
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["Id"] = data.FirstOrDefault().Id;
                     Session["IsAdmin"] = data.FirstOrDefault().IsAdmin;
+                    //TempData["success"] = "Đăng nhập thành công";
+
                     return RedirectToAction("Index");
                 }
                 else
@@ -104,7 +108,7 @@ namespace Shop.Controllers
         public ActionResult Logout()
         {
             Session.Clear();//Remove session
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
         }
 
     }

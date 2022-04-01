@@ -1,8 +1,22 @@
 ﻿
 @model Shop.Models.ProductCategoryModel
-@{ foreach (var item in Model.listCategory) 
+@{ foreach (var item in Model.listCategory)
     { ViewBag.Title = item.CategoryName; }
     Layout = "~/Views/Shared/_Layout01.cshtml"; }
+<style>
+    .list__menu__item {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 35px;
+        width: 140px;
+    }
+
+        .list__menu__item:hover {
+            background-color: #ccc;
+        }
+</style>
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <div class="container">
@@ -13,13 +27,13 @@
             <div class="card-body">
                 <ol class="breadcrumb float-left">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Category")">Danh mục</a></li>
                     @foreach (var item in Model.listCategory)
                     {
-                        <li class="breadcrumb-item"><a href="#">@item.CategoryName</a></li>
 
+                        <li class="breadcrumb-item active">@item.CategoryName</li>
                     }
 
-                    @*<li class="breadcrumb-item active">item details</li>*@
                 </ol>
             </div> <!-- card-body .// -->
         </div> <!-- card.// -->
@@ -31,18 +45,16 @@
 
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Product type </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Thương hiệu </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_1">
                         <div class="inner">
                             <ul class="list-menu">
-                                <li><a href="#">Shorts  </a></li>
-                                <li><a href="#">Trousers </a></li>
-                                <li><a href="#">Sweaters  </a></li>
-                                <li><a href="#">Clothes  </a></li>
-                                <li><a href="#">Home items </a></li>
-                                <li><a href="#">Jackats</a></li>
-                                <li><a href="#">Somethings </a></li>
+                                @foreach (var item in Model.listBrand)
+                                {
+
+                                    <li class="list__menu__item"><a href="@Url.Action("ProductBrandList","Product", new { id=item.BrandId})">@item.BrandName </a></li>
+                                }
                             </ul>
                         </div> <!-- inner.// -->
                     </div>
@@ -93,7 +105,7 @@
                 </article> <!-- filter-group .// -->
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Price range </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Giá: </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_3">
                         <div class="inner">
@@ -112,7 +124,7 @@
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
-                <article class="filter-group">
+                <!--<article class="filter-group">
                     <h6 class="title">
                         <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Sizes </a>
                     </h6>
@@ -137,9 +149,11 @@
                                 <input type="checkbox">
                                 <span class="btn btn-light"> XXL </span>
                             </label>
-                        </div> <!-- inner.// -->
-                    </div>
-                </article> <!-- filter-group .// -->
+                        </div>-->
+                <!-- inner.// -->
+                <!--</div>
+                </article>-->
+                <!-- filter-group .// -->
                 <article class="filter-group">
                     <h6 class="title">
                         <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Condition </a>
@@ -175,7 +189,7 @@
 
                 <header class="mb-3">
                     <div class="form-inline">
-                        <strong class="mr-md-auto">@Model.listProduct.Count() Items found </strong>
+                        <strong class="mr-md-auto">@Model.listProduct.Count() Sản phẩm được tìm thấy </strong>
                         <select class="mr-2 form-control">
                             <option>Latest items</option>
                             <option>Trending</option>
@@ -236,7 +250,7 @@
                             <aside class="col-sm-3">
                                 <div class="info-aside">
                                     <div class="price-wrap">
-                                    <!--nếu có phân trang lấy 5 item-->
+                                        <!--nếu có phân trang lấy 5 item-->
                                         @if (item.PriceDiscount != null)
                                         {<span class="h5 price">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup>  - @Convert.ToDecimal(item.Price).ToString("#,##0") <sup>đ</sup></span>}
                                     else

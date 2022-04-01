@@ -48,7 +48,7 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            LoadData();
+            this.LoadData();
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Product_2119110245 objProduct)
         {
-            LoadData();
+            this.LoadData();
             if (ModelState.IsValid)
             {
                 try
@@ -109,7 +109,7 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             //------------------------------
-
+            this.LoadData();
             //------------------------------
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             return View(objProduct);
@@ -119,12 +119,13 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Product_2119110245 objProduct)
         {
+            this.LoadData();
             if (objProduct.ImageUpload != null)
             {
 
                 string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
                 string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                fileName = fileName  + extension;
                 objProduct.Avatar = fileName;
                 objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
             }
