@@ -37,7 +37,6 @@ namespace Shop.Models
         public Nullable<int> TypeId { get; set; }
         public string Slug { get; set; }
         [Display(Name = "Xoá")]
-
         public Nullable<bool> Deleted { get; set; }
         [Display(Name = "Hiển thị trang chủ")]
 

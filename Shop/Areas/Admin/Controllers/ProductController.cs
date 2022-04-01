@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -31,12 +32,12 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.FullName.Contains(SearchString)).ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.FullName.Contains(SearchString)&&x.Deleted==false).ToList();
             }
             else
             {
                 //lấy ds sản phẩm trong bảng product
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x=>x.Deleted == false).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 10;
@@ -44,7 +45,7 @@ namespace Shop.Areas.Admin.Controllers
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
             listProduct = listProduct.OrderByDescending(x => x.Id).ToList();
             return View(listProduct.ToPagedList(pageNumber, pageSize));
-         }
+        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -98,13 +99,19 @@ namespace Shop.Areas.Admin.Controllers
             return View(objProduct);
         }
         [HttpPost]
-        public ActionResult Delete(Product_2119110245 objPro)
+        public ActionResult Delete(int id,Product_2119110245 objPro)
         {
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
-            objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
+            if (objPro.Deleted == false)
+            {
+                objProduct.Deleted = true;
+            }
+            //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
+            objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
+       
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -125,7 +132,7 @@ namespace Shop.Areas.Admin.Controllers
 
                 string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
                 string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                fileName = fileName  + extension;
+                fileName = fileName + extension;
                 objProduct.Avatar = fileName;
                 objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
             }
@@ -133,7 +140,34 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
+        {
+            var listProduct = new List<Product_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted==true && x.FullName.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a=>a.Deleted==true).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listProduct = listProduct.OrderByDescending(x => x.Id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
+        }
 
         void LoadData()
         {

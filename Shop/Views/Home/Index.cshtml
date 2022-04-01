@@ -17,10 +17,10 @@
                         <ul class="menu-category">
                             @foreach (var item in Model.listCategory.Where(n => n.ShowOnHomePage == true))
                             {
-                                <li><a href="@Url.Action("ProductCategoryList","Product",new { id=item.CategoryId})">@item.CategoryName</a></li>
+                                <li><a href="@Url.Action("ProductCategoryList", "Product", new { id = item.CategoryId })">@item.CategoryName</a></li>
                             }
                             <li class="has-submenu">
-                                <a href="@Url.Action("Index","Category")">Tất cả danh mục</a>
+                                <a href="@Url.Action("Index", "Category")">Tất cả danh mục</a>
                                 @*<ul class="submenu">
                                         <li><a href="#">Submenu name</a></li>
                                         <li><a href="#">Great submenu</a></li>
@@ -41,7 +41,7 @@
                             <li data-target="#carousel1_indicator" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            @foreach (var item in Model.listSilder.Where(n=>n.IsDelete != true))
+                            @foreach (var item in Model.listSilder.Where(n => n.IsDelete != true))
                             {
 
                                 <div class="@item.Class">
@@ -78,7 +78,7 @@
                             <div class="card-banner border-bottom">
                                 <div class="py-3" style="width:80%">
                                     <h6 class="card-title">@it.CategoryName </h6>
-                                    <a href="@Url.Action("ProductCategoryGrid","Product", new { id=it.CategoryId})" class="btn btn-secondary btn-sm"> Xem chi tiết </a>
+                                    <a href="@Url.Action("ProductCategoryGrid", "Product", new { id = it.CategoryId })" class="btn btn-secondary btn-sm"> Xem chi tiết </a>
                                 </div>
                                 <img src="~/Public/images/category/@it.Avatar" height="80" class="img-bg">
                             </div>
@@ -100,7 +100,7 @@
         <div class="col-heading content-body">
             <header class="section-heading">
                 <h3 class="section-title">Ưu đãi cực sốc</h3>
-                <p>Hygiene equipments</p>
+        
             </header><!-- sect-heading -->
             <div class="timer">
                 <div> <span class="num">04</span> <small>Ngày</small></div>
@@ -115,11 +115,11 @@
                 var sale = @item.PriceDiscount * 100 / @item.Price;
                 <div class="col-md col-6">
                     <figure class="card-product-grid card-sm">
-                        <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="img-wrap">
+                        <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="img-wrap">
                             <img src="~/Public/images/product/@item.Avatar">
                         </a>
                         <div class="text-wrap p-3">
-                            <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="title">@item.Name</a>
+                            <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="title">@item.Name</a>
 
                             <span class="badge badge-danger"> - @Math.Round(100 - (float)sale, 0)% </span>
                         </div>
@@ -144,7 +144,7 @@
                 <div class="home-category-banner bg-light-orange">
                     <h5 class="title">Điện thoại - Tốt nhất mọi thời đại</h5>
                     <p>@*A smartphone is considered as a mobile computer combined with a digital camera and handheld game console, as it has a separate operating system designed to properly display web pages in a normal manner. often with many other functions of a computer such as design, graphics, video games, as well as photography and videography.*@ </p>
-                    <a href="#" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
+                    <a href="@Url.Action("ProductBrandList", "Product", new {@id = 24})" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
                     <img src="~/Public/images/category/category-dien-thoai.jpg" class="img-bg">
                 </div>
 
@@ -154,7 +154,7 @@
                     @foreach (var item in Model.listProduct.Where(n => n.BrandId == 24).Take(12))
                     {
                         <li class="col-6 col-lg-3 col-md-4">
-                            <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="item">
+                            <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="item">
                                 <div class="card-body">
                                     <h6 class="title">@item.Name</h6>
                                     <img class="img-sm float-right" src="~/Public/images/product/@item.Avatar">
@@ -208,8 +208,8 @@
                 <div class="home-category-banner bg-light-orange">
                     <h5 class="title">Laptop cho mọi người.</h5>
                     <p>@*Accessories are indispensable devices for people who are using smart devices such as phones, computers and other electronic devices....*@ </p>
-                    <a href="#" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
-                    <img src="~/Public/images/items/14.jpg" class="img-bg">
+                    <a href="@Url.Action("ProductBrandList", "Product", new {@id = 4})" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
+                    <img src="~/Public/images/category/category-laptop.jpg" class="img-bg">
                 </div>
 
             </div> <!-- col.// -->
@@ -317,7 +317,7 @@
     </header>
 
     <div class="row row-sm">
-        @foreach (var item in Model.listProduct.Where(n => n.ShowOnHomePage == true).Take(10))
+        @foreach (var item in Model.listProduct.Where(n => n.ShowOnHomePage == true).Take(12))
         {
             <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                 <div class="card card-sm card-product-grid">

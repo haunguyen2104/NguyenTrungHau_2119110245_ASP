@@ -185,6 +185,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2514,6 +2515,7 @@
     <Content Include="Public\fonts\fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="Public\fonts\fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="Public\fonts\roboto\font.css" />
+    <Content Include="Public\images\404.png" />
     <Content Include="Public\images\avatars\avatar1.jpg" />
     <Content Include="Public\images\avatars\avatar2.jpg" />
     <Content Include="Public\images\avatars\avatar3.jpg" />
@@ -2990,6 +2992,7 @@
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ListInTrash.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3031,6 +3034,7 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Product\Offers.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
