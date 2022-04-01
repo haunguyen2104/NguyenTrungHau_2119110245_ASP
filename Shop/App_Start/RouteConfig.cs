@@ -11,26 +11,46 @@ namespace Shop
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //Tuỳ biến Url khác
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            /*
+            //Trang người dùng----------------------------------------
+            //Tất cả danh mục
             routes.MapRoute(
-                name: "AllCategory",
-                url: "tat-ca-danh-muc",
-                defaults: new { controller = "Category", action = "Index", id = UrlParameter.Optional }
-            );
+               name: "AllCategory",
+               url: "tat-ca-danh-muc",
+               defaults: new { controller = "Category", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
+            
+            //Tất cả thương hiệu
             routes.MapRoute(
-              name: "productDetail",
-              url: "chi-tiet/{Slug}",
-              defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional }
-          );*/
-            //Tuỳ biến Url 1 cấp
+               name: "AllBrand",
+               url: "tat-ca-thuong-hieu",
+               defaults: new { controller = "Brand", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
+            //Sản phẩm theo danh mục dạng danh sách
+            //routes.MapRoute(
+            //   name: "ProductCategoryList",
+            //   url: "san-pham/{id}",
+            //   defaults: new { controller = "Product", action = "ProductCategoryList", id = UrlParameter.Optional },
+            //     new[] { "Shop.Controllers" }
+            //    );
+
+
+            //Chi tiết sản phẩm
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                  new[] { "Shop.Controllers" }
-            );
+               name: "ProductDetail",
+               url: "chi-tiet/{Slug}/{Id}",
+               defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
+            routes.MapRoute(
+                    name: "Default",
+                    url: "{controller}/{action}/{id}",
+                    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                      new[] { "Shop.Controllers" }
+                );
         }
     }
 }

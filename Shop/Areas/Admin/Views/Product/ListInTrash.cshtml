@@ -1,13 +1,14 @@
-﻿@using PagedList
+﻿
+@using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<Shop.Context.Product_2119110245>
-@*@model IEnumerable<Shop.Context.Product_2119110245>*@
-@*@model IEnumerable<Shop.Context.Product>*@
 
 @{
-    ViewBag.Title = "Tất cả sản phẩm";
+    ViewBag.Title = "Thùng rác";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Thùng rác</h2>
 <style>
     .card-body {
         font-family: 'Poppins', sans-serif;
@@ -22,8 +23,8 @@
         margin: 5px 0;
         margin-left: 25px;
     }
-    
-   
+
+
 
     .search__product {
         max-width: 410px;
@@ -57,8 +58,7 @@
 </style>
 
 
-<a href="@Url.Action("Create","Product")" class="btn btn-default btn-new"  style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
-<a href="@Url.Action("ListInTrash","Product")" class="btn btn-default btn-new"  style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+<a href="@Url.Action("Index","Product")" class="btn btn-default btn-new" style="color:blue;"><i class="fa-solid fa-circle-left" style="font-weight:600;"></i> Trở về</a>
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
 {
     <p class="search__product">
@@ -87,10 +87,10 @@
 
             @foreach (var item in Model)
             {
-               
+
                 <tr>
                     <td>
-                         <input type="checkbox" name="checkId" value="" />
+                        <input type="checkbox" name="checkId" value="" />
                     </td>
                     <td><img src="~/Public/images/product/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
                     <td>@item.Name</td>
@@ -101,9 +101,8 @@
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue; margin-left:10px;"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " style="color:red ;margin-left:20px;"><i class="fa-solid fa-trash"></i></a>
 
 
                     </td>
@@ -295,3 +294,4 @@ new { page, currentFilter = ViewBag.CurrentFilter }))
         color: #ffa600;
     }
 </style>
+
