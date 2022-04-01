@@ -194,10 +194,11 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ConvertMD5.cs" />
     <Compile Include="Models\HomeModel.cs" />
-    <Compile Include="Models\PartialMetadataType.cs" />
+    <Compile Include="Models\PatialMetadataType.cs" />
     <Compile Include="Models\ProductBrandModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
+    <Compile Include="Models\SliderMasterData.cs" />
     <Compile Include="Models\UserMasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2988,6 +2989,7 @@
     <Content Include="Context\dbModel.edmx.diagram">
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

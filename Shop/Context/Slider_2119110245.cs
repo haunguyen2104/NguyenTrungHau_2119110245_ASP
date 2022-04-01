@@ -21,7 +21,7 @@ namespace Shop.Context
         public string Avatar { get; set; }
         public string Class { get; set; }
         public Nullable<bool> IsDelete { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageUpload { get; set; }
+        //[NotMapped]
+        //public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

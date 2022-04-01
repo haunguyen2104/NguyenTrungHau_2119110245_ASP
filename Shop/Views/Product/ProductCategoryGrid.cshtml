@@ -14,14 +14,14 @@
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2"> Your are here: </div> <!-- col.// -->
+                    <div class="col-md-2"> Bạn đang ở: </div> <!-- col.// -->
                     <nav class="col-md-8">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
-                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Category")">Category</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Category")">Danh mục</a></li>
                             @foreach (var itcate in Model.listCategory)
                             {
-                                <li class="breadcrumb-item"><a href="#">@itcate.CategoryName</a></li>
+                                <li class="breadcrumb-item">@itcate.CategoryName</li>
                             }
                             @*<li class="breadcrumb-item active" aria-current="page">Items</li>*@
                         </ol>
@@ -29,7 +29,7 @@
                 </div> <!-- row.// -->
                 <hr>
                 <div class="row">
-                    <div class="col-md-2">Filter by</div> <!-- col.// -->
+                    <div class="col-md-2">Lọc theo</div> <!-- col.// -->
                     <div class="col-md-10">
                         <ul class="list-inline">
                             <li class="list-inline-item mr-3 dropdown">
@@ -47,41 +47,41 @@
                                 </div> <!-- dropdown-menu.// -->
                             </li>
                             <li class="list-inline-item mr-3 dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Country </a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Thương hiệu </a>
                                 <div class="dropdown-menu p-3">
-                                    <label class="form-check"> 	 <input type="checkbox" class="form-check-input"> China    </label>
-                                    <label class="form-check">   	 <input type="checkbox" class="form-check-input"> Japan      </label>
-                                    <label class="form-check">    <input type="checkbox" class="form-check-input"> Uzbekistan  </label>
-                                    <label class="form-check">  <input type="checkbox" class="form-check-input"> Russia     </label>
+                                    @foreach (var item in Model.listBrand.Take(20))
+                                    {
+                                        <label class="form-check">  <input type="checkbox" class="form-check-input"> @item.BrandName     </label>
+                                    }
                                 </div> <!-- dropdown-menu.// -->
                             </li>
-                            <li class="list-inline-item mr-3 dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Feature</a>
-                                <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item">Anti backterial</a>
-                                    <a href="" class="dropdown-item">With buttons</a>
-                                    <a href="" class="dropdown-item">Extra safety</a>
-                                </div>
-                            </li>
-                            <li class="list-inline-item mr-3"><a href="#">Color</a></li>
-                            <li class="list-inline-item mr-3"><a href="#">Size</a></li>
+                            @*<li class="list-inline-item mr-3 dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Feature</a>
+                                    <div class="dropdown-menu">
+                                        <a href="" class="dropdown-item">Anti backterial</a>
+                                        <a href="" class="dropdown-item">With buttons</a>
+                                        <a href="" class="dropdown-item">Extra safety</a>
+                                    </div>
+                                </li>
+                                <li class="list-inline-item mr-3"><a href="#">Color</a></li>
+                                <li class="list-inline-item mr-3"><a href="#">Size</a></li>*@
                             <li class="list-inline-item mr-3">
                                 <div class="form-inline">
-                                    <label class="mr-2">Price</label>
+                                    <label class="mr-2">Giá:</label>
                                     <input class="form-control form-control-sm" placeholder="Min" type="number">
                                     <span class="px-2"> - </span>
                                     <input class="form-control form-control-sm" placeholder="Max" type="number">
                                     <button type="submit" class="btn btn-sm btn-light ml-2">Ok</button>
                                 </div>
                             </li>
-                            <li class="list-inline-item mr-3">
-                                <label class="custom-control mt-1 custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input">
-                                    <div class="custom-control-label">
-                                        Ready to ship
-                                    </div>
-                                </label>
-                            </li>
+                            @*<li class="list-inline-item mr-3">
+                                    <label class="custom-control mt-1 custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input">
+                                        <div class="custom-control-label">
+                                            Ready to ship
+                                        </div>
+                                    </label>
+                                </li>*@
                         </ul>
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
@@ -95,7 +95,7 @@
                     @if (@Model.listProduct.Count() <= 0)
                     {<span>Not found</span>}
                     else
-                    {@Model.listProduct.Count() <span>Items found</span>}
+                    {@Model.listProduct.Count() <span>Sản phẩm được tìm thấy</span>}
                 </strong>
                 <select class="mr-2 form-control">
                     <option>Latest items</option>
@@ -171,11 +171,11 @@
                             </p>
 
                             @*<label class="custom-control mb-3 custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <div class="custom-control-label">
-                Add to compare
-            </div>
-        </label>*@
+                                    <input type="checkbox" class="custom-control-input">
+                                    <div class="custom-control-label">
+                                        Add to compare
+                                    </div>
+                                </label>*@
 
                             <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i>  Liên hệ </a>
 

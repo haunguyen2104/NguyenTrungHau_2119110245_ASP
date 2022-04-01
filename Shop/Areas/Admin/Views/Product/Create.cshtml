@@ -5,47 +5,46 @@
     ViewBag.Title = "Thêm mới";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<!--CKeditor-->
-<script src="~/Public/ckeditor/ckeditor.js"></script>
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Thêm mới</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-
-    <style>
-        .input___item {
-            border: 1px solid #ced4da;
-            width: 200px;
-            height: calc(2.25rem + 7px);
-            padding: 10px 10px;
-            border-radius: 5px;
-        }
-
-        .img__input {
-            padding: 10px 10px;
-        }
-    </style>
-    <!-- /.content-header -->
-    <section class="content">
 
 
-        @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
+<style>
+    .input___item {
+        border: 1px solid #ced4da;
+        width: 200px;
+        height: calc(2.25rem + 7px);
+        padding: 10px 10px;
+        border-radius: 5px;
+    }
+
+    .img__input {
+        padding: 10px 10px;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Thêm mới</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+<!-- /.content-header -->
+<section class="content">
+
+
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
             @*<h4>C2119110245_Product</h4>*@
@@ -71,7 +70,7 @@
                 @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })*@
                     <input type="file" name="ImageUpload" class="img__input" />
                 </div>
             </div>
@@ -144,29 +143,29 @@
                 </div>
             </div>
             @*
-            <div class="form-group">
-                @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Deleted, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Deleted, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-          <div class="form-group">
-             @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-2" })
-             <div class="col-md-10">
-                 @Html.EditorFor(model => model.ShowOnHomePage, new { htmlAttributes = new { @class = "form-control" } })
-                 @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
-             </div>
-         </div>
+                  <div class="form-group">
+                     @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-2" })
+                     <div class="col-md-10">
+                         @Html.EditorFor(model => model.ShowOnHomePage, new { htmlAttributes = new { @class = "form-control" } })
+                         @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
+                     </div>
+                 </div>
 
-        <div class="form-group">
-             @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
-             <div class="col-md-10">
-                 @Html.EditorFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control" } })
-                 @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
-             </div>
-         </div>*@
+                <div class="form-group">
+                     @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+                     <div class="col-md-10">
+                         @Html.EditorFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control" } })
+                         @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+                     </div>
+                 </div>*@
             <div class="form-group">
                 @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -175,20 +174,20 @@
                 </div>
             </div>
             @* <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedOnUtc, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @Html.LabelFor(model => model.CreatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CreatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedOnUtc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UpdatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UpdatedOnUtc, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UpdatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UpdatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedOnUtc, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -196,11 +195,11 @@
                 </div>
             </div>
         </div>
-        }
+    }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    </section>
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</section>
+
 

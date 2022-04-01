@@ -4,22 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Shop.Context
+namespace Shop.Models
 {
     public class UserMasterData
     {
         public int Id { get; set; }
-        [Required(ErrorMessage ="Không được để trống.")]
         [Display(Name = "Họ")]
+
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Không được để trống.")]
         [Display(Name = "Tên")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Không được để trống.")]
-
+        [Required(ErrorMessage="Bạn chưa nhập email")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Không được để trống.")]
         [Display(Name = "Mật khẩu")]
+        [Required(ErrorMessage="Bạn chưa nhập mật khẩu")]
         public string Password { get; set; }
         public Nullable<int> IsAdmin { get; set; }
     }
