@@ -17,9 +17,11 @@ namespace Shop.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
+
         // GET: Admin/Product
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+
             var listProduct = new List<Product_2119110245>();
             if (SearchString != null)
             {
@@ -32,12 +34,12 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.FullName.Contains(SearchString)&&x.Deleted==false).ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.FullName.Contains(SearchString) && x.Deleted == false).ToList();
             }
             else
             {
                 //lấy ds sản phẩm trong bảng product
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x=>x.Deleted == false).ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted == false).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 10;
@@ -90,8 +92,14 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+            AdminHomeModel objHomeModel = new AdminHomeModel();
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            return View(objProduct);
+            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
+            var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
+            objHomeModel.objProduct = objProduct;
+            objHomeModel.BrandName = objBrand.BrandName;
+            objHomeModel.CategoryName = objCate.CategoryName;
+            return View(objHomeModel);
         }
         public ActionResult Delete(int id)
         {
@@ -99,7 +107,7 @@ namespace Shop.Areas.Admin.Controllers
             return View(objProduct);
         }
         [HttpPost]
-        public ActionResult Delete(int id,Product_2119110245 objPro)
+        public ActionResult Delete(int id, Product_2119110245 objPro)
         {
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
             if (objPro.Deleted == false)
@@ -111,7 +119,7 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
-       
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -154,12 +162,12 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted==true && x.FullName.Contains(SearchString)).ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted == true && x.FullName.Contains(SearchString)).ToList();
             }
             else
             {
                 //lấy ds sản phẩm trong bảng product
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a=>a.Deleted==true).ToList();
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == true).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 5;

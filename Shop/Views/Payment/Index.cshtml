@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Thông báo";
+    Layout = "~/Views/Shared/_Layout02.cshtml";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+    .message {
+        font-family: 'Roboto Serif', serif;
+        font-size: 50px;
+        font-weight: 700;
+        margin-top: 3cm;
+        margin-bottom: 3cm;
+        margin-left: calc((100vw - 900px) / 2);
+        text-transform: uppercase;
+    }
+
+    .btn__cont:hover a {
+        color: #fff;
+    }    .btn__cont:hover {
+        background-color: #ff6a00;
+        
+    }
+
+    .btn__cont {
+        padding: 5px 10px;
+        color: #ff6a00;
+               border: 1px solid;
+        border-radius: 10px;
+        width: fit-content;
+        margin-top: 10px;
+        margin-left: calc((100vw - 300px) / 2);
+    }
+</style>
+<p class="btn__cont"><a href="@Url.Action("Index","Home")"><i class="fa-solid fa-circle-left"> </i> Tiếp tục mua sắm</a></p>
+<h2 class="message" style=" color: #0f0;"><i class="fa-solid fa-circle-check"> </i> Thanh toán thành công</h2>
+

@@ -28,6 +28,48 @@ namespace Shop
                url: "tat-ca-thuong-hieu",
                defaults: new { controller = "Brand", action = "Index", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
+                );  
+            //Thanh toán
+            routes.MapRoute(
+               name: "Payment",
+               url: "thanh-toan-thanh-cong",
+               defaults: new { controller = "Payment", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );  
+            //Giỏ hàng
+            routes.MapRoute(
+               name: "Cart",
+               url: "gio-hang",
+               defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
+            //Đăng nhập
+            routes.MapRoute(
+               name: "Login",
+               url: "dang-nhap",
+               defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
+            //Đăng ký
+            routes.MapRoute(
+               name: "Register",
+               url: "dang-ky",
+               defaults: new { controller = "Home", action = "Register", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                ); 
+            //Về chúng tôi
+            routes.MapRoute(
+               name: "About",
+               url: "ve-chung-toi",
+               defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                ); 
+            //Liên hệ
+            routes.MapRoute(
+               name: "Contact",
+               url: "lien-he",
+               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
                 );
             //Sản phẩm theo danh mục dạng danh sách
             //routes.MapRoute(
