@@ -78,7 +78,7 @@
                                                 <i class="fa-solid fa-screwdriver-wrench"></i>
 
                                             </div>
-                                            <small class="text"> Quản trị </small>
+                                            <small class="text"> Dashboard </small>
                                         </a>
                                     </div>//Dashboard
                                     <div class="widget-header mr-3">
@@ -87,7 +87,7 @@
                                                 <i class="fa fa-user"></i>
                                                 <span class="notify">3</span>
                                             </div>
-                                            <small class="text"> Cá nhân </small>
+                                            <small class="text"> My profile </small>
                                         </a>
                                     </div><!--My profile //-->
 
@@ -98,19 +98,16 @@
                                                 <i class="fa fa-comment-dots"></i>
                                                 <span class="notify">1</span>
                                             </div>
-                                            <small class="text"> Tin nhắn </small>
+                                            <small class="text"> Message </small>
                                         </a>
                                     </div><!--Message //-->
-
-
-
 
                                     <div class="widget-header">
                                         <a href="@Url.Action("Logout","Home")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-sign-out-alt"></i>
                                             </div>
-                                            <small class="text"> Đăng xuất </small>
+                                            <small class="text"> Logout </small>
                                         </a>
                                     </div><!--Logout //-->
                                 }
@@ -122,12 +119,9 @@
                                                 <i class="fa fa-user"></i>
                                                 <span class="notify">3</span>
                                             </div>
-                                            <small class="text"> Cá nhân </small>
+                                            <small class="text"> My profile </small>
                                         </a>
                                     </div><!--My profile //-->
-
-
-
 
                                     <div class="widget-header mr-3">
                                         <a href="#" class="widget-view">
@@ -135,11 +129,9 @@
                                                 <i class="fa fa-comment-dots"></i>
                                                 <span class="notify">1</span>
                                             </div>
-                                            <small class="text"> Tin nhắn </small>
+                                            <small class="text"> Message </small>
                                         </a>
                                     </div><!--Message //-->
-
-
 
                                     <div class="widget-header mr-3">
                                         <a href="#" class="widget-view">
@@ -149,19 +141,20 @@
                                             <small class="text"> Orders </small>
                                         </a>
                                     </div><!--Orders //-->
+
                                     <div class="widget-header">
                                         <a href="@Url.Action("Index","Cart")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-shopping-cart"></i>
-                                                @if (Session["IsAdmin"].ToString() == "0")
-                                                {
-                                                    <span class="" id="CartCount">@Session["count"]</span> }
-                                                else
-                                                {
-                                                    <span class="notify" id="CartCount">@Session["count"]</span>
-                                                }
+                                                @*@if (Session["count"].ToString() == "0")
+        {
+            <span class="" id="CartCount"></span> }
+        else
+        {*@
+                                                <span class="notify" id="CartCount">@Session["count"]</span>
+                                                @*}*@
                                             </div>
-                                            <small class="text"> Giỏ hàng </small>
+                                            <small class="text"> Cart </small>
                                         </a>
                                     </div><!--Cart //-->
                                     <div class="widget-header">
@@ -169,12 +162,10 @@
                                             <div class="icon-area">
                                                 <i class="fa fa-sign-out-alt"></i>
                                             </div>
-                                            <small class="text"> Đăng xuất </small>
+                                            <small class="text"> Logout </small>
                                         </a>
                                     </div><!--Logout //-->
                                 }
-
-
 
 
 
@@ -186,12 +177,13 @@
                                         <div class="icon-area">
                                             <i class="fa fa-sign-in-alt"></i>
                                         </div>
-                                        <small class="text"> Đăng nhập </small>
+                                        <small class="text"> Login </small>
                                     </a>
                                 </div><!--Login //-->
                                 <div class="widget-header">
                                     <a href="@Url.Action("Register","Home")" class="widget-view">
                                         <div class="icon-area">
+
                                             <i class="fa fa-cash-register"></i>
                                         </div>
                                         <small class="text"> Đăng ký </small>

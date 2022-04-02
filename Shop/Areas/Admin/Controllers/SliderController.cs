@@ -64,7 +64,6 @@ namespace Shop.Areas.Admin.Controllers
                         objSlider.Avatar = fileName;
                         objSlider.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/slider/"), fileName));
                     }
-
                     objSlider.IsDelete = false;
                     objSlider.Class = "carousel-item";
                     objWebsiteBanHangEntities.Slider_2119110245.Add(objSlider);
