@@ -55,8 +55,6 @@ namespace Shop.Areas.Admin.Controllers
             return View();
         }
 
-
-
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Create(Product_2119110245 objProduct)

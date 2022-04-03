@@ -12,16 +12,15 @@ namespace Shop.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Category_2119110245
+    public partial class Post_2119110245
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string Avatar { get; set; }
-        public string Slug { get; set; }
-        public Nullable<bool> ShowOnHomePage { get; set; }
-        public Nullable<int> DisplayOrder { get; set; }
-        public Nullable<System.DateTime> CreateOnUtc { get; set; }
-        public Nullable<System.DateTime> UpdateOnUtc { get; set; }
-        public Nullable<bool> Deleted { get; set; }
+        public int PostId { get; set; }
+        public string PostTitle { get; set; }
+        public string PostSlug { get; set; }
+        public string PostAvatar { get; set; }
+        public string PostDetail { get; set; }
+        public Nullable<System.DateTime> PostDateCreate { get; set; }
+        public Nullable<bool> isDelete { get; set; }
+        public Nullable<int> status { get; set; }
     }
 }

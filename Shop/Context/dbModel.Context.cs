@@ -32,5 +32,6 @@ namespace Shop.Context
         public virtual DbSet<Product_2119110245> Product_2119110245 { get; set; }
         public virtual DbSet<Slider_2119110245> Slider_2119110245 { get; set; }
         public virtual DbSet<User_2119110245> User_2119110245 { get; set; }
+        public virtual DbSet<Post_2119110245> Post_2119110245 { get; set; }
     }
 }

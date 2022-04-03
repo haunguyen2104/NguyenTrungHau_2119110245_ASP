@@ -11,9 +11,7 @@ namespace Shop.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
-
+    
     public partial class Brand_2119110245
     {
         public int BrandId { get; set; }
@@ -25,7 +23,5 @@ namespace Shop.Context
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
         public Nullable<bool> Deleted { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

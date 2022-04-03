@@ -1,4 +1,5 @@
 ﻿using Shop.Context;
+using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -40,6 +41,10 @@ namespace Shop.Areas.Admin.Controllers
                     objCategory.Avatar = fileName;
                     objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/category/"), fileName));
                 }
+                objCategory.CreateOnUtc = DateTime.Now;
+                objCategory.Slug = ToStringSlug.ToSlug(objCategory.CategoryName);
+                objCategory.ShowOnHomePage = true;
+                objCategory.Deleted = false;
                 objWebsiteBanHangEntities.Category_2119110245.Add(objCategory);
                 objWebsiteBanHangEntities.SaveChanges();
                 return RedirectToAction("Index");
