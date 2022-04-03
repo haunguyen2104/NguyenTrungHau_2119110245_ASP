@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "LoginAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .login-box {
+        margin-left: calc((100vw - 560px)/2)
+    }
+</style>
+@*
+<div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <h3><b>ĐĂNG NHẬP HỆ THỐNG</b></h3>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("LoginAdmin", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                @Html.Raw(ViewBag.Error)
+                <form action="~/Public/index3.html" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" name="Email" required class="form-control" placeholder="Tên đăng nhập">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="Password" required class="form-control" placeholder="Mật khẩu">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">ĐĂNG NHẬP</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+            }
+
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.login-box -->*@

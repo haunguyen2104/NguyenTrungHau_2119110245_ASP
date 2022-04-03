@@ -1,0 +1,30 @@
+﻿@model Shop.Context.Post_2119110245
+
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+   h2, p{
+       text-align:justify;  
+   }
+    img {
+        margin-left: calc((100vw - 800px)/2)
+    }
+    li, ul,ol{
+        text-align:left
+    }
+</style>
+<div>
+    <h2>
+        @Html.DisplayFor(model => model.PostTitle)
+
+    </h2>
+    <hr />
+    <div class="dl-horizontal">
+        <span class="@*post_Detail*@ text-center">
+            @Html.Raw(Model.PostDetail)
+        </span>
+    </div>
+</div>

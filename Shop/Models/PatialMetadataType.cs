@@ -22,15 +22,32 @@ namespace Shop.Context
     [MetadataType(typeof(ProductMasterData))]
     public partial class Product_2119110245
     {
-        //[NotMapped]
-        //public HttpPostedFileBase ImageUpload { get; set; }
-    }  
-    [MetadataType(typeof(SliderMasterData))]
-    public partial class Slider_2119110245
-    {
-         
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }
-        
+    [MetadataType(typeof(SliderMasterData))]
+    public partial class Slider_2119110245
+    {
+
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+    }
+    public partial class Brand_2119110245
+    {
+
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+    }
+    public partial class Category_2119110245
+    {
+
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+    } public partial class Post_2119110245
+    {
+
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+    }
+
 }

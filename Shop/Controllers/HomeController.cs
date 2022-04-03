@@ -17,19 +17,27 @@ namespace Shop.Controllers
         {
             //Lấy sản phẩm giá sốc
            // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
-            var listProducts = objWebsiteBanHangEntities.Product_2119110245.ToList();
+            var listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n=>n.Deleted==false).ToList();
             //Lấy danh mục sản phẩm
             var listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
             //Lấy thương hiệu
             var listBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
             //Lấy slider
             var listSlider = objWebsiteBanHangEntities.Slider_2119110245.ToList();
+            //Lấy post
+            var listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a=>a.isDelete==false).ToList();
             HomeModel objhomeModel = new HomeModel();
             objhomeModel.listCategory = listCategory;
             objhomeModel.listProduct = listProducts;
             objhomeModel.listBrand = listBrand;
             objhomeModel.listSilder = listSlider;
+            objhomeModel.listPost = listPost;
             return View(objhomeModel);
+        }
+        public ActionResult PostDetail(int id)
+        {
+            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId==id).FirstOrDefault();
+            return View(objPost);
         }
 
         public ActionResult Register()

@@ -9,9 +9,10 @@
         <EntityTypeShape EntityType="WebsiteBanHangModel.Category_2119110245" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebsiteBanHangModel.Order_2119110245" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebsiteBanHangModel.OrderDetail_2119110245" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebsiteBanHangModel.Product_2119110245" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteBanHangModel.Product_2119110245" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="WebsiteBanHangModel.Slider_2119110245" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebsiteBanHangModel.User_2119110245" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteBanHangModel.Post_2119110245" Width="1.5" PointX="7" PointY="3.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

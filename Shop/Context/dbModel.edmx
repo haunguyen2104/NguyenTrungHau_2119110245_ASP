@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebsiteBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebsiteBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Brand_2119110245">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -51,6 +51,19 @@
           <Property Name="OrderId" Type="int" />
           <Property Name="ProductId" Type="int" />
           <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Post_2119110245">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="PostSlug" Type="varchar" MaxLength="255" />
+          <Property Name="PostAvatar" Type="varchar" MaxLength="100" />
+          <Property Name="PostDetail" Type="nvarchar(max)" />
+          <Property Name="PostDateCreate" Type="datetime" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityType Name="Product_2119110245">
           <Key>
@@ -101,12 +114,12 @@
           <EntitySet Name="Category_2119110245" EntityType="Self.Category_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_2119110245" EntityType="Self.Order_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail_2119110245" EntityType="Self.OrderDetail_2119110245" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post_2119110245" EntityType="Self.Post_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_2119110245" EntityType="Self.Product_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider_2119110245" EntityType="Self.Slider_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_2119110245" EntityType="Self.User_2119110245" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebsiteBanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -209,7 +222,21 @@
           <EntitySet Name="Product_2119110245" EntityType="Self.Product_2119110245" />
           <EntitySet Name="Slider_2119110245" EntityType="Self.Slider_2119110245" />
           <EntitySet Name="User_2119110245" EntityType="Self.User_2119110245" />
+          <EntitySet Name="Post_2119110245" EntityType="WebsiteBanHangModel.Post_2119110245" />
         </EntityContainer>
+        <EntityType Name="Post_2119110245">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PostSlug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostAvatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostDateCreate" Type="DateTime" Precision="3" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -311,6 +338,20 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post_2119110245">
+            <EntityTypeMapping TypeName="WebsiteBanHangModel.Post_2119110245">
+              <MappingFragment StoreEntitySet="Post_2119110245">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="PostDateCreate" ColumnName="PostDateCreate" />
+                <ScalarProperty Name="PostDetail" ColumnName="PostDetail" />
+                <ScalarProperty Name="PostAvatar" ColumnName="PostAvatar" />
+                <ScalarProperty Name="PostSlug" ColumnName="PostSlug" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

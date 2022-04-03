@@ -11,13 +11,9 @@ namespace Shop.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
-
+    
     public partial class Product_2119110245
     {
-
         public int Id { get; set; }
         public string Name { get; set; }
         public string FullName { get; set; }
@@ -36,7 +32,5 @@ namespace Shop.Context
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
         public Nullable<int> Quantity { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

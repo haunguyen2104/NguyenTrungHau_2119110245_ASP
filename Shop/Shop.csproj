@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
     <Compile Include="Common.cs" />
@@ -171,6 +172,9 @@
     <Compile Include="Context\Order_2119110245.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Post_2119110245.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Product_2119110245.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -194,14 +198,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminHomeModel.cs" />
+    <Compile Include="Models\CategoryMasterData.cs" />
+    <Compile Include="Models\BrandMasterData.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ConvertMD5.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PatialMetadataType.cs" />
+    <Compile Include="Models\PostMasterData.cs" />
     <Compile Include="Models\ProductBrandModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
     <Compile Include="Models\SliderMasterData.cs" />
+    <Compile Include="Models\ToStringSlug.cs" />
     <Compile Include="Models\UserMasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2633,6 +2641,7 @@
     <Content Include="Public\images\posts\2.jpg" />
     <Content Include="Public\images\posts\3.jpg" />
     <Content Include="Public\images\posts\4.jpg" />
+    <Content Include="Public\images\post\bai-viet-1.jpg" />
     <Content Include="Public\images\product\adapter-sac-18w-oppo-op92kauh-trang.jpg" />
     <Content Include="Public\images\product\adapter-sac-supervooc-65w-oppo-vca7jauh-trang.jpg" />
     <Content Include="Public\images\product\adapter-sac-vooc-30w-oppo-vc56jauh.jpg" />
@@ -2995,6 +3004,12 @@
     </Content>
     <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ListInTrash.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\LoginAdmin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3038,6 +3053,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Home\PostDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

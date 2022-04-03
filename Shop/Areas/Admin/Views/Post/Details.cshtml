@@ -1,0 +1,82 @@
+﻿@model Shop.Context.Post_2119110245
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post_2119110245</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostSlug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostSlug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostAvatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostAvatar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDateCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDateCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

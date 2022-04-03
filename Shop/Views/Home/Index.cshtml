@@ -55,7 +55,7 @@
                                 <div class="carousel-item">
                                     <img src="~/Public/images/slider/slider03.png" alt="Third slide">
                                 </div>
-                           *@
+                            *@
                         </div>
                         <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -100,7 +100,7 @@
         <div class="col-heading content-body">
             <header class="section-heading">
                 <h3 class="section-title">Ưu đãi cực sốc</h3>
-        
+
             </header><!-- sect-heading -->
             <div class="timer">
                 <div> <span class="num">04</span> <small>Ngày</small></div>
@@ -339,46 +339,24 @@
 <section class="padding-bottom">
 
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Trade services</h4>
+        <h4 class="title-section text-uppercase">Tin tức</h4>
     </header>
 
     <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <article class="card card-post">
-                <img src="~/Public/images/posts/1.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h6 class="title">Trade Assurance</h6>
-                    <p class="small text-uppercase text-muted">Order protection</p>
-                </div>
-            </article> <!-- card.// -->
-        </div> <!-- col.// -->
-        <div class="col-md-3 col-sm-6">
-            <article class="card card-post">
-                <img src="~/Public/images/posts/2.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h6 class="title">Pay anytime</h6>
-                    <p class="small text-uppercase text-muted">Finance solution</p>
-                </div>
-            </article> <!-- card.// -->
-        </div> <!-- col.// -->
-        <div class="col-md-3 col-sm-6">
-            <article class="card card-post">
-                <img src="~/Public/images/posts/3.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h6 class="title">Inspection solution</h6>
-                    <p class="small text-uppercase text-muted">Easy Inspection</p>
-                </div>
-            </article> <!-- card.// -->
-        </div> <!-- col.// -->
-        <div class="col-md-3 col-sm-6">
-            <article class="card card-post">
-                <img src="~/Public/images/posts/4.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h6 class="title">Ocean and Air Shipping</h6>
-                    <p class="small text-uppercase text-muted">Logistic services</p>
-                </div>
-            </article> <!-- card.// -->
-        </div> <!-- col.// -->
+        @foreach (var item in Model.listPost)
+        {
+            <div class="col-md-3 col-sm-6">
+                <article class="card card-post">
+                    <a href="@Url.Action("PostDetail","Home",new { id=item.PostId})">
+                        <img src="~/Public/images/post/@item.PostAvatar" class="card-img-top">
+                        <div class="card-body">
+                            <h6 class="title">@item.PostTitle</h6>
+                            @*<p class="small text-uppercase text-muted">Logistic services</p>*@
+                        </div>
+                    </a>
+                </article> <!-- card.// -->
+            </div> <!-- col.// -->
+        }
     </div> <!-- row.// -->
 
 </section>
