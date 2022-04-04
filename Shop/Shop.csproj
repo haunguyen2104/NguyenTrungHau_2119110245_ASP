@@ -205,6 +205,7 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PatialMetadataType.cs" />
     <Compile Include="Models\PostMasterData.cs" />
+    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\ProductBrandModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
@@ -3010,6 +3011,7 @@
     <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Home\LoginAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Recover.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

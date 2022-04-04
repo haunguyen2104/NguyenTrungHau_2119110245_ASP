@@ -14,7 +14,15 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-
+            //Product_2119110245 objpro = new Product_2119110245();
+            //var daypro = objpro.CreatedOnUtc;
+            ////    var day = Convert.ToInt32(DateTime("21/04/2001"));
+            //var currentDay = long.Parse(DateTime.Now.ToString("ddMMyyyy"));
+            //var createDay = long.Parse(daypro.ToString());
+            //var newpro = currentDay - createDay;
+            //var listProduct = objWebsiteBanHangEntities.Product_2119110245.ToList();
+            //AdminHomeModel objHomeModel = new AdminHomeModel();
+            //objHomeModel.listProduct = listProduct;
             return View();
         }
         public ActionResult LoginAdmin()

@@ -75,6 +75,7 @@ namespace Shop.Areas.Admin.Controllers
                     }
 
                     objProduct.CreatedOnUtc = DateTime.Now;
+                    objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
                     objWebsiteBanHangEntities.Product_2119110245.Add(objProduct);
                     objWebsiteBanHangEntities.SaveChanges();
                     return RedirectToAction("Index");
@@ -104,16 +105,14 @@ namespace Shop.Areas.Admin.Controllers
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             return View(objProduct);
         }
+
         [HttpPost]
         public ActionResult Delete(int id, Product_2119110245 objPro)
         {
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
-            if (objPro.Deleted == false)
-            {
-                objProduct.Deleted = true;
-            }
+            objProduct.Deleted = true;
             //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
-            objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+            //objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -142,6 +141,8 @@ namespace Shop.Areas.Admin.Controllers
                 objProduct.Avatar = fileName;
                 objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
             }
+            objProduct.UpdatedOnUtc = DateTime.Now;
+            objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
             objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
@@ -175,6 +176,26 @@ namespace Shop.Areas.Admin.Controllers
             return View(listProduct.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Recover(int id)
+        {
+            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+            return View(objProduct);
+        }
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult Recover(Product_2119110245 objPro)
+        {
+            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
+           
+                objProduct.Deleted = false;
+            
+            //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
+            //objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        //-----------------------------------------------------------------------------------
+        //Load data
         void LoadData()
         {
             Common objCommon = new Common();

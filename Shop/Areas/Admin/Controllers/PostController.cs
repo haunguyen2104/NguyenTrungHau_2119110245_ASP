@@ -19,7 +19,8 @@ namespace Shop.Areas.Admin.Controllers
             return View(listPost);
         } public ActionResult Details(int id)
         {
-            return View();
+            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
+            return View(objPost);
         }
         [HttpGet]
         public ActionResult Create()

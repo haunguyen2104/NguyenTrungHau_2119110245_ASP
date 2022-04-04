@@ -67,11 +67,13 @@ namespace Shop.Areas.Admin.Controllers
 
                 string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);
                 string extension = Path.GetExtension(objCategory.ImageUpload.FileName);
-                fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                fileName = fileName +  extension;
                 objCategory.Avatar = fileName;
                 objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/category/"), fileName));
             }
-            objWebsiteBanHangEntities.Entry(objCategory).State = EntityState.Modified;
+            objCategory.Slug = ToStringSlug.ToSlug(objCategory.CategoryName);
+            objCategory.UpdateOnUtc = DateTime.Now;
+                  objWebsiteBanHangEntities.Entry(objCategory).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
