@@ -64,6 +64,13 @@ namespace Shop
                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 ); 
+            //San pham uu dai
+            routes.MapRoute(
+               name: "DealAndOffers",
+               url: "san-pham-uu-dai-cuc-soc",
+               defaults: new { controller = "Product", action = "Offers", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                ); 
             //Liên hệ
             routes.MapRoute(
                name: "Contact",

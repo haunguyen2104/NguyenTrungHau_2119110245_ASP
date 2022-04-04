@@ -36,8 +36,12 @@ namespace Shop.Controllers
         }
         public ActionResult PostDetail(int id)
         {
+            PostModel objPostModel = new PostModel();
             var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId==id).FirstOrDefault();
-            return View(objPost);
+            var listPost = objWebsiteBanHangEntities.Post_2119110245.ToList();
+            objPostModel.objPost = objPost;
+            objPostModel.listPost = listPost;
+            return View(objPostModel);
         }
 
         public ActionResult Register()

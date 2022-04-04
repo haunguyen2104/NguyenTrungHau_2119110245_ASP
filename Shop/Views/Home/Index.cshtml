@@ -4,6 +4,34 @@
     ViewBag.Title = "Trang chủ";
 }
 
+<style>
+    .view__all {
+        width: 100%;
+        height: 40px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+        .view__all a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            position: absolute;
+            color: #ff6a00;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .view__all:hover {
+            border-radius: 10px;
+            background-color: #808080;
+        }
+
+            .view__all:hover a {
+                color: white;
+            }
+</style>
 
 <!-- ========================= SECTION MAIN  ========================= -->
 <section class="section-main padding-y">
@@ -128,7 +156,11 @@
             }
         </div>
     </div>
-
+    <!--Xem tất cả-->
+    <div class="view__all">
+        <a href="@Url.Action("Offers","Product")">Xem tất cả</a>
+    </div>
+    <!--Xem tất cả//end-->
 </section>
 <!-- =============== SECTION DEAL // END =============== -->
 <!-- =============== SECTION 1 =============== -->
@@ -182,6 +214,9 @@
             </div> <!-- col.// -->
         </div> <!-- row.// -->
     </div> <!-- card.// -->
+    <div class="view__all">
+        <a href="#">Xem tất cả</a>
+    </div>
 </section>
 <!-- =============== SECTION 1 END =============== -->
 <!-- =============== SECTION 2 =============== -->
@@ -243,6 +278,9 @@
             </div> <!-- col.// -->
         </div> <!-- row.// -->
     </div> <!-- card.// -->
+    <div class="view__all">
+        <a href="#">Xem tất cả</a>
+    </div>
 </section>
 <!-- =============== SECTION 2 END =============== -->
 <!-- =============== SECTION REQUEST =============== -->
@@ -333,6 +371,9 @@
 
         }
     </div> <!-- row.// -->
+    <div class="view__all">
+        <a href="#">Xem tất cả</a>
+    </div>
 </section>
 <!-- =============== SECTION ITEMS .//END =============== -->
 <!-- =============== SECTION SERVICES =============== -->
@@ -358,7 +399,9 @@
             </div> <!-- col.// -->
         }
     </div> <!-- row.// -->
-
+    <div class="view__all">
+        <a href="#">Xem tất cả</a>
+    </div>
 </section>
 <!-- =============== SECTION SERVICES .//END =============== -->
 <!-- =============== SECTION REGION =============== -->

@@ -5,72 +5,114 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PostId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostSlug)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostAvatar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostDetail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostDateCreate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isDelete)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th></th>
-    </tr>
+<style>
+    .card-body {
+        font-family: 'Poppins', sans-serif;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostSlug)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostAvatar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostDetail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostDateCreate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isDelete)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+    .width__table {
+        overflow: scroll;
+    }
+
+    .btn-new {
+        font-family: 'Poppins', sans-serif;
+        margin: 5px 0;
+        margin-left: 25px;
+    }
+
+
+
+    .search__product {
+        max-width: 410px;
+        margin: 0 auto;
+        font-family: 'Poppins', sans-serif;
+        margin-left: calc(100vw - 600px);
+        margin-bottom: 10px;
+        margin-top: -37px;
+    }
+
+    #SearchString {
+        width: 200px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 0.5px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #ccc;
+        border: none;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 5px;
+        padding: 5px;
+        color: black;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+</style>
+
+<a href="@Url.Action("Create","Post")" class="btn btn-default btn-new" style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
+<a href="@Url.Action("ListInTrash","Post")" class="btn btn-default btn-new" style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+@using (Html.BeginForm("Index", "Post", FormMethod.Get))
+{
+    <p class="search__product">
+        Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
+        <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
+        <a href="@Url.Action("Index","Post")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả sản phẩm</a>
+    </p>
 }
 
-</table>
+<div class="card-body">
+
+    <table class="table table-bordered table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th class="text-center" style="width:20px;">STT</th>
+                <th class="text-center" style="width:200px;">Hình</th>
+
+                <th style="width:200px;">  Tên bài viết</th>
+                <th>  Nội dung bài viết  </th>
+                <th> Ngày tạo</th>
+                <th class="text-center" style="width:180px;">Chức năng</th>
+                <th class="text-center" style="width:20px;">ID </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkId" value="" />
+                    </td>
+                    <td><img src="~/Public/images/post/@item.PostAvatar" alt="Tenhinh" class="img-fluid" /></td>
+                    <td>@item.PostTitle</td>
+                    <td style="max-height: 200px; max-width: 300px; overflow: hidden; display: block ">
+                        @item.PostDetail
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostDateCreate)
+                    </td>
+                    <td class="text-center">
+
+                        <a href="@Url.Action("Edit", "Post", new { id = item.PostId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details", "Post", new { id = item.PostId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Delete", "Post", new { id = item.PostId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+
+
+                    </td>
+                    <td>@item.PostId</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

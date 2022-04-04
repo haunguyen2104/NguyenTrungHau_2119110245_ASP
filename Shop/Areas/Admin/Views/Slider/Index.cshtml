@@ -58,11 +58,16 @@
         width: 1000px;
         margin-left: calc((100vw  - 1260px)/2);
     }
+
     #page__number {
         margin-left: 230px;
         margin-top: 20px;
     }
+    /*Center*/
+
 </style>
+
+
 
 
 
@@ -73,13 +78,12 @@
 @using (Html.BeginForm("Index", "Slider", FormMethod.Get))
 {
     <p class="search__form">
-        Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
+        Tìm kiếm hình ảnh: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
         <a href="@Url.Action("Index","Slider")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả hình ảnh</a>
     </p>
 }
 <div class="card-body">
-
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
             <tr>
@@ -87,9 +91,9 @@
                 <th class="text-center" style="width:20px;">STT</th>
                 <th class="text-center" style="width:300px;">Hình</th>
 
-                <th>  Tên sản phẩm</th>
+                <th class="text-center">  Tên hình</th>
 
-                <th class="text-center" style="width:180px;">Chức năng</th>
+                <th class="text-center" style="width:280px;">Chức năng</th>
                 <th class="text-center" style="width:20px;">ID </th>
             </tr>
         </thead>
@@ -100,11 +104,11 @@
             {
 
                 <tr>
-                    <td>
-                        <input type="checkbox" name="checkId" value="" />
+                    <td class="text-center">
+                        <input type="checkbox" name="checkId" value="" class="text-center" />
                     </td>
                     <td><img src="~/Public/images/slider/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
-                    <td>@item.Name</td>
+                    <td class="text-center">@item.Name</td>
                     @*<td>@item.CategoryId </td>
 
                         <td>
@@ -112,10 +116,43 @@
                         </td>*@
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " title="Chỉnh sửa" class="button btn_edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " title="Chi tiết" class="button btn_detail"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " title="Xoá" class="button btn_delete"><i class="fa-solid fa-trash"></i></a>
+                        <style>@*
+                            .button {
+                                margin-top: 12px;
+                                padding: 10px;
+                                border: 1px solid;
+                                width: 80px;
+                                height: 80px;
+                                border-radius: 100%;
+                                /*position:relative;*/
+                            }
+                                .button:hover .btn_edit, button:hover .btn-delete, button:hover .btn_detail {
+                                    color: #ff6a00;
+                                }
 
+                                .button i {
+                                    font-size: 20px;
+                                    /* position: absolute;
+                                            top:50%;
+                                           left:50%;
+                                            transform: translate(-50%,-50%)*/
+                                }
+                                *@
+                            .btn_edit {
+                                color: blue
+                            }
+
+                            .btn_detail {
+                                color: green
+                            }
+
+                            .btn_delete {
+                                color: red
+                            }
+                        </style>
 
                     </td>
                     <td>@item.Id</td>
@@ -133,8 +170,9 @@
         @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, currentFilter = ViewBag.CurrentFilter }))
     </div>
-
 </div>
+
+
 @*-----------------------*@
 <style>
 

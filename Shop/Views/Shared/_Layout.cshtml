@@ -36,6 +36,10 @@
 
     <!--Nhúng fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--font Poppins-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -55,12 +59,12 @@
                         <form action="#" class="search-header">
                             <div class="input-group w-100">
                                 @*<select class="custom-select border-right" name="category_name">
-                                    <option value="">All type</option>
-                                    <option value="codex">Special</option>
-                                    <option value="comments">Only best</option>
-                                    <option value="content">Latest</option>
-                                </select>*@
-                                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                                        <option value="">All type</option>
+                                        <option value="codex">Special</option>
+                                        <option value="comments">Only best</option>
+                                        <option value="content">Latest</option>
+                                    </select>*@
+                                <input type="text" class="form-control" placeholder="Tìm kiếm" name="SearchString">
 
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
@@ -76,7 +80,7 @@
                             {
                                 if (Session["IsAdmin"].ToString() == "1")
                                 {
-                                   <div class="widget-header mr-3">
+                                    <div class="widget-header mr-3">
                                         <a href="~/Admin/Home/Index" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -123,7 +127,7 @@
                                                 <i class="fa fa-user"></i>
                                                 <span class="notify">3</span>
                                             </div>
-                                            <small class="text"> My profile </small>
+                                            <small class="text"> Cá nhân </small>
                                         </a>
                                     </div><!--My profile //-->
 
@@ -133,32 +137,32 @@
                                                 <i class="fa fa-comment-dots"></i>
                                                 <span class="notify">1</span>
                                             </div>
-                                            <small class="text"> Message </small>
+                                            <small class="text"> Tin nhắn </small>
                                         </a>
                                     </div><!--Message //-->
 
-                                   <div class="widget-header mr-3">
+                                    <div class="widget-header mr-3">
                                         <a href="#" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-store"></i>
                                             </div>
-                                            <small class="text"> Orders </small>
+                                            <small class="text"> Đơn hàng </small>
                                         </a>
                                     </div><!--Orders //-->
-                          
+
                                     <div class="widget-header">
                                         <a href="@Url.Action("Index","Cart")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 @*@if (Session["count"].ToString() == "0")
-                                                {
-                                                    <span class="" id="CartCount"></span> }
-                                                else
-                                                {*@
-                                                    <span class="notify" id="CartCount">@Session["count"]</span>
+                                                    {
+                                                        <span class="" id="CartCount"></span> }
+                                                    else
+                                                    {*@
+                                                <span class="notify" id="CartCount">@Session["count"]</span>
                                                 @*}*@
                                             </div>
-                                            <small class="text"> Cart </small>
+                                            <small class="text"> Giỏ hàng </small>
                                         </a>
                                     </div><!--Cart //-->
                                     <div class="widget-header">
@@ -166,7 +170,7 @@
                                             <div class="icon-area">
                                                 <i class="fa fa-sign-out-alt"></i>
                                             </div>
-                                            <small class="text"> Logout </small>
+                                            <small class="text"> Đăng xuất </small>
                                         </a>
                                     </div><!--Logout //-->
                                 }
@@ -181,7 +185,7 @@
                                         <div class="icon-area">
                                             <i class="fa fa-sign-in-alt"></i>
                                         </div>
-                                        <small class="text"> Login </small>
+                                        <small class="text"> Đăng nhập </small>
                                     </a>
                                 </div><!--Login //-->
                                 <div class="widget-header">
@@ -252,20 +256,20 @@
                             <a class="nav-link" href="@Url.Action("Index","About")">Về chúng tôi</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ml-md-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Get the app</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">English</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Russian</a>
-                                <a class="dropdown-item" href="#">French</a>
-                                <a class="dropdown-item" href="#">Spanish</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                            </div>
-                        </li>
-                    </ul>
+                    @*<ul class="navbar-nav ml-md-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Get the app</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">English</a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Russian</a>
+                                    <a class="dropdown-item" href="#">French</a>
+                                    <a class="dropdown-item" href="#">Spanish</a>
+                                    <a class="dropdown-item" href="#">Chinese</a>
+                                </div>
+                            </li>
+                        </ul>*@
                 </div> <!-- collapse .// -->
             </div> <!-- container .// -->
         </nav>
