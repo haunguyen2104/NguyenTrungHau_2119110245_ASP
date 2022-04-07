@@ -1,4 +1,5 @@
-﻿using Shop.Context;
+﻿using PagedList;
+using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,36 @@ namespace Shop.Areas.Admin.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Category
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
-            return View(listCategory);
+            var listCategory = new List<Category_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(x => x.CategoryName.Contains(SearchString) && x.Deleted == false).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(x => x.Deleted == false).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listCategory = listCategory.OrderByDescending(x => x.CategoryId).ToList();
+            return View(listCategory.ToPagedList(pageNumber, pageSize));
+            //------------------------------------------------
+            //var listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
+            //return View(listCategory);
         }
         public ActionResult Details(int id) {
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();

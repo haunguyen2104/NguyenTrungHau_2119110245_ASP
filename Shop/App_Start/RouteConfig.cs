@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+
 namespace Shop
 {
     public class RouteConfig
@@ -38,8 +39,7 @@ namespace Shop
                 );  
             //Giỏ hàng
             routes.MapRoute(
-               name: "Cart",
-               url: "gio-hang",
+               name: "Cart", url: "gio-hang",
                defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
@@ -90,10 +90,12 @@ namespace Shop
             //Chi tiết sản phẩm
             routes.MapRoute(
                name: "ProductDetail",
-               url: "chi-tiet/{Slug}/{Id}",
+               url: "chi-tiet/{slug}{id}",
                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
+
+            //Url Default
             routes.MapRoute(
                     name: "Default",
                     url: "{controller}/{action}/{id}",
