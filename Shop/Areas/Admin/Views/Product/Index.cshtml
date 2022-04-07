@@ -59,6 +59,7 @@
 
 <a href="@Url.Action("Create","Product")" class="btn btn-default btn-new"  style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
 <a href="@Url.Action("ListInTrash","Product")" class="btn btn-default btn-new"  style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
 {
     <p class="search__product">
@@ -92,7 +93,7 @@
                     <td>
                          <input type="checkbox" name="checkId" value="" />
                     </td>
-                    <td><img src="~/Public/images/product/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
+                    <td><img src="~/Public/images/product/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
                     <td>@item.Name</td>
                     <td>@item.CategoryId </td>
 

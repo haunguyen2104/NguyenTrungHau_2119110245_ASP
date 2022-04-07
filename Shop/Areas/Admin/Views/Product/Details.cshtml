@@ -65,10 +65,18 @@
         </dt>
 
         <dd>
-            @*@Html.Raw(Model.objProduct.FullDescription)*@
+            @if (Model.objProduct.FullDescription != null)
+            {
+
             <div style="height:900px; overflow:hidden;">
                 @Html.Raw(Model.objProduct.FullDescription)
             </div>
+            }
+
+            @*@Html.DisplayFor(model=>model.objProduct.FullDescription)*@
+            else
+            { <p></p>
+            }
         </dd>
 
         <dt>
@@ -161,7 +169,6 @@
         .btn-warning:hover {
             background-color: #ff6a00;
             color: #fff;
-            
         }
     </style>
     <a href="@Url.Action("Edit","Product",new { id = Model.objProduct.Id })" class="btn btn-block btn-warning" style="width:100px;">Chỉnh sửa</a>

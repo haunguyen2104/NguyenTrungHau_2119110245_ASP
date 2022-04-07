@@ -39,13 +39,13 @@ namespace Shop.Controllers
             var objProCate = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.CategoryId == id && n.Deleted == false).ToList();
             //Lấy danh mục 
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).ToList();
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
+            var lstBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
 
             ProductCategoryModel objProductCategoryModel = new ProductCategoryModel();
             objProductCategoryModel.Id = id;
             objProductCategoryModel.listProduct = objProCate;
             objProductCategoryModel.listCategory = objCate;
-            objProductCategoryModel.listBrand = objBrand;
+            objProductCategoryModel.listBrand = lstBrand;
             return View(objProductCategoryModel);
         }
         public ActionResult ProductBrandGrid(int id)

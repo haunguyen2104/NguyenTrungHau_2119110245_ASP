@@ -141,12 +141,15 @@
             @foreach (var item in Model.listProduct.Where(n => n.TypeId == 1 && n.PriceDiscount != null).Take(6))
             {
                 var sale = @item.PriceDiscount * 100 / @item.Price;
+                //string link = "chi-tiet/"+ item.Slug+"-"+item.Id;
                 <div class="col-md col-6">
                     <figure class="card-product-grid card-sm">
+                        @*<a href="@Url.Content(link)" class="img-wrap">*@
                         <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="img-wrap">
                             <img src="~/Public/images/product/@item.Avatar">
                         </a>
                         <div class="text-wrap p-3">
+
                             <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="title">@item.Name</a>
 
                             <span class="badge badge-danger"> - @Math.Round(100 - (float)sale, 0)% </span>

@@ -40,11 +40,12 @@
                 <div class="card">
 
                     <table class="table table-borderless table-shopping-cart">
-                        <thead class="text-muted">
+                        <thead class="text-muted text-center">
                             <tr class="small text-uppercase">
                                 <th scope="col">Sản phẩm</th>
                                 <th scope="col" width="120">Số lượng</th>
                                 <th scope="col" width="120">Giá</th>
+                                <th scope="col" width="120">Thành tiền</th>
                                 <th scope="col" class="text-right" width="200"> </th>
                             </tr>
                         </thead>
@@ -53,23 +54,52 @@
                             {
                                 foreach (var item in Model)
                                 {
+                                    var price = item.Product.Price;
+                                    var priceSale = item.Product.PriceDiscount;
+                                    var quatity = item.Quantity;
+
                                     <tr>
                                         <td>
                                             <figure class="itemside">
                                                 <div class="aside"><img src="~/Public/images/product/@item.Product.Avatar" class="img-sm"></div>
                                                 <figcaption class="info">
                                                     <a href="#" class="title text-dark">@item.Product.FullName </a>
-                                                    <p class="small text-muted">Size: XL, Color: blue,  Brand: Tissot</p>
                                                 </figcaption>
                                             </figure>
                                         </td>
                                         <td>
-                                            <input type="text" value="@item.Quantity" />
+                                            @*<input type="text" value="@item.Quantity" />*@
+                                            <label>@item.Quantity</label>
                                         </td>
                                         <td>
                                             <div class="price-wrap">
-                                                <var class="price">@item.Product.Price</var>
-                                                <small class="text-muted"> $578.00 each</small>
+                                                @if (item.Product.PriceDiscount != null)
+                                                {
+
+                                                    <var class="price">@Convert.ToDecimal(priceSale).ToString("#,##0")<sup>đ</sup></var>
+                                                }
+                                                else
+                                                {
+
+                                                    <var class="price">@Convert.ToDecimal(price).ToString("#,##0")<sup>đ</sup></var>
+                                                }
+                                                @*<small class="text-muted"> $578.00 each</small>*@
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                        <td>
+                                            <!--Thành tiền-->
+                                            <div class="price-wrap">
+                                                @if (item.Product.PriceDiscount != null)
+                                                {
+
+                                                    <var class="price">@Convert.ToDecimal(priceSale * quatity).ToString("#,##0")<sup>đ</sup></var>
+                                                }
+                                                else
+                                                {
+
+                                                    <var class="price">@Convert.ToDecimal(price * quatity).ToString("#,##0")<sup>đ</sup></var>
+                                                }
+                                                @*<small class="text-muted"> $578.00 each</small>*@
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
@@ -90,10 +120,10 @@
 
                     <div class="card-body border-top">
                         @if (Session["cart"] != null)
-            {
+                        {
 
-                        <a href="@Url.Action("Index","Payment")" class="btn btn-primary float-md-right"> Thanh toán <i class="fa fa-chevron-right"></i> </a>
-            }
+                            <a href="@Url.Action("Index","Payment")" class="btn btn-primary float-md-right"> Thanh toán <i class="fa fa-chevron-right"></i> </a>
+                        }
                         <a href="@Url.Action("Index","Home")" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Tiếp tục mua sắm </a>
                     </div>
                 </div> <!-- card.// -->
@@ -121,18 +151,33 @@
                 </div>  <!-- card .// -->
                 <div class="card">
                     <div class="card-body">
+
+
+
+
                         <dl class="dlist-align">
                             <dt>Số sản phẩm:</dt>
-                            <dd class="text-right">10</dd>
+                            @if (@Session["count"] != null)
+                            {
+                                <dd class="text-right">@Session["count"]</dd>
+                            }
+                            else
+                            {
+                                <dd class="text-right">0</dd>
+
+                            }
                         </dl>
                         @*<dl class="dlist-align">
-                            <dt>Discount:</dt>
-                            <dd class="text-right">USD 658</dd>
-                        </dl>*@
+                                <dt>Discount:</dt>
+                                <dd class="text-right">USD 658</dd>
+                            </dl>*@
+
+
                         <dl class="dlist-align">
                             <dt>Tổng tiền:</dt>
-                            <dd class="text-right  h5"><strong>10.000</strong></dd>
+                            <dd class="text-right  h5"><strong>10.000.000<sup>đ</sup></strong></dd>
                         </dl>
+
                         <hr>
                         <p class="text-center mb-3">
                             <img src="~/Public/images/misc/payments.png" height="26">
