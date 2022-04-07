@@ -37,7 +37,7 @@ namespace Shop.Areas.Admin.Controllers
                 listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(x => x.Deleted == false).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
-            int pageSize = 10;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
             listCategory = listCategory.OrderByDescending(x => x.CategoryId).ToList();

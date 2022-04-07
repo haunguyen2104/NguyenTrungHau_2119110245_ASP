@@ -73,7 +73,7 @@
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
             <tr>
-                <th class="text-center" style="width:20px;">STT</th>
+                <th class="text-center" style="width:20px;"></th>
                 <th class="text-center" style="width:100px;">Hình</th>
 
                 <th>  Tên sản phẩm</th>
@@ -103,7 +103,7 @@
                     <td class="text-center">
 
                         <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
                         <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
 

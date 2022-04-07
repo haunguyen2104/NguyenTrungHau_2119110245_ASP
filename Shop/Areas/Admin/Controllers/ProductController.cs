@@ -75,6 +75,7 @@ namespace Shop.Areas.Admin.Controllers
                     }
 
                     objProduct.CreatedOnUtc = DateTime.Now;
+
                     objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
                     objWebsiteBanHangEntities.Product_2119110245.Add(objProduct);
                     objWebsiteBanHangEntities.SaveChanges();
@@ -102,19 +103,28 @@ namespace Shop.Areas.Admin.Controllers
         }
         public ActionResult Delete(int id)
         {
+            this.LoadData();
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             return View(objProduct);
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, Product_2119110245 objPro)
+
+        public ActionResult Delete(int ?id)
         {
-            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
-            objProduct.Deleted = true;
-            //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
-            //objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
-            objWebsiteBanHangEntities.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+                objProduct.PriceDiscount = 100;
+                objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+                objWebsiteBanHangEntities.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet]
@@ -127,7 +137,6 @@ namespace Shop.Areas.Admin.Controllers
             return View(objProduct);
         }
         [ValidateInput(false)]
-
         [HttpPost]
         public ActionResult Edit(int id, Product_2119110245 objProduct)
         {
@@ -178,6 +187,7 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Recover(int id)
         {
+            this.LoadData();
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             return View(objProduct);
         }
@@ -186,11 +196,9 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Recover(Product_2119110245 objPro)
         {
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
-           
-                objProduct.Deleted = false;
-            
+            objProduct.Deleted = false;
             //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
-            //objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+            objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }

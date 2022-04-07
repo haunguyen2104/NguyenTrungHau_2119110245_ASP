@@ -69,7 +69,7 @@
     <p class="search__product">
         Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
-        <a href="@Url.Action("Index","Category")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả sản phẩm</a>
+        <a href="@Url.Action("Index","Category")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả danh mục</a>
     </p>
 }
 <div class="card-body">
@@ -77,11 +77,11 @@
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
             <tr>
-                <th class="text-center" style="width:20px;">STT</th>
-                <th class="text-center" style="width:100px;">Hình</th>
+                <th class="text-center" style="width:20px;"></th>
+                <th class="text-center" style="width:200px;">Hình</th>
 
-                <th>  Tên sản phẩm</th>
-                <th> Danh mục sản phẩm  </th>
+                <th>  Tên danh mục</th>
+               
                 <th> Ngày tạo</th>
                 <th class="text-center" style="width:180px;">Chức năng</th>
                 <th class="text-center" style="width:20px;">ID </th>
@@ -99,7 +99,7 @@
                     </td>
                     <td><img src="~/Public/images/category/@item.Avatar" alt="@item.CategoryName" class="img-fluid" /></td>
                     <td>@item.CategoryName</td>
-                    <td>@item.CategoryId </td>
+                    
 
                     <td>
                         @Html.DisplayFor(modelItem => item.CreateOnUtc)

@@ -4,7 +4,6 @@
     ViewBag.Title = "Thêm mới bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";}
 <script src="~/Public/ckeditor/ckeditor.js"></script>
-<h2>Create</h2>
 
 
 @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/from-data" }))
@@ -73,6 +72,4 @@
     <!-- /.content -->
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

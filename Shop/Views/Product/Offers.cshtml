@@ -9,6 +9,13 @@
 }
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    
+</script>
+
 <b class="screen-overlay"></b>
 
 
@@ -30,14 +37,14 @@
                     <div class="card-img-overlay white">
                         <h3 class="card-title">Chương trình giảm giá tối đa 20% <br> Chương trình diễn ra đến cuối tháng </h3>
                         <p class="card-text" style="max-width: 400px">
-                           Giảm giá cho những thiết bị mới ra mắt và những khách hàng đặc biệt của của hàng.
+                            Giảm giá cho những thiết bị mới ra mắt và những khách hàng đặc biệt của của hàng.
                         </p>
                         <a href="" class="btn btn-warning">Tìm hiểu thêm</a>
                     </div>
                 </div> <!-- card-banner //end -->
             </div> <!-- col.// -->
             <div class="col-md-4">
-                <div class="card-banner"    
+                <div class="card-banner"
                      style="height:320px; background-image: url('../images/banners/banner8.jpg');">
                     <article class="caption bottom">
                         <h5 class="card-title">Săn giá rẻ</h5>
@@ -66,7 +73,7 @@
                         <div class="info-wrap">
                             <a href="@Url.Action("Detail","Product",new { @id =item.Id})" class="title">@item.Name</a>
                             <div class="price-wrap my-2 text-center">
-                                <span class="price">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup></span> - 
+                                <span class="price">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup></span> -
                                 <del class="price-old">@Convert.ToDecimal(item.Price).ToString("#,##0")<sup>đ</sup></del>
                             </div> <!-- price-wrap.// -->
                             <a href="@Url.Action("Detail","Product", new { id = item.Id })" class="btn btn-block btn-primary">Xem chi tiết</a>
