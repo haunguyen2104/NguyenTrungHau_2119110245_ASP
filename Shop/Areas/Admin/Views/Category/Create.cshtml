@@ -7,7 +7,7 @@
 
 <h2></h2>
 
-@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/from-data" }))
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn-sm btn-success" type="submit" name="create"> <i class="fas fa-save"></i> Lưu[Thêm]</button>
-                        <a href="@Url.Action("Index","Catrgory")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                        <a href="@Url.Action("Index","Category")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
                     </div>
                 </div>
             </div>

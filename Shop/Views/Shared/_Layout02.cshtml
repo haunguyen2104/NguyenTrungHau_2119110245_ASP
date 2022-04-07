@@ -149,13 +149,9 @@
                                         <a href="@Url.Action("Index","Cart")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-shopping-cart"></i>
-                                                @*@if (Session["count"].ToString() == "0")
-                                                {
-                                                    <span class="" id="CartCount"></span> }
-                                                else
-                                                {*@
+                                                
                                                     <span class="notify" id="CartCount">@Session["count"]</span>
-                                                @*}*@
+                                                
                                             </div>
                                             <small class="text"> Giỏ hàng </small>
                                         </a>

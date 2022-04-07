@@ -68,9 +68,9 @@
             @if (Model.objProduct.FullDescription != null)
             {
 
-            <div style="height:900px; overflow:hidden;">
-                @Html.Raw(Model.objProduct.FullDescription)
-            </div>
+                <div style="height:900px; overflow:hidden;">
+                    @Html.Raw(Model.objProduct.FullDescription)
+                </div>
             }
 
             @*@Html.DisplayFor(model=>model.objProduct.FullDescription)*@
@@ -176,5 +176,101 @@
 </div>
 
 
+<!--------------------------------------------------------->
+<style>
+    .field{
+        font-weight:bold;
+    }
+</style>
+<!--------------------------------------------------------->
+<div class="card-body row">
+    <div class="col-md-9">
+        <table class="table table-bordered table-striped" id="myTable">
+            <thead>
+                <tr>
 
 
+
+                    <th class="text-center" style="width:200px">  Trường</th>
+                    <th class="text-center"> Nội dung  </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td class="field">Tên sản phẩm</td>
+                    <td>@Model.objProduct.FullName</td>
+                </tr>
+                <tr>
+                    <td>Danh mục</td>
+                    <td>@Model.CategoryName</td>
+                </tr>
+                <tr>
+                    <td>Thương hiệu</td>
+                    <td>@Model.BrandName</td>
+                </tr>
+                <tr>
+                    <td>Chi tiết</td>
+                    <td>@Model.objProduct.ShoetDes</td>
+                </tr>
+                <tr>
+                    <td>Giá</td>
+                    <td>@Model.objProduct.Price</td>
+                </tr>
+                <tr>
+                    <td>Giá khuyến mãi</td>
+
+                    @if (Model.objProduct.PriceDiscount != null)
+                    {
+                        <td>@Model.objProduct.PriceDiscount</td>
+                    }
+                    @if (Model.objProduct.PriceDiscount == null)
+                    {
+                        <td>Đang cập nhật...</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Loại sản phẩm</td>
+                    <td>@Model.objProduct.TypeId</td>
+                </tr>
+                <tr>
+                    <td>Slug</td>
+                    <td>@Model.objProduct.Slug</td>
+                </tr>
+                <tr>
+                    <td>Số lượng</td>
+                    <td>@Model.objProduct.Quantity</td>
+                </tr>
+                <tr>
+                    <td>Ngày tạo</td>
+                    <td>@Model.objProduct.CreatedOnUtc</td>
+                </tr>
+                <tr>
+                    <td>Ngày cập nhật</td>
+                    @if (Model.objProduct.UpdatedOnUtc != null)
+                    {
+                        <td>@Model.objProduct.UpdatedOnUtc</td>
+                    }
+                    @if (Model.objProduct.UpdatedOnUtc == null)
+                    {
+                        <td>Đang cập nhật...</td>
+                    }
+                </tr>
+
+
+
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="col-md-3">
+        <img src="/Public/images/product/@Model.objProduct.Avatar" alt="@Model.objProduct.Name" class="img-fluid" />
+    </div>
+
+</div>
+
+<!--------------------------------------------------------->
+<!--------------------------------------------------------->

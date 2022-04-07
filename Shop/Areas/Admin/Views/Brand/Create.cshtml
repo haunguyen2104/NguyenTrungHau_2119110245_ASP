@@ -7,94 +7,94 @@
 
 @*<h2>Create</h2>*@
 
-@using (Html.BeginForm("Create", "Brand", FormMethod.Post, new { enctype = "multipart/from-data" })) 
+
+@using (Html.BeginForm("Create", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Brand_2119110245</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BrandId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+    <!-- Main content -->
+    <section class="content my-2">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">thêm danh mục</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn-sm btn-success" type="submit" name="create"> <i class="fas fa-save"></i> Lưu[Thêm]</button>
+                        <a href="@Url.Action("Index","Brand")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="card-body">
+                <div class="row">
+                  
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width:250px;">Thuộc tính</th>
+                            <th>Nội dung</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="text-center">Tên thương hiệu <span class="text-danger">(*)</span></label>
+                            </td>
+                            <td>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="text-center">Hình</label>
+                            </td>
+                            <td>
+                                <input name="ImageUpload" type="file" class="from-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="text-center">Trạng thái</label>
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.Deleted, new[] { new SelectListItem { Text = "Không xuất bản", Value = "2" }, new SelectListItem { Text = "Xuất bản", Value = "1" } }, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </table>
+                    <span style="font-style:italic"><span class="text-danger">(*) </span> là các trường bắc buộc</span>
+                </div>
             </div>
         </div>
+        <!-- /.card -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ShowOnHomePage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedOnUtc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UpdatedOnUtc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UpdatedOnUtc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Deleted, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    </section>
+    <!-- /.content -->
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index")" class="btn__back">Trở về</a>
 </div>
+<style>
+    table {
+        border: none;
+    }
+
+    .btn__back {
+        background-color: #ff6a00;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        opacity: 0.8
+    }
+
+        .btn__back:hover {
+            color: black;
+            opacity: 1;
+        }
+</style>

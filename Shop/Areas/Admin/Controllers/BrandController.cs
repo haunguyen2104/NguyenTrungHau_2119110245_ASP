@@ -1,4 +1,5 @@
-﻿using Shop.Context;
+﻿using PagedList;
+using Shop.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,10 +15,34 @@ namespace Shop.Areas.Admin.Controllers
       
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Brand
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
-            return View(listBrand);
+            var listBrand = new List<Brand_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(x => x.BrandName.Contains(SearchString) && x.Deleted == false).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(x => x.Deleted == false).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listBrand = listBrand.OrderByDescending(x => x.BrandId).ToList();
+            return View(listBrand.ToPagedList(pageNumber, pageSize));
+         
         }
         public ActionResult Details(int id)
         {

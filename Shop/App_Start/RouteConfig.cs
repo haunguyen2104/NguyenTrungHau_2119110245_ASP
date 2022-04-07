@@ -50,6 +50,13 @@ namespace Shop
                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
+            //Đăng nhập
+            routes.MapRoute(
+               name: "Logout",
+               url: "dang-xuat",
+               defaults: new { controller = "Home", action = "Logout", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
             //Đăng ký
             routes.MapRoute(
                name: "Register",
@@ -90,7 +97,7 @@ namespace Shop
             //Chi tiết sản phẩm
             routes.MapRoute(
                name: "ProductDetail",
-               url: "chi-tiet/{slug}{id}",
+               url: "chi-tiet/{id}",
                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
