@@ -43,7 +43,8 @@ namespace Shop.Context
 
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
-    } public partial class Post_2119110245
+    } 
+    public partial class Post_2119110245
     {
 
         [NotMapped]
