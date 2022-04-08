@@ -4,192 +4,47 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Chi tiết</h2>
-
-<div>
-    <h4>@Model.objProduct.Name</h4>
-    <hr />
-    <dl class="dl-horizontal" style="margin-left:50px;">
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.FullName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Avatar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Avatar)
-            @*<img src="~/Public/images/product/@Model.Avatar"/>*@
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.CategoryId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.BrandId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.ShoetDes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.ShoetDes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.FullDescription)
-
-        </dt>
-
-        <dd>
-            @if (Model.objProduct.FullDescription != null)
-            {
-
-                <div style="height:900px; overflow:hidden;">
-                    @Html.Raw(Model.objProduct.FullDescription)
-                </div>
-            }
-
-            @*@Html.DisplayFor(model=>model.objProduct.FullDescription)*@
-            else
-            { <p></p>
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.PriceDiscount)
-
-
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.PriceDiscount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.TypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.TypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Slug)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Deleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.ShowOnHomePage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.ShowOnHomePage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.DisplayOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.DisplayOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.CreatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.CreatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.UpdatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.UpdatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.objProduct.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.objProduct.Quantity)
-        </dd>
-
-    </dl>
-</div>
-
-<div style="width: 300px; margin-left: 50px; margin-bottom: 20px;">
-    <style>
-        .btn-warning:hover {
-            background-color: #ff6a00;
-            color: #fff;
-        }
-    </style>
-    <a href="@Url.Action("Edit","Product",new { id = Model.objProduct.Id })" class="btn btn-block btn-warning" style="width:100px;">Chỉnh sửa</a>
-    <a href="@Url.Action("Index","Product")" class="btn btn-block btn-warning" style="width:150px;margin-top:-38px; margin-left:110px;">Trở về trang trước</a>
-</div>
-
-
 <!--------------------------------------------------------->
-<style>
-    .field{
-        font-weight:bold;
+<style>    
+    .btn-warning:hover {
+        background-color: #ff6a00;
+        color: #fff;
+    }
+    .field {
+        font-weight: bold;
+    }
+
+    .fullDes_Detai {
+        max-height: 900px;
+        overflow: hidden;
+    }
+
+        .fullDes_Detai img {
+            margin-left: 20%;
+        }
+
+    .readmore {
+        text-align: center;
+        cursor: pointer;
+    }
+    
+        .active .fullDes_Detai {
+            height: 100%;
+        }
+    .btnTop__active{
+        width:200px; margin:10px;
+        margin-left:20px;
     }
 </style>
 <!--------------------------------------------------------->
 <div class="card-body row">
+    <a href="@Url.Action("Index","Product")" class="btn btn-block btn-warning btnTop__active"> <i class="fa-solid fa-arrow-alt-circle-left"></i> Trở về trang trước</a>
+    <a href="@Url.Action("Edit","Product",new { id = Model.objProduct.Id })" class="btn btn-block btn-warning btnTop__active"><i class="fa-solid fa-pen-to-square"></i> Chỉnh sửa</a>
+
     <div class="col-md-9">
         <table class="table table-bordered table-striped" id="myTable">
             <thead>
                 <tr>
-
-
 
                     <th class="text-center" style="width:200px">  Trường</th>
                     <th class="text-center"> Nội dung  </th>
@@ -204,63 +59,81 @@
                     <td>@Model.objProduct.FullName</td>
                 </tr>
                 <tr>
-                    <td>Danh mục</td>
+                    <td class="field">Danh mục</td>
                     <td>@Model.CategoryName</td>
                 </tr>
                 <tr>
-                    <td>Thương hiệu</td>
+                    <td class="field">Thương hiệu</td>
                     <td>@Model.BrandName</td>
                 </tr>
                 <tr>
-                    <td>Chi tiết</td>
+                    <td class="field">Chi tiết</tdclass="field">
                     <td>@Model.objProduct.ShoetDes</td>
                 </tr>
                 <tr>
-                    <td>Giá</td>
-                    <td>@Model.objProduct.Price</td>
+                    <td class="field">Giá</td>
+                    <td>@Convert.ToDecimal(Model.objProduct.Price).ToString("#,##0")</td>
                 </tr>
                 <tr>
-                    <td>Giá khuyến mãi</td>
+                    <td class="field">Giá khuyến mãi</td>
 
                     @if (Model.objProduct.PriceDiscount != null)
                     {
-                        <td>@Model.objProduct.PriceDiscount</td>
+                        <td>@Convert.ToDecimal(Model.objProduct.PriceDiscount).ToString("#,##0")<sup>đ</sup></td>
                     }
                     @if (Model.objProduct.PriceDiscount == null)
                     {
-                        <td>Đang cập nhật...</td>
+                        <td style="font-style:italic;">Đang cập nhật...</td>
                     }
                 </tr>
                 <tr>
-                    <td>Loại sản phẩm</td>
+                    <td class="field">Loại sản phẩm</td>
                     <td>@Model.objProduct.TypeId</td>
                 </tr>
                 <tr>
-                    <td>Slug</td>
+                    <td class="field">Slug</td>
                     <td>@Model.objProduct.Slug</td>
                 </tr>
                 <tr>
-                    <td>Số lượng</td>
-                    <td>@Model.objProduct.Quantity</td>
+                    <td class="field">Số lượng</td>
+
+                    @if (Model.objProduct.Quantity != null)
+                    {
+                        <td>@Model.objProduct.Quantity<sup>đ</sup></td>
+                    }
+                    @if (Model.objProduct.Quantity == null)
+                    {
+                        <td style="font-style:italic;">Đang cập nhật...</td>
+                    }
                 </tr>
                 <tr>
-                    <td>Ngày tạo</td>
-                    <td>@Model.objProduct.CreatedOnUtc</td>
+                    <td class="field">Ngày tạo</td>
+                    <td>@Convert.ToDateTime(Model.objProduct.CreatedOnUtc).ToString("dd/MM/yyyy")</td>
                 </tr>
                 <tr>
-                    <td>Ngày cập nhật</td>
+                    <td class="field">Ngày cập nhật</td>
                     @if (Model.objProduct.UpdatedOnUtc != null)
                     {
-                        <td>@Model.objProduct.UpdatedOnUtc</td>
+                        <td>@Convert.ToDateTime(Model.objProduct.UpdatedOnUtc).ToString("dd/MM/yyyy")</td>
                     }
                     @if (Model.objProduct.UpdatedOnUtc == null)
                     {
-                        <td>Đang cập nhật...</td>
+                        <td style="font-style:italic;">Đang cập nhật...</td>
                     }
                 </tr>
+                <tr>
+                    <td class="field">Trạn thái xoá</td>
+                    <td>
+                        @Model.objProduct.Deleted
+                    </td>
+                </tr>
+                <tr>
 
-
-
+                    <td class="field">Hiển thị trang chủ</td>
+                    <td>
+                        @Model.objProduct.ShowOnHomePage
+                    </td>
+                </tr>
 
             </tbody>
 
@@ -268,9 +141,22 @@
     </div>
     <div class="col-md-3">
         <img src="/Public/images/product/@Model.objProduct.Avatar" alt="@Model.objProduct.Name" class="img-fluid" />
+        <p class="text-center">Hình ảnh sản phẩm <span class="font-weight-bold">@Model.objProduct.Name</span></p>
     </div>
-
+    <div class="row text-justify fullDes_Detai">
+        @Html.Raw(Model.objProduct.FullDescription)
+    </div>
+    @*<a class="readmore" style="color:blue">Xem thêm...</a>*@
 </div>
 
 <!--------------------------------------------------------->
+@*<script>
+    const readmore = document.querySelector(".readmore");
+    readmore.addEventListener("click", function () {
+        readmore.classList.add("active");
+        
+    console.log(readmore)
+    });
+</script>*@
+
 <!--------------------------------------------------------->

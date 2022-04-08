@@ -101,31 +101,7 @@ namespace Shop.Areas.Admin.Controllers
             objHomeModel.CategoryName = objCate.CategoryName;
             return View(objHomeModel);
         }
-        public ActionResult Delete(int id)
-        {
-            this.LoadData();
-            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            return View(objProduct);
-        }
 
-        [HttpPost]
-
-        public ActionResult Delete(int ?id)
-        {
-            try
-            {
-                var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
-                objProduct.PriceDiscount = 100;
-                objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
-                objWebsiteBanHangEntities.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-        }
 
         [HttpGet]
         public ActionResult Edit(int id)
@@ -152,6 +128,30 @@ namespace Shop.Areas.Admin.Controllers
             }
             objProduct.UpdatedOnUtc = DateTime.Now;
             objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
+            objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult ToggleTrash(int id)
+        {
+            this.LoadData();
+
+            //AdminHomeModel objHomeModel = new AdminHomeModel();
+            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+            //var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
+            //var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
+            //objHomeModel.objProduct = objProduct;
+            //objHomeModel.BrandName = objBrand.BrandName;
+            //objHomeModel.CategoryName = objCate.CategoryName;
+            return View(objProduct);
+        }
+        [HttpPost]
+        public ActionResult ToggleTrash(int id, Product_2119110245 objProduct)
+        {
+            this.LoadData();
+            objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+            objProduct.Deleted = true;
             objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
@@ -214,12 +214,13 @@ namespace Shop.Areas.Admin.Controllers
             //Convert sang select list dạng value,text
             DataTable dtCategory = converter.ToDataTable(lstCategory);
             ViewBag.ListCategory = objCommon.ToSelectList(dtCategory, "CategoryId", "CategoryName");
-
+            //---------------------------------------------
             //Thương hiệu
             var lstBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
             //Convert sang select list dạng value,text
             DataTable dtBrand = converter.ToDataTable(lstBrand);
             ViewBag.ListBrand = objCommon.ToSelectList(dtBrand, "BrandId", "BrandName");
+            //---------------------------------------------
 
             //Loại sản phẩm
             List<ProductType> lstProductType = new List<ProductType>();
@@ -230,6 +231,20 @@ namespace Shop.Areas.Admin.Controllers
 
             DataTable dtType = converter.ToDataTable(lstProductType);
             ViewBag.ProductType = objCommon.ToSelectList(dtType, "Id", "Name");
+            //---------------------------------------------
+            //Hiển thị trang chủ
+            List<ProductDisplayHome> listDisplayHome = new List<ProductDisplayHome>();
+            ProductDisplayHome objDisplayHome = new ProductDisplayHome();
+            objDisplayHome.Value = "true";
+            objDisplayHome.Name = "Hiển thị";
+            listDisplayHome.Add(objDisplayHome);
+            objDisplayHome = new ProductDisplayHome();
+            objDisplayHome.Value = "false";
+            objDisplayHome.Name = "Không hiển thị";
+            listDisplayHome.Add(objDisplayHome);
+            DataTable dtDisplayHome = converter.ToDataTable(listDisplayHome);
+            ViewBag.ProductDisplayHome = objCommon.ToSelectList(dtDisplayHome, "Value", "Name");
+            //---------------------------------------------
         }
     }
 }

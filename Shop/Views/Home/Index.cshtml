@@ -45,6 +45,7 @@
                         <ul class="menu-category">
                             @foreach (var item in Model.listCategory.Where(n => n.ShowOnHomePage == true))
                             {
+                               
                                 <li><a href="@Url.Action("ProductCategoryList", "Product", new { id = item.CategoryId })">@item.CategoryName</a></li>
                             }
                             <li class="has-submenu">
@@ -141,16 +142,16 @@
             @foreach (var item in Model.listProduct.Where(n => n.TypeId == 1 && n.PriceDiscount != null).Take(6))
             {
                 var sale = @item.PriceDiscount * 100 / @item.Price;
-                //string link = "chi-tiet/"+ item.Slug+"-"+item.Id;
+                var url = "/chi-tiet/" + item.Slug + "-" + item.Id;
                 <div class="col-md col-6">
                     <figure class="card-product-grid card-sm">
                         @*<a href="@Url.Content(link)" class="img-wrap">*@
-                        <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="img-wrap">
+                        <a href="@url" class="img-wrap">
                             <img src="~/Public/images/product/@item.Avatar">
                         </a>
                         <div class="text-wrap p-3">
 
-                            <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="title">@item.Name</a>
+                            <a href="@url" class="title">@item.Name</a>
 
                             <span class="badge badge-danger"> - @Math.Round(100 - (float)sale, 0)% </span>
                         </div>
@@ -188,8 +189,9 @@
                 <ul class="row no-gutters bordered-cols">
                     @foreach (var item in Model.listProduct.Where(n => n.BrandId == 24).Take(12))
                     {
+                        var url = "/chi-tiet/" + item.Slug + "-" +item.Id;
                         <li class="col-6 col-lg-3 col-md-4">
-                            <a href="@Url.Action("Detail", "Product", new { @id = item.Id })" class="item">
+                            <a href="@url" class="item">
                                 <div class="card-body">
                                     <h6 class="title">@item.Name</h6>
                                     <img class="img-sm float-right" src="~/Public/images/product/@item.Avatar">
@@ -255,8 +257,9 @@
                 <ul class="row no-gutters bordered-cols">
                     @foreach (var item in Model.listProduct.Where(n => n.BrandId == 4).Take(12))
                     {
+                        var url = "/chi-tiet/" + item.Slug + "-" + item.Id;
                         <li class="col-6 col-lg-3 col-md-4">
-                            <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="item">
+                            <a href="@url" class="item">
                                 <div class="card-body">
                                     <h6 class="title">@item.Name</h6>
                                     <img class="img-sm float-right" src="~/Public/images/product/@item.Avatar">
@@ -360,11 +363,12 @@
     <div class="row row-sm">
         @foreach (var item in Model.listProduct.Where(n => n.ShowOnHomePage == true).Take(12))
         {
+            var url = "/chi-tiet/" + item.Slug + "-" + item.Id;
             <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                 <div class="card card-sm card-product-grid">
-                    <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="img-wrap"> <img src="~/Public/images/product/@item.Avatar"> </a>
+                    <a href="@url" class="img-wrap"> <img src="~/Public/images/product/@item.Avatar"> </a>
                     <figcaption class="info-wrap">
-                        <a href="@Url.Action("Detail","Product", new { @id = item.Id })" class="title">@item.Name</a>
+                        <a href="@url" class="title">@item.Name</a>
                         <div class="price mt-1">
                             @Convert.ToDecimal(@item.PriceDiscount).ToString("#,##0")<sup>đ</sup>
                         </div> <!-- price-wrap.// -->

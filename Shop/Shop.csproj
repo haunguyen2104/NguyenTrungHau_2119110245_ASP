@@ -2966,7 +2966,6 @@
     <Content Include="Public\admin\plugins\toastr\toastr.js.map" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
@@ -3012,6 +3011,7 @@
     <Content Include="Areas\Admin\Views\Post\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Home\LoginAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Recover.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ToggleTrash.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

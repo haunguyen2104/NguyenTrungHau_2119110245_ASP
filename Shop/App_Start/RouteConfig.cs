@@ -94,10 +94,24 @@ namespace Shop
             //    );
 
 
+            ////Sản phẩm theo danh mục
+            //routes.MapRoute(
+            //   name: "ProductCategoryList",
+            //   url: "san-pham/san-pham/danh-muc-danh-sach/{Slug}-{id}",
+            //   defaults: new { controller = "Product", action = "ProductCategoryList", id = UrlParameter.Optional },
+            //     new[] { "Shop.Controllers" }
+            //    ); 
+            ////Sản phẩm theo danh mục
+            //routes.MapRoute(
+            //   name: "ProductCategoryGrid",
+            //   url: "san-pham/danh-muc/{Slug}-{id}",
+            //   defaults: new { controller = "Product", action = "ProductCategoryGrid", id = UrlParameter.Optional },
+            //     new[] { "Shop.Controllers" }
+            //    );
             //Chi tiết sản phẩm
             routes.MapRoute(
                name: "ProductDetail",
-               url: "chi-tiet/{id}",
+               url: "chi-tiet/{Slug}-{Id}",
                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
