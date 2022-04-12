@@ -1,159 +1,188 @@
-﻿@model Shop.Context.Product_2119110245
-
-@{
-    ViewBag.Title = "ToggleTrash";
+﻿@model Shop.Models.AdminHomeModel
+@{ViewBag.Title = "ToggleTrash";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn có muốn xoá sản phẩm này không?</h3>
+@using (Html.BeginForm("ToggleTrash", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Xoá" class="btn btn-default" style="color:#fff; background:#ff6a00;" />
+    </div>
+}
+
 <div>
-    <h4>Product_2119110245</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="col-md-9">
+        <table class="table table-bordered table-striped" id="myTable">
+            <thead>
+                <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    <th class="text-center" style="width:200px">  Trường</th>
+                    <th class="text-center"> Nội dung  </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+                </tr>
+            </thead>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+            <tbody>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+                <tr>
+                    <td class="field">Tên sản phẩm</td>
+                    <td>@Model.objProduct.FullName</td>
+                </tr>
+                <tr>
+                    <td class="field">Danh mục</td>
+                    <td>@Model.CategoryName</td>
+                </tr>
+                <tr>
+                    <td class="field">Thương hiệu</td>
+                    <td>@Model.BrandName</td>
+                </tr>
+                <tr>
+                    <td class="field">Chi tiết</tdclass="field">
+                    <td>@Model.objProduct.ShoetDes</td>
+                </tr>
+                <tr>
+                    <td class="field">Giá</td>
+                    <td>@Convert.ToDecimal(Model.objProduct.Price).ToString("#,##0")<sup>đ</sup></td>
+                </tr>
+                <tr>
+                    <td class="field">Giá khuyến mãi</td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
+                    @if (Model.objProduct.PriceDiscount != null)
+                    {
+                        <td>@Convert.ToDecimal(Model.objProduct.PriceDiscount).ToString("#,##0")<sup>đ</sup></td>
+                    }
+                    @if (Model.objProduct.PriceDiscount == null)
+                    {
+                        <td style="font-style:italic;">Đang cập nhật...</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="field">Loại sản phẩm</td>
+                    @switch (Model.objProduct.TypeId)
+                    {
+                        case 1:
+                            // code block
+                            <td>Giảm giá sốc</td>
+                            break;
+                        case 2:
+                            // code block
+                            <td>Đề xuất</td>
+                            break;
+                        default:
+                            // code block
+                            <td></td>
+                            break;
+                    }
+                </tr>
+                <tr>
+                    <td class="field">Slug</td>
+                    <td>@Model.objProduct.Slug</td>
+                </tr>
+                <tr>
+                    <td class="field">Số lượng</td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+                    @if (Model.objProduct.Quantity != null)
+                    {
+                        <td>@Model.objProduct.Quantity thiết bị</td>
+                    }
+                    @if (Model.objProduct.Quantity == null)
+                    {
+                        <td style="font-style:italic;">Đang cập nhật...</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="field">Ngày tạo</td>
+                    <td>@Convert.ToDateTime(Model.objProduct.CreatedOnUtc).ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <td class="field">Ngày cập nhật</td>
+                    @if (Model.objProduct.UpdatedOnUtc != null)
+                    {
+                        <td>@Convert.ToDateTime(Model.objProduct.UpdatedOnUtc).ToString("dd/MM/yyyy")</td>
+                    }
+                    @if (Model.objProduct.UpdatedOnUtc == null)
+                    {
+                        <td style="font-style:italic;">Đang cập nhật...</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="field">Trạn thái xoá</td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+                    @if (Model.objProduct.Deleted == true)
+                    {
+                        <td>Có</td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                </tr>
+                <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandId)
-        </dd>
+                    <td class="field">Hiển thị trang chủ</td>
+                    @if (Model.objProduct.ShowOnHomePage == true)
+                    {
+                        <td>
+                            Hiển thị trang chủ
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Không hiển thị trang chủ
+                        </td>
+                    }
+                </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShoetDes)
-        </dt>
+            </tbody>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShoetDes)
-        </dd>
+        </table>
+    </div>
+    <div class="col-md-3">
+        <img src="/Public/images/product/@Model.objProduct.Avatar" alt="@Model.objProduct.Name" class="img-fluid" />
+        <p class="text-center">Hình ảnh sản phẩm <span class="font-weight-bold">@Model.objProduct.Name</span></p>
+    </div>
+    <div class="row text-justify fullDes_Detai">
+        @Html.Raw(Model.objProduct.FullDescription)
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullDescription)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PriceDiscount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PriceDiscount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowOnHomePage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShowOnHomePage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DisplayOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm("ToggleTrash", "Product", FormMethod.Post, new { enctype = "multipart/form-data" })) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<style>
+    .btn-warning:hover {
+        background-color: #ff6a00;
+        color: #fff;
+    }
+
+    .field {
+        font-weight: bold;
+    }
+
+    .fullDes_Detai {
+        max-height: 900px;
+        overflow: hidden;
+    }
+
+        .fullDes_Detai img {
+            margin-left: 20%;
+        }
+
+    .readmore {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .active .fullDes_Detai {
+        height: 100%;
+    }
+
+    .btnTop__active {
+        width: 200px;
+        margin: 10px;
+        margin-left: 20px;
+    }
+</style>

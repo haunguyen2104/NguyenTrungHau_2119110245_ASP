@@ -2583,12 +2583,12 @@
     <Content Include="Public\images\brand\brand-zadez.png" />
     <Content Include="Public\images\category\category-computer.jpg" />
     <Content Include="Public\images\category\category-dien-thoai.jpg" />
-    <Content Include="Public\images\category\category-dong-ho-thong-minh.jpg" />
-    <Content Include="Public\images\category\category-laptop.jpg" />
+    <Content Include="Public\images\category\category-dong-ho-thong-minh.png" />
+    <Content Include="Public\images\category\category-laptop.png" />
     <Content Include="Public\images\category\category-may-in.jpg" />
     <Content Include="Public\images\category\category-phu-kien.jpg" />
-    <Content Include="Public\images\category\category-tablet.jpg" />
-    <Content Include="Public\images\category\category-sim-so.jpg" />
+    <Content Include="Public\images\category\category-sim-so.png" />
+    <Content Include="Public\images\category\category-tablet.png" />
     <Content Include="Public\images\favicon.ico" />
     <Content Include="Public\images\icons\flags\AU%402x.png" />
     <Content Include="Public\images\icons\flags\AU.png" />
@@ -3012,6 +3012,7 @@
     <Content Include="Areas\Admin\Views\Home\LoginAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Recover.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ToggleTrash.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3057,6 +3058,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Home\PostDetail.cshtml" />
     <Content Include="Views\Product\GetAllProduct.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

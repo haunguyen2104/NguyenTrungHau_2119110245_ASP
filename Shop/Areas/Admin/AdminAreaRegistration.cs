@@ -30,10 +30,31 @@ namespace Shop.Areas.Admin
                 new { controller="Product",action = "Index", id = UrlParameter.Optional },
                   new[] { "Shop.Areas.Admin.Controllers" }
             );
+            //cập nhật sản phẩm
+            context.MapRoute(
+                "UpdateProduct",
+                "quan-tri/san-pham/cap-nhap/{Slug}-{Id}",
+                new { controller="Product",action = "Edit", id = UrlParameter.Optional },
+                  new[] { "Shop.Areas.Admin.Controllers" }
+            );
+            //Xem sản phẩm
+            context.MapRoute(
+                "DetailProduct",
+                "quan-tri/san-pham/chi-tiet/{Slug}-{Id}",
+                new { controller="Product",action = "Details", id = UrlParameter.Optional },
+                  new[] { "Shop.Areas.Admin.Controllers" }
+            );
+            //Xoá sản phẩm vào thùng rác
+            context.MapRoute(
+                "ToggleTrashProduct",
+                "quan-tri/san-pham/xoa/{Slug}-{Id}",
+                new { controller="Product",action = "ToggleTrash", id = UrlParameter.Optional },
+                  new[] { "Shop.Areas.Admin.Controllers" }
+            );
             //Thêm sản phẩm
             context.MapRoute(
                 "NewProduct",
-                "quan-tri/them-moi-san-pham",
+                "quan-tri/san-pham/them-moi",
                 new { controller="Product",action = "Create", id = UrlParameter.Optional },
                   new[] { "Shop.Areas.Admin.Controllers" }
             );

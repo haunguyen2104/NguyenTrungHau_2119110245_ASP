@@ -22,8 +22,8 @@
         margin: 5px 0;
         margin-left: 25px;
     }
-    
-   
+
+
 
     .search__product {
         max-width: 410px;
@@ -57,8 +57,8 @@
 </style>
 
 
-<a href="@Url.Action("Create","Product")" class="btn btn-default btn-new"  style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
-<a href="@Url.Action("ListInTrash","Product")" class="btn btn-default btn-new"  style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+<a href="@Url.Action("Create","Product")" class="btn btn-default btn-new" style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
+<a href="@Url.Action("ListInTrash","Product")" class="btn btn-default btn-new" style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
 
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
 {
@@ -88,10 +88,13 @@
 
             @foreach (var item in Model)
             {
-               
+                var url_edit = "/quan-tri/san-pham/cap-nhap/" + item.Slug + "-" + item.Id;
+                var url_details = "/quan-tri/san-pham/chi-tiet/" + item.Slug + "-" + item.Id;
+                var url_delete = "/quan-tri/san-pham/xoa/" + item.Slug + "-" + item.Id;
+
                 <tr>
                     <td>
-                         <input type="checkbox" name="checkId" value="" />
+                        <input type="checkbox" name="checkId" value="" />
                     </td>
                     <td><img src="~/Public/images/product/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
                     <td>@item.Name</td>
@@ -102,10 +105,16 @@
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
+                        <a href="@url_edit " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@url_details " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        @*
+                            <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
+                            <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+
+                        *@
 
                     </td>
                     <td>@item.Id</td>
