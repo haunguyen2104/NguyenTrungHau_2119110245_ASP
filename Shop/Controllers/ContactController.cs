@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,15 @@ namespace Shop.Controllers
     {
         // GET: Contact
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        } 
+        [HttpPost]
+        public ActionResult Contact(Contact_2119110245 objContact)
         {
             return View();
         }

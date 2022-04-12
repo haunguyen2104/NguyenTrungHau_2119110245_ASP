@@ -15,6 +15,13 @@ namespace Shop
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             //Trang người dùng----------------------------------------
+            //Trang chủ
+            routes.MapRoute(
+               name: "HomePageUser",
+               url: "trang-chu",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );   
             //Tất cả danh mục
             routes.MapRoute(
                name: "AllCategory",

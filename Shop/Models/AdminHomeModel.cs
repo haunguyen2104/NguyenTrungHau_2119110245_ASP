@@ -13,6 +13,7 @@ namespace Shop.Models
         public List<Brand_2119110245> listBrand { get; set; }
         public string CategoryName { get; set; }
         public string BrandName { get; set; }
+        public string ProductType { get; set; }
         public Product_2119110245 objProduct { get; set; }
         //public Product_2119110245 objBrandName { get; set; }
         //public Product_2119110245 objCateName { get; set; }

@@ -109,7 +109,7 @@
                                     <h6 class="card-title">@it.CategoryName </h6>
                                     <a href="@Url.Action("ProductCategoryGrid", "Product", new { id = it.CategoryId })" class="btn btn-secondary btn-sm"> Xem chi tiết </a>
                                 </div>
-                                <img src="~/Public/images/category/@it.Avatar" height="80" class="img-bg">
+                                <img src="~/Public/images/category/@it.Avatar" height="80" class="img-bg" alt="@it.CategoryName">
                             </div>
 
                         }
@@ -147,7 +147,7 @@
                     <figure class="card-product-grid card-sm">
                         @*<a href="@Url.Content(link)" class="img-wrap">*@
                         <a href="@url" class="img-wrap">
-                            <img src="~/Public/images/product/@item.Avatar">
+                            <img src="~/Public/images/product/@item.Avatar" alt="@item.Name">
                         </a>
                         <div class="text-wrap p-3">
 

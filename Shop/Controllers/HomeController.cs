@@ -1,4 +1,5 @@
-﻿using Shop.Context;
+﻿using PagedList;
+using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,11 @@ using System.Web;
 using System.Web.Mvc;
 namespace Shop.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
-        public ActionResult Index(string SearchString)
+        public ActionResult Index()
         {
             var listProducts = new List<Product_2119110245>();
             var listCategory = new List<Category_2119110245>();
@@ -22,7 +23,7 @@ namespace Shop.Controllers
             var listPost = new List<Post_2119110245>();
             //if (!string.IsNullOrEmpty(SearchString))
             //{
-           
+
             //    //Lấy sản phẩm theo searchstring
             //    // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
             //     listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Deleted == false&&n.FullName.Contains(SearchString)).ToList();
@@ -30,22 +31,22 @@ namespace Shop.Controllers
             //     listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(n=> n.CategoryName.Contains(SearchString)).ToList();
             //    //Lấy thương hiệu
             //     listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandName.Contains(SearchString)).ToList();
-                
+
             //    //Lấy post
             //     listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false&&a.PostTitle.Contains(SearchString)).ToList();
             //}
             //else
             //{
-                //Lấy sản phẩm giá sốc
-                // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
-                listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Deleted == false).ToList();
-                //Lấy danh mục sản phẩm
-                listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
-                //Lấy thương hiệu
-                listBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
+            //Lấy sản phẩm giá sốc
+            // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
+            listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Deleted == false).ToList();
+            //Lấy danh mục sản phẩm
+            listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
+            //Lấy thương hiệu
+            listBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
 
-                //Lấy post
-                listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false).ToList();
+            //Lấy post
+            listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false).ToList();
             //}
             HomeModel objhomeModel = new HomeModel();
             objhomeModel.listCategory = listCategory;
@@ -58,20 +59,17 @@ namespace Shop.Controllers
         public ActionResult PostDetail(int id)
         {
             PostModel objPostModel = new PostModel();
-            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId==id).FirstOrDefault();
+            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId == id).FirstOrDefault();
             var listPost = objWebsiteBanHangEntities.Post_2119110245.ToList();
             objPostModel.objPost = objPost;
             objPostModel.listPost = listPost;
             return View(objPostModel);
         }
-
         public ActionResult Register()
         {
             return View();
         }
-        //POST: Register
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         public ActionResult Register(User_2119110245 _user)
         {
@@ -94,20 +92,13 @@ namespace Shop.Controllers
                     TempData["error"] = "Thông tin tài khoản đã tồn tại";
                     return View();
                 }
-
-
             }
             return View();
-
-
         }
-
-        
         public ActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
@@ -131,7 +122,7 @@ namespace Shop.Controllers
                 }
                 else
                 {
-            TempData["error"] = "Sai thông tin tài khoản hoặc mật khẩu";
+                    TempData["error"] = "Sai thông tin tài khoản hoặc mật khẩu";
                     //ViewBag.error = "Login failed";
                     return RedirectToAction("Login");
                 }
@@ -143,6 +134,5 @@ namespace Shop.Controllers
             Session.Clear();//Remove session
             return RedirectToAction("Index");
         }
-
     }
 }

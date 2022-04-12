@@ -5,11 +5,12 @@
 }
 
 <!--------------------------------------------------------->
-<style>    
+<style>
     .btn-warning:hover {
         background-color: #ff6a00;
         color: #fff;
     }
+
     .field {
         font-weight: bold;
     }
@@ -27,13 +28,15 @@
         text-align: center;
         cursor: pointer;
     }
-    
-        .active .fullDes_Detai {
-            height: 100%;
-        }
-    .btnTop__active{
-        width:200px; margin:10px;
-        margin-left:20px;
+
+    .active .fullDes_Detai {
+        height: 100%;
+    }
+
+    .btnTop__active {
+        width: 200px;
+        margin: 10px;
+        margin-left: 20px;
     }
 </style>
 <!--------------------------------------------------------->
@@ -72,7 +75,7 @@
                 </tr>
                 <tr>
                     <td class="field">Giá</td>
-                    <td>@Convert.ToDecimal(Model.objProduct.Price).ToString("#,##0")</td>
+                    <td>@Convert.ToDecimal(Model.objProduct.Price).ToString("#,##0")<sup>đ</sup></td>
                 </tr>
                 <tr>
                     <td class="field">Giá khuyến mãi</td>
@@ -88,7 +91,21 @@
                 </tr>
                 <tr>
                     <td class="field">Loại sản phẩm</td>
-                    <td>@Model.objProduct.TypeId</td>
+                    @switch (Model.objProduct.TypeId)
+                    {
+                        case 1:
+                            // code block
+                            <td>Giảm giá sốc</td>
+                            break;
+                        case 2:
+                            // code block
+                            <td>Đề xuất</td>
+                            break;
+                        default:
+                            // code block
+                            <td></td>
+                            break;
+                    }
                 </tr>
                 <tr>
                     <td class="field">Slug</td>
@@ -99,7 +116,7 @@
 
                     @if (Model.objProduct.Quantity != null)
                     {
-                        <td>@Model.objProduct.Quantity<sup>đ</sup></td>
+                        <td>@Model.objProduct.Quantity thiết bị</td>
                     }
                     @if (Model.objProduct.Quantity == null)
                     {
@@ -123,16 +140,32 @@
                 </tr>
                 <tr>
                     <td class="field">Trạn thái xoá</td>
-                    <td>
-                        @Model.objProduct.Deleted
-                    </td>
+
+                    @if (Model.objProduct.Deleted == true)
+                    {
+                        <td>Có</td>
+
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
                 </tr>
                 <tr>
 
                     <td class="field">Hiển thị trang chủ</td>
-                    <td>
-                        @Model.objProduct.ShowOnHomePage
-                    </td>
+                    @if (Model.objProduct.ShowOnHomePage == true)
+                    {
+                        <td>
+                            Hiển thị trang chủ
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Không hiển thị trang chủ
+                        </td>
+                    }
                 </tr>
 
             </tbody>
@@ -151,12 +184,12 @@
 
 <!--------------------------------------------------------->
 @*<script>
-    const readmore = document.querySelector(".readmore");
-    readmore.addEventListener("click", function () {
-        readmore.classList.add("active");
-        
-    console.log(readmore)
-    });
-</script>*@
+        const readmore = document.querySelector(".readmore");
+        readmore.addEventListener("click", function () {
+            readmore.classList.add("active");
+
+        console.log(readmore)
+        });
+    </script>*@
 
 <!--------------------------------------------------------->
