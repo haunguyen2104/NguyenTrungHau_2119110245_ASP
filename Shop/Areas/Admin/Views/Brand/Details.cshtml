@@ -6,86 +6,92 @@
 }
 
 <h2>Details</h2>
-
+@{ 
+    var urlEdit = "/thuong-hieu/cap-nhat/" + Model.Slug+"-"+Model.BrandId;
+}
 <div>
-    <h4>Brand_2119110245</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>CHI TIẾT THƯƠNG HIỆU</strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Edit","Brand",new {id=Model.BrandId})" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Cập nhật</a>
+                    <a href="@Url.Action("Index", "Brand")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:150px">Thuộc tính</th>
+                    <th>Nội dung</th>
+                </tr>
+                <tr>
+                    <td>
+                       Tên thương hiệu
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BrandName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Hình ảnh
+                    </td>
+                    <td>
+                        @*@{
+                                var item = html.displayfor(model => model.avatar).tostring();
+                            }*@
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandId)
-        </dd>
+                        <img src="~/Public/images/brand/@Model.Avatar" alt="@Model.BrandName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Slug)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Slug)
+                    </td>
+                </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+                <tr>
+                    <td>
+                       H.Thị trang chủ
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ShowOnHomePage)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Ngày tạo
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CreatedOnUtc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Trạng thái xoá
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Deleted)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
 
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowOnHomePage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShowOnHomePage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DisplayOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-    </dl>
+    </div>
+    <!-- /.card -->
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.BrandId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

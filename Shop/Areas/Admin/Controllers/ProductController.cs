@@ -1,4 +1,4 @@
-﻿using PagedList;
+﻿ using PagedList;
 using Shop.Context;
 using Shop.Models;
 using System;
@@ -66,14 +66,12 @@ namespace Shop.Areas.Admin.Controllers
                 {
                     if (objProduct.ImageUpload != null)
                     {
-
                         string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
                         string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
                         fileName = fileName + extension;
                         objProduct.Avatar = fileName;
                         objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
                     }
-
                     objProduct.CreatedOnUtc = DateTime.Now;
                     objProduct.Deleted = false;
                     objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
@@ -216,7 +214,7 @@ namespace Shop.Areas.Admin.Controllers
             objHomeModel.BrandName = objBrand.BrandName;
             objHomeModel.CategoryName = objCate.CategoryName;
             return View(objHomeModel);
-        }   
+        }
         [HttpPost]
         public ActionResult Delete(Product_2119110245 objProduct)
         {

@@ -56,13 +56,13 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="@Url.Action("Index","Home")" class="nav-link">Trang quản trị</a>
-                </li> 
+                </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="trang-chu" class="nav-link">Trang người dùng</a>
+                    <a href="~/trang-chu" class="nav-link">Trang người dùng</a>
                 </li>
                 @*<li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>*@
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>*@
             </ul>
 
             <!-- Right navbar links -->
@@ -223,12 +223,12 @@
                 <nav class="mt-2" id="main-nav">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active" style="opacity:1 !important;">
                                 @*<i class="nav-icon fas fa-tachometer-alt"></i>*@
                                 <i class="nav-icon fa-solid fa-list-check"></i>
-                                <p >
+                                <p>
                                     Quản trị
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -259,9 +259,16 @@
                                         <p>Tất cả hình ảnh slider</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","User")" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tất cả thành viên</p>
+                                    </a>
+                                </li>
 
                             </ul>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -864,9 +871,11 @@
                                 <p>Informational</p>
                             </a>
                         </li>
+                              -->
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
+
             </div>
             <!-- /.sidebar -->
         </aside>

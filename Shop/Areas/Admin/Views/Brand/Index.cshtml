@@ -64,14 +64,14 @@
 </style>
 
 
-<a href="@Url.Action("Create","Category")" class="btn btn-default btn-new" style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
-<a href="@Url.Action("ListInTrash","Category")" class="btn btn-default btn-new" style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
-@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+<a href="@Url.Action("Create","Brand")" class="btn btn-default btn-new" style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
+<a href="@Url.Action("ListInTrash","Brand")" class="btn btn-default btn-new" style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+@using (Html.BeginForm("Index", "Brand", FormMethod.Get))
 {
     <p class="search__product">
         Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
-        <a href="@Url.Action("Index","Category")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả thương hiệu</a>
+        <a href="@Url.Action("Index","Brand")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả thương hiệu</a>
     </p>
 }
 <div class="card-body">
@@ -108,9 +108,9 @@
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Category", new { id = item.BrandId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Category", new { id = item.BrandId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("Delete", "Category", new { id = item.BrandId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@Url.Action("Edit", "Brand", new { id = item.BrandId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details", "Brand", new { id = item.BrandId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("Delete", "Brand", new { id = item.BrandId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
 
                     </td>

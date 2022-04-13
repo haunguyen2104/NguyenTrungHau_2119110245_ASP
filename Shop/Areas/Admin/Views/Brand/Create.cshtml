@@ -56,15 +56,7 @@
                                 <input name="ImageUpload" type="file" class="from-control" />
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <label class="text-center">Trạng thái</label>
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(model => model.Deleted, new[] { new SelectListItem { Text = "Không xuất bản", Value = "2" }, new SelectListItem { Text = "Xuất bản", Value = "1" } }, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
-                            </td>
-                        </tr>
+                   
                     </table>
                     <span style="font-style:italic"><span class="text-danger">(*) </span> là các trường bắc buộc</span>
                 </div>

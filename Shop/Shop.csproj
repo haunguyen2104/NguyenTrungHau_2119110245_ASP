@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,6 +147,7 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Context\Brand_2119110245.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
@@ -212,6 +216,7 @@
     <Compile Include="Models\SliderMasterData.cs" />
     <Compile Include="Models\ToStringSlug.cs" />
     <Compile Include="Models\UserMasterData.cs" />
+    <Compile Include="Models\XMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2504,6 +2509,7 @@
     <Content Include="Public\ckeditor\styles.js" />
     <Content Include="Public\ckeditor\vendor\promise.js" />
     <Content Include="Public\css\bootstrap-rtl.css" />
+    <Content Include="Public\css\bootstrap-social.css" />
     <Content Include="Public\css\bootstrap.css" />
     <Content Include="Public\css\mystyle.css" />
     <Content Include="Public\css\responsive.css" />
@@ -2581,12 +2587,12 @@
     <Content Include="Public\images\brand\brand-xiaomi.png" />
     <Content Include="Public\images\brand\brand-xmobile.png" />
     <Content Include="Public\images\brand\brand-zadez.png" />
-    <Content Include="Public\images\category\category-computer.jpg" />
-    <Content Include="Public\images\category\category-dien-thoai.jpg" />
+    <Content Include="Public\images\category\category-computer.png" />
+    <Content Include="Public\images\category\category-dien-thoai.png" />
     <Content Include="Public\images\category\category-dong-ho-thong-minh.png" />
     <Content Include="Public\images\category\category-laptop.png" />
-    <Content Include="Public\images\category\category-may-in.jpg" />
-    <Content Include="Public\images\category\category-phu-kien.jpg" />
+    <Content Include="Public\images\category\category-may-in.png" />
+    <Content Include="Public\images\category\category-phu-kien.png" />
     <Content Include="Public\images\category\category-sim-so.png" />
     <Content Include="Public\images\category\category-tablet.png" />
     <Content Include="Public\images\favicon.ico" />
@@ -3013,6 +3019,7 @@
     <Content Include="Areas\Admin\Views\Product\Recover.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ToggleTrash.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3057,8 +3064,9 @@
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Home\PostDetail.cshtml" />
-    <Content Include="Views\Product\GetAllProduct.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Product\SearchPage.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

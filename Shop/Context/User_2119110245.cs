@@ -20,5 +20,7 @@ namespace Shop.Context
         public string Email { get; set; }
         public string Password { get; set; }
         public Nullable<int> IsAdmin { get; set; }
+        public Nullable<int> Gender { get; set; }
+        public Nullable<int> IsActive { get; set; }
     }
 }

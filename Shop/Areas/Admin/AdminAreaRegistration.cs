@@ -74,6 +74,13 @@ namespace Shop.Areas.Admin
                 new { controller="Category",action = "Index", id = UrlParameter.Optional },
                   new[] { "Shop.Areas.Admin.Controllers" }
             );
+            //cập nhật danh mục
+            context.MapRoute(
+                "CategoryEdit",
+                "danh-muc/cap-nhat/{Slug}-{BrandId}",
+                new { controller="Category",action = "Edit", id = UrlParameter.Optional },
+                  new[] { "Shop.Areas.Admin.Controllers" }
+            );
             //Thêm danh mục
             context.MapRoute(
                 "NewCategory",
@@ -95,6 +102,14 @@ namespace Shop.Areas.Admin
                 "BrandList",
                 "quan-tri/danh-sach-thuong-hieu",
                 new { controller="Brand",action = "Index", id = UrlParameter.Optional },
+                  new[] { "Shop.Areas.Admin.Controllers" }
+            );
+
+            //cập nhật thương hiệu
+            context.MapRoute(
+                "BrandEdit",
+                "thuong-hieu/cap-nhat/{Slug}-{BrandId}",
+                new { controller = "Brand", action = "Edit", id = UrlParameter.Optional },
                   new[] { "Shop.Areas.Admin.Controllers" }
             );
             //Thêm danh mục

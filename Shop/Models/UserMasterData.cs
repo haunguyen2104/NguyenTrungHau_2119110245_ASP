@@ -20,5 +20,11 @@ namespace Shop.Models
         [Required(ErrorMessage="Bạn chưa nhập mật khẩu")]
         public string Password { get; set; }
         public Nullable<int> IsAdmin { get; set; }
+        [Display(Name = "Giới tính")]
+
+        public Nullable<int> Gender { get; set; }
+        [Display(Name = "Hoạt động")]
+
+        public Nullable<int> IsActive { get; set; }
     }
 }

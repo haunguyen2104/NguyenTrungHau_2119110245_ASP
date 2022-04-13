@@ -1,72 +1,87 @@
 ﻿@model Shop.Context.Category_2119110245
 
 @{
-    ViewBag.Title = "Cập nhật "+Model.CategoryName;
+    ViewBag.Title = "Cập nhật " + Model.CategoryName;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<style>
+    .input___item {
+        border: 1px solid #ced4da;
+        width: 200px;
+        height: calc(2.25rem + 7px);
+        padding: 10px 10px;
+        border-radius: 5px;
+    }
 
-@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    .img__input {
+        padding: 10px 10px;
+    }
+</style>
+<script src="~/Public/ckeditor/ckeditor.js"></script>
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>@*Category_2119110245*@</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-             <label> @Model.CategoryId</label>
+
+
+    <!-------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------->
+    <!-- Main content -->
+    <section class="content my-2">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span style="font-style:italic">  <span style="color:red">(*)</span> là các trường bắt buộc</span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn-sm btn-success" type="submit" name="create"> <i class="fas fa-save"></i> Lưu [Thêm]</button>
+                        <a href="@Url.Action("Index","Category")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>Tên danh muc <span style="color:red;">(*)</span></label>
+                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @style = "color:red;font-style:italic" })
+
+                        </div>
+                        <div class="form-group">
+                            <label>Trạng thái xoá</label>
+                            @Html.EditorFor(model => model.Deleted, "---Chọn trạng thái--- ", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label>H.Thị trang chủ</label>
+                            @Html.DropDownListFor(model => model.ShowOnHomePage, ViewBag.ProductDisplayHome as SelectList, "---Hiển thị trang chủ--- ", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="from-group">
+                            <label>Hình</label>
+                            <input type="file" name="ImageUpload" class="img__input" />
+                        </div>
+                        
+                        
+
+
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="ImageUpload" type="file" class="from-control" />
-            </div>
-        </div>
-
-  
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ShowOnHomePage, new[] { new SelectListItem { Text = "Không hiển thị trang chủ", Value = "0" }, new SelectListItem { Text = "Hiển thị trang chủ", Value = "1" } }, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-      
-
-    
-    
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Deleted, new[] { new SelectListItem { Text = "Không xuất bản", Value = "2" }, new SelectListItem { Text = "Xuất bản", Value = "1" } }, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default"  style="background-color:inherit;border:1px solid black;color:#000"/>
-            </div>
-        </div>
-    </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+    <!-------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------->
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

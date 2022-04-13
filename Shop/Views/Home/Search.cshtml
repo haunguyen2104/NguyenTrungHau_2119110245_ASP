@@ -1,0 +1,17 @@
+﻿
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Shop.Context.Product_2119110245>
+
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout01.cshtml";
+}
+
+@foreach (var item in Model)
+{
+
+    <h2>Product Name: @item.Name</h2>
+}
+

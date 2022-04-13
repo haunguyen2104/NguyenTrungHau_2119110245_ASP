@@ -3,11 +3,13 @@ using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Shop.Common;
 
 namespace Shop.Areas.Admin.Controllers
 {
@@ -46,15 +48,17 @@ namespace Shop.Areas.Admin.Controllers
             //var listCategory = objWebsiteBanHangEntities.Category_2119110245.ToList();
             //return View(listCategory);
         }
-        public ActionResult Details(int id) {
+        public ActionResult Details(int id)
+        {
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
-            return View(objCate); }
+            return View(objCate);
+        }
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-       [HttpPost]
+        [HttpPost]
         public ActionResult Create(Category_2119110245 objCategory)
         {
             try
@@ -83,26 +87,35 @@ namespace Shop.Areas.Admin.Controllers
         }
         public ActionResult Edit(int id)
         {
+            this.LoadData();
             var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).FirstOrDefault();
             return View(objCategory);
         }
         [HttpPost]
         public ActionResult Edit(int id, Category_2119110245 objCategory)
         {
-            if (objCategory.ImageUpload != null)
+            this.LoadData();
+            try
             {
+                if (objCategory.ImageUpload != null)
+                {
 
-                string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);
-                string extension = Path.GetExtension(objCategory.ImageUpload.FileName);
-                fileName = fileName +  extension;
-                objCategory.Avatar = fileName;
-                objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/category/"), fileName));
+                    string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);
+                    string extension = Path.GetExtension(objCategory.ImageUpload.FileName);
+                    fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                    objCategory.Avatar = fileName;
+                    objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/category/"), fileName));
+                }
+                objCategory.UpdateOnUtc = DateTime.Now;
+                objCategory.Slug = ToStringSlug.ToSlug(objCategory.CategoryName);
+                objWebsiteBanHangEntities.Entry(objCategory).State = EntityState.Modified;
+                objWebsiteBanHangEntities.SaveChanges();
+                return RedirectToAction("Index");
             }
-            objCategory.Slug = ToStringSlug.ToSlug(objCategory.CategoryName);
-            objCategory.UpdateOnUtc = DateTime.Now;
-                  objWebsiteBanHangEntities.Entry(objCategory).State = EntityState.Modified;
-            objWebsiteBanHangEntities.SaveChanges();
-            return RedirectToAction("Index");
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
         }
         [HttpGet]
         public ActionResult Delete(int id)
@@ -117,6 +130,42 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.Category_2119110245.Remove(objCate);
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
+        }
+        //-----------------------------------------------------------------------------------
+        //Load data
+        void LoadData()
+        {
+            Common objCommon = new Common();
+            ListtoDataTableConverter converter = new ListtoDataTableConverter();
+
+
+            //---------------------------------------------
+            //Hiển thị trang chủ
+            List<ProductDisplayHome> listDisplayHome = new List<ProductDisplayHome>();
+            ProductDisplayHome objDisplayHome = new ProductDisplayHome();
+            objDisplayHome.Value = "true";
+            objDisplayHome.Name = "Hiển thị";
+            listDisplayHome.Add(objDisplayHome);
+            objDisplayHome = new ProductDisplayHome();
+            objDisplayHome.Value = "false";
+            objDisplayHome.Name = "Không hiển thị";
+            listDisplayHome.Add(objDisplayHome);
+            DataTable dtDisplayHome = converter.ToDataTable(listDisplayHome);
+            ViewBag.ProductDisplayHome = objCommon.ToSelectList(dtDisplayHome, "Value", "Name");
+            //---------------------------------------------
+            //Deleted
+            List<Delete> listDelete = new List<Delete>();
+            Delete objDel = new Delete();
+            objDel.Value = "true";
+            objDel.Name = "Xoá";
+            listDelete.Add(objDel);
+            objDel = new Delete();
+            objDel.Value = "false";
+            objDel.Name = "Không xoá";
+            listDelete.Add(objDel);
+            DataTable dtDelete = converter.ToDataTable(listDelete);
+            ViewBag.Delete = objCommon.ToSelectList(dtDelete, "Value", "Name");
+            //---------------------------------------------
         }
     }
 }

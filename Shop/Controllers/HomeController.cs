@@ -1,8 +1,10 @@
-﻿using PagedList;
+﻿using Facebook;
+using PagedList;
 using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,6 +15,17 @@ namespace Shop.Controllers
 
     public class HomeController : Controller
     {
+        //private Uri RedirectUri
+        //{
+        //    get
+        //    {
+        //        var uriBuilder = new UriBuilder(Request.Url);
+        //        uriBuilder.Query = null;
+        //        uriBuilder.Fragment = null;
+        //        uriBuilder.Path = Url.Action("FacebookCallback");
+        //        return uriBuilder.Uri;
+        //    }
+        //}
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         public ActionResult Index()
         {
@@ -108,7 +121,7 @@ namespace Shop.Controllers
 
 
                 var f_password = ConvertMD5.GetMD5(password);
-                var data = objWebsiteBanHangEntities.User_2119110245.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var data = objWebsiteBanHangEntities.User_2119110245.Where(s => s.IsActive == 1 && s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
@@ -129,10 +142,88 @@ namespace Shop.Controllers
             }
             return View();
         }
+        public ActionResult LoginFacebook()
+        {
+            //var fb = new FacebookClient();
+            //var loginUrl = fb.GetLoginUrl(new
+            //{
+            //    client_id = ConfigurationManager.AppSettings["FBAppId"],
+            //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
+            //    redirect_uri = RedirectUri.AbsoluteUri,
+            //    response_type = "code",
+            //    scope = "email"
+            //});
+
+            //return Redirect(loginUrl.AbsoluteUri);
+            return View();
+        }
+        public ActionResult FacebookCallback(string code)
+        {
+            //var fb = new FacebookClient();
+            //dynamic result = fb.Post("oauth/access_token", new
+            //{
+            //    client_id = ConfigurationManager.AppSettings["FBAppId"],
+            //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
+            //    redirect_uri = RedirectUri.AbsoluteUri,
+            //    code = code
+            //});
+            //var accessToken = result.access_token;
+            //if (!string.IsNullOrEmpty(accessToken))
+            //{
+            //    fb.AccessToken = accessToken;
+            //    dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+            //    string email = me.email;
+            //    string userName = me.email;
+            //    string firstname = me.first_name;
+            //    string lastname = me.last_name;
+            //    string middlename = me.middle_name;
+
+            //    var users = new User_2119110245();
+            //    users.Email = email;
+            //    users.FirstName = firstname + " " + middlename;
+            //    users.LastName = lastname;
+            //    objWebsiteBanHangEntities.User_2119110245.Add(users);
+            //    objWebsiteBanHangEntities.SaveChanges();
+               
+            //        //add session
+            //        Session["FullName"] = firstname + " " + middlename + " " + lastname;
+            //        Session["Email"] = email;
+            //        Session["Id"] = users.Id;
+            //        Session["IsAdmin"] = users.IsAdmin;
+            //        //TempData["success"] = "Đăng nhập thành công";
+
+                  
+               
+            //}
+            return Redirect("/");
+        }
         public ActionResult Logout()
         {
             Session.Clear();//Remove session
             return RedirectToAction("Index");
+        }
+        public ActionResult Search(string currentFilter, string SearchString, int? page)
+        {
+            var listProduct = new List<Product_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.FullName.Contains(SearchString) && n.Deleted == false).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listProduct = listProduct.OrderBy(x => x.Id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
         }
     }
 }
