@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Shop.Context.User_2119110245>
+
+@{
+    ViewBag.Title = "Quản lý người dùng";
+    //Layout = "~/Views/Shared/_Layout01.cshtml";
+}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên người dùng
+        </th>
+        <th>
+            Giới tính
+        </th>
+
+        <th>
+            Email
+        </th>
+
+        <th>
+            Quyền quản trị
+        </th>
+        <th>
+            Hoạt động
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var Name = item.FirstName + " " + item.LastName;
+        <tr>
+            <td>
+                @Name
+            </td>
+            <td>
+                @if (item.Gender == 1)
+                {
+
+
+                    <p>Nữ</p>
+                }
+                else
+                {
+                    <p>Nam</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @if (item.IsAdmin == 1)
+                {
+                    <a href="@Url.Action("IsAdmin", "User", new { id = item.Id })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i> </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("IsAdmin", "User", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i> </a>
+                }
+            </td>
+            <td>
+                <!--
+
+                0. không hoạt động
+                1. là hoạt động
+                -->
+                @if (item.IsActive == 1)
+                {
+                    <a href="@Url.Action("IsActive","User", new{ id = item.Id })" class="btn btn-sm btn-success" id="Active_On"><i class="fa-solid fa-square-check"></i> </a>
+                }
+                else
+                {
+
+                    <a href="@Url.Action("IsActive","User", new{ id = item.Id })" class="btn btn-sm btn-danger" id="Active_Off"><i class="fa-solid fa-rectangle-xmark"></i> </a>
+                }
+            </td>
+
+
+            <td>
+
+                <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "User", new { id = item.Id }) " style="color:white"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="btn btn-sm btn-success" href="@Url.Action("Details", "User", new { id = item.Id }) " style="color: white; margin: 0 10px;"><i class="fa-solid fa-eye"></i></a>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", "User", new { id = item.Id }) " style="color: white"><i class="fa-solid fa-trash"></i></a>
+
+            </td>
+        </tr>
+
+
+
+    }
+
+</table>

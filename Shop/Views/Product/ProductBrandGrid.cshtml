@@ -129,14 +129,15 @@
         <div class="row">
             @foreach (var item in Model.listProduct)
             {
+                var urlLink = "/chi-tiet/" + @item.Slug + "-" + @item.Id;
                 <div class="col-md-3">
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             @*<span class="badge badge-danger"> NEW </span>*@
-                            <a href="@Url.Action("Detail","Product", new { id = item.Id})"> <img src="~/Public/images/product/@item.Avatar"></a>
+                            <a href="@urlLink"> <img src="~/Public/images/product/@item.Avatar" alt="@item.Name"></a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
-                            <a href="@Url.Action("Detail","Product", new { id = item.Id})" class="title mb-2">@item.Name</a>
+                            <a href="@urlLink" class="title mb-2">@item.Name</a>
                             <div class="price-wrap">
                                 @if (item.PriceDiscount == null)
                                 {

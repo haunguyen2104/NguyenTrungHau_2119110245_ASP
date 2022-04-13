@@ -18,10 +18,10 @@ namespace Shop.Controllers
         {
             return View();
         } 
-        [HttpPost]
-        public ActionResult Contact(Contact_2119110245 objContact)
-        {
-            return View();
-        }
+       // [HttpPost]
+        //public ActionResult Contact(Contact_2119110245 objContact)
+        //{
+        //    return View();
+        //}
     }
 }

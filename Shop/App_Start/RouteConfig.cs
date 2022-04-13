@@ -92,6 +92,13 @@ namespace Shop
                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
+            //Tìm kiếm
+            routes.MapRoute(
+               name: "Search",
+               url: "tim-kiem",
+               defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+                 new[] { "Shop.Controllers" }
+                );
             //Sản phẩm theo danh mục dạng danh sách
             //routes.MapRoute(
             //   name: "ProductCategoryList",

@@ -170,16 +170,17 @@
                 </header><!-- sect-heading -->
                 @foreach (var item in Model.listProduct)
                 {
+                    var urlLink = "/chi-tiet/" + @item.Slug + "-" + @item.Id;
                     <article class="card card-product-list">
                         <div class="row no-gutters">
                             <aside class="col-md-3">
-                                <a href="#" class="img-wrap">
-                                    <img src="~/Public/images/product/@item.Avatar">
+                                <a href="@urlLink" class="img-wrap">
+                                    <img src="~/Public/images/product/@item.Avatar" alt="@item.Name">
                                 </a>
                             </aside> <!-- col.// -->
                             <div class="col-md-6">
                                 <div class="info-main">
-                                    <a href="#" class="h5 title">@item.Name </a>
+                                    <a href="@urlLink" class="h5 title">@item.Name </a>
                                     <div class="rating-wrap mb-2">
                                         <ul class="rating-stars">
                                             <li style="width:80%" class="stars-active">

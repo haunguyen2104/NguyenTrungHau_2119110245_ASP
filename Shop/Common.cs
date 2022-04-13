@@ -59,5 +59,15 @@ namespace Shop
             public string Value { get; set; }
             public string Name { get; set; }
         }
+        public class Delete
+        {
+            public string Value { get; set; }
+            public string Name { get; set; }
+        } 
+        public class Gender
+        {
+            public string Value { get; set; }
+            public string Name { get; set; }
+        }
     }
 }
