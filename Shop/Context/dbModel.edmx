@@ -33,6 +33,20 @@
           <Property Name="UpdateOnUtc" Type="datetime" />
           <Property Name="Deleted" Type="bit" />
         </EntityType>
+        <EntityType Name="Contact_2119110245">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+        </EntityType>
         <EntityType Name="Order_2119110245">
           <Key>
             <PropertyRef Name="Id" />
@@ -114,6 +128,7 @@
         <EntityContainer Name="WebsiteBanHangModelStoreContainer">
           <EntitySet Name="Brand_2119110245" EntityType="Self.Brand_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category_2119110245" EntityType="Self.Category_2119110245" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact_2119110245" EntityType="Self.Contact_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_2119110245" EntityType="Self.Order_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail_2119110245" EntityType="Self.OrderDetail_2119110245" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post_2119110245" EntityType="Self.Post_2119110245" Schema="dbo" store:Type="Tables" />
@@ -227,6 +242,7 @@
           <EntitySet Name="Slider_2119110245" EntityType="Self.Slider_2119110245" />
           <EntitySet Name="User_2119110245" EntityType="Self.User_2119110245" />
           <EntitySet Name="Post_2119110245" EntityType="WebsiteBanHangModel.Post_2119110245" />
+          <EntitySet Name="Contact_2119110245" EntityType="WebsiteBanHangModel.Contact_2119110245" />
         </EntityContainer>
         <EntityType Name="Post_2119110245">
           <Key>
@@ -240,6 +256,20 @@
           <Property Name="PostDateCreate" Type="DateTime" Precision="3" />
           <Property Name="isDelete" Type="Boolean" />
           <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Contact_2119110245">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -358,6 +388,21 @@
                 <ScalarProperty Name="PostSlug" ColumnName="PostSlug" />
                 <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact_2119110245">
+            <EntityTypeMapping TypeName="WebsiteBanHangModel.Contact_2119110245">
+              <MappingFragment StoreEntitySet="Contact_2119110245">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

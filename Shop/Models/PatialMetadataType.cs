@@ -32,23 +32,32 @@ namespace Shop.Context
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }
+    [MetadataType(typeof(BrandMasterData))]
     public partial class Brand_2119110245
     {
 
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }
+    [MetadataType(typeof(CategoryMasterData))]
     public partial class Category_2119110245
     {
 
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
-    } 
+    }
+    [MetadataType(typeof(PostMasterData))]
     public partial class Post_2119110245
     {
 
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
+    }
+    [MetadataType(typeof(ContactMasterData))]
+    public partial class Contact_2119110245
+    {
+
+        
     }
 
 }
