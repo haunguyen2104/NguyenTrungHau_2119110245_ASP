@@ -89,7 +89,7 @@ namespace Shop
             routes.MapRoute(
                name: "Contact",
                url: "lien-he",
-               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+               defaults: new { controller = "Contacts", action = "SendContact", id = UrlParameter.Optional },
                  new[] { "Shop.Controllers" }
                 );
             //Tìm kiếm
