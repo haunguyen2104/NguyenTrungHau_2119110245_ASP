@@ -2,7 +2,7 @@
 @{ViewBag.Title = "ToggleTrash";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+<div class="m-10">
 <h3>Bạn có muốn xoá sản phẩm này không?</h3>
 @using (Html.BeginForm("ToggleTrash", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -12,8 +12,9 @@
         <input type="submit" value="Xoá" class="btn btn-default" style="color:#fff; background:#ff6a00;" />
     </div>
 }
+</div>
 
-<div>
+<div class="row m-10">
     <div class="col-md-9">
         <table class="table table-bordered table-striped" id="myTable">
             <thead>
@@ -153,6 +154,9 @@
 
 </div>
 <style>
+    .m-10{
+        margin:10px;
+    }
     .btn-warning:hover {
         background-color: #ff6a00;
         color: #fff;

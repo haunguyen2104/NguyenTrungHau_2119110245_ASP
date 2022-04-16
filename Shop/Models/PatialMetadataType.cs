@@ -12,7 +12,6 @@ namespace Shop.Context
     {
 
     }
-
     //map csdl
     [MetadataType(typeof(UserMasterData))]
     public partial class User_2119110245
