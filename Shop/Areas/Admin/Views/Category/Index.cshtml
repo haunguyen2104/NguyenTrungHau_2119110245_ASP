@@ -1,14 +1,12 @@
 ﻿
 @using PagedList
 @using PagedList.Mvc
-@model PagedList.IPagedList<Shop.Context.Product_2119110245>
+@model PagedList.IPagedList<Shop.Context.Category_2119110245>
 
 @{
-    ViewBag.Title = "Thùng rác";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Thùng rác</h2>
 <style>
     .card-body {
         font-family: 'Poppins', sans-serif;
@@ -57,14 +55,14 @@
         }
 </style>
 
-
-<a href="@Url.Action("Index","Product")" class="btn btn-default btn-new" style="color:blue;"><i class="fa-solid fa-circle-left" style="font-weight:600;"></i> Trở về</a>
-@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+<a href="@Url.Action("Create","Category")" class="btn btn-default btn-new" style="color:green;"><i class="fa fa-plus" style="font-weight:600;"></i> Thêm mới</a>
+<a href="@Url.Action("ListInTrash","Category")" class="btn btn-default btn-new" style="color:red;"><i class="fa-solid fa-trash" style="font-weight:600;"></i> Thùng rác</a>
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
 {
     <p class="search__product">
         Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
-        <a href="@Url.Action("Index","Product")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả sản phẩm</a>
+        <a href="@Url.Action("Index","Category")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả danh mục</a>
     </p>
 }
 <div class="card-body">
@@ -72,11 +70,11 @@
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
             <tr>
-                <th class="text-center" style="width:20px;">STT</th>
-                <th class="text-center" style="width:100px;">Hình</th>
+                <th class="text-center" style="width:20px;"></th>
+                <th class="text-center" style="width:200px;">Hình</th>
 
-                <th>  Tên sản phẩm</th>
-                <th> Danh mục sản phẩm  </th>
+                <th>  Tên danh mục</th>
+
                 <th> Ngày tạo</th>
                 <th class="text-center" style="width:180px;">Chức năng</th>
                 <th class="text-center" style="width:20px;">ID </th>
@@ -87,28 +85,29 @@
 
             @foreach (var item in Model)
             {
-                var url_delete = "/quan-tri/san-pham/xoa/" + item.Slug + "-" + item.Id;
-                var url_recover = "/quan-tri/san-pham/khoi-phuc/" + item.Slug + "-" + item.Id;
-
+                //var url_edit = "/quan-tri/danh-muc/cap-nhap/" + item.Slug + "-" + item.Id;
+                //var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.Id;
+                //var url_delete = "/quan-tri/danh-muc/xoa/" + item.Slug + "-" + item.Id;
                 <tr>
                     <td>
                         <input type="checkbox" name="checkId" value="" />
                     </td>
-                    <td><img src="~/Public/images/product/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
-                    <td>@item.Name</td>
-                    <td>@item.CategoryId </td>
+                    <td><img src="~/Public/images/category/@item.Avatar" alt="@item.CategoryName" class="img-fluid" /></td>
+                    <td>@item.CategoryName</td>
+
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+                        @Html.DisplayFor(modelItem => item.CreateOnUtc)
                     </td>
                     <td class="text-center">
 
-                        <a href="@url_recover " style="color:blue; margin-left:10px;"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-                        <a href="@url_delete " style="color:red ;margin-left:20px;"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@Url.Action("Edit", "Category", new { id = item.CategoryId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("Details", "Category", new { id = item.CategoryId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
+                        <a href="@Url.Action("ToggleTrash", "Category", new { id = item.CategoryId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
 
                     </td>
-                    <td>@item.Id</td>
+                    <td>@item.CategoryId</td>
 
                 </tr>
             }
@@ -118,7 +117,9 @@
 </div>
 
 
-<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
+<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; ">
+    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+</p>
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page, currentFilter = ViewBag.CurrentFilter }))

@@ -1,0 +1,135 @@
+﻿@model Shop.Context.Brand_2119110245
+@{
+    ViewBag.Title = "Recover";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Bạn có muốn khôi phục sản phẩm này không?</h3>
+@using (Html.BeginForm("Recover", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Khôi phục" class="btn btn-default" style="color:#fff; background:#ff6a00;" />
+    </div>
+}
+
+<div>
+    <div class="col-md-9">
+        <table class="table table-bordered table-striped" id="myTable">
+            <thead>
+                <tr>
+
+                    <th class="text-center" style="width:200px">  Trường</th>
+                    <th class="text-center"> Nội dung  </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td class="field">Tên thương hiệu</td>
+
+                    <td>@Model.BrandName</td>
+                </tr>
+
+                <tr>
+                    <td class="field">Slug</td>
+                    <td>@Model.Slug</td>
+                </tr>
+
+                <tr>
+                    <td class="field">Ngày tạo</td>
+                    <td>@Convert.ToDateTime(Model.CreatedOnUtc).ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <td class="field">Ngày cập nhật</td>
+                    @if (Model.UpdatedOnUtc != null)
+                    {
+                        <td>@Convert.ToDateTime(Model.UpdatedOnUtc).ToString("dd/MM/yyyy")</td>
+                    }
+                    @if (Model.UpdatedOnUtc == null)
+                    {
+                        <td style="font-style:italic;">Đang cập nhật...</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="field">Trạng thái xoá</td>
+
+                    @if (Model.Deleted == true)
+                    {
+                        <td>Có</td>
+
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                </tr>
+                <tr>
+
+                    <td class="field">Hiển thị trang chủ</td>
+                    @if (Model.ShowOnHomePage == true)
+                    {
+                        <td>
+                            Hiển thị trang chủ
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Không hiển thị trang chủ
+                        </td>
+                    }
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="col-md-3">
+        <img src="~/Public/images/category/@Model.Avatar" alt="@Model.CategoryName" class="img-fluid" />
+        <p class="text-center">Hình ảnh danh mục <span class="font-weight-bold">@Model.CategoryName</span></p>
+    </div>
+
+
+
+</div>
+<style>
+    .btn-warning:hover {
+        background-color: #ff6a00;
+        color: #fff;
+    }
+
+    .field {
+        font-weight: bold;
+    }
+
+    .fullDes_Detai {
+        max-height: 900px;
+        overflow: hidden;
+    }
+
+        .fullDes_Detai img {
+            margin-left: 20%;
+        }
+
+    .readmore {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .active .fullDes_Detai {
+        height: 100%;
+    }
+
+    .btnTop__active {
+        width: 200px;
+        margin: 10px;
+        margin-left: 20px;
+    }
+</style>
+
+
+

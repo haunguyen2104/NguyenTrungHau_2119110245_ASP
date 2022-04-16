@@ -1,0 +1,123 @@
+﻿@model Shop.Context.Brand_2119110245
+@{
+    ViewBag.Title = "Chi tiết " + Model.BrandName;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div>
+
+    <hr />
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>CHI TIẾT THƯƠNG HIỆU</strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Edit", "Brand", new { id = Model.BrandId })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Cập nhật</a>
+                    <a href="@Url.Action("Index", "Brand")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:150px">Thuộc tính</th>
+                    <th>Nội dung</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.BrandName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BrandName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Avatar)
+                    </td>
+                    <td>
+                        @*@{
+                                var item = html.displayfor(model => model.avatar).tostring();
+                            }*@
+
+                        <img src="~/Public/images/brand/@Model.Avatar" alt="@Model.BrandName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Slug)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Slug)
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.ShowOnHomePage)
+                    </td>
+                    @if (Model.ShowOnHomePage == true)
+                    {
+                        <td>Có</td>
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.CreatedOnUtc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CreatedOnUtc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+                    </td>
+                    @if (Model.UpdatedOnUtc != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(model => model.UpdatedOnUtc)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Đang cập nhật
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Deleted)
+                    </td>
+                    @if (Model.Deleted == true)
+                    {
+                        <td>Trạng thái xoá</td>
+                    }
+                    else
+                    {
+                        <td>Không xoá</td>
+                    }
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
+
+    </div>
+    <!-- /.card -->
+</div>
+
+
+
