@@ -4,7 +4,7 @@
 @using PagedList.Mvc
 @model PagedList.IPagedList<Shop.Context.Category_2119110245>
 @{
-    ViewBag.Title = "ListInTrash";
+    ViewBag.Title = "Thùng rác";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -57,7 +57,7 @@
         }
 </style>
 
-<a href="@Url.Action("Index","Category")" class="btn btn-default btn-new" style="color:green;"><i class="fa-solid fa-circle-arrow-left" style="font-weight:600;"></i> Trở về danh mục</a>
+<a href="@Url.Action("Index","Category")" class="btn btn-default btn-new" style="color:green;"><i class="fa-solid fa-circle-arrow-left" style="font-weight:600;"></i> Trở về</a>
 @using (Html.BeginForm("Index", "Category", FormMethod.Get))
 {
     <p class="search__product">
@@ -82,6 +82,9 @@
         <tbody>
             @foreach (var item in Model)
             {
+                var url_recover = "/quan-tri/danh-muc/khoi-phuc/" + item.Slug + "-" + item.CategoryId;
+                var url_delete = "/quan-tri/danh-muc/xoa-vinh-vien/" + item.Slug + "-" + item.CategoryId;
+
                 <tr>
                     <td>
                         <input type="checkbox" name="checkId" value="" />
@@ -92,8 +95,11 @@
                         @Html.DisplayFor(modelItem => item.CreateOnUtc)
                     </td>
                     <td class="text-center">
-                        <a href="@Url.Action("Recover", "Category", new { id = item.CategoryId }) " style="color:blue;margin-right:10px"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-                        <a href="@Url.Action("Delete", "Category", new { id = item.CategoryId }) " style="color:red; margin-left:10px"><i class="fa-solid fa-trash"></i></a>
+                        @if (item.Deleted == true)
+                        {
+                        <a href="@url_recover" style="color:blue;margin-right:10px"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                        }
+                        <a href="@url_delete " style="color:red; margin-left:10px"><i class="fa-solid fa-trash"></i></a>
                     </td>
                     <td>@item.CategoryId</td>
                 </tr>

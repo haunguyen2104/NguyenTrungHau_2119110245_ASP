@@ -2,6 +2,7 @@
 using Shop.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace Shop.Areas.Admin.Controllers
     {
         // GET: Admin/Slider
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
+        //LOAD DANH SÁCH HÌNH ẢNH-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
             var listSlider = new List<Slider_2119110245>();
@@ -42,6 +44,12 @@ namespace Shop.Areas.Admin.Controllers
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
             listSlider = listSlider.OrderByDescending(x => x.Id).ToList();
             return View(listSlider.ToPagedList(pageNumber, pageSize));
+        }
+        //XEM CHI TIẾT HÌNH ẢNH---------------------------------------------------------------------------------------
+        public ActionResult Details(int id)
+        {
+            var objSlider = objWebsiteBanHangEntities.Slider_2119110245.Where(a => a.Id == id).FirstOrDefault();
+            return View(objSlider);
         }
         public ActionResult Create()
         {
@@ -78,7 +86,16 @@ namespace Shop.Areas.Admin.Controllers
             return View(objSlider);
         }
 
+        //TOGGLE TRẠNG THÁI XOÁ
+        public ActionResult IsDelete(int id)
+        {
+            var objSlider = objWebsiteBanHangEntities.Slider_2119110245.Where(n => n.Id == id).FirstOrDefault();
+            objSlider.IsDelete = (objSlider.IsDelete == true) ? false : true;
+            objWebsiteBanHangEntities.Entry(objSlider).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
 
+        }
 
     }
 }

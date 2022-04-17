@@ -143,13 +143,13 @@ namespace Shop.Areas.Admin.Controllers
             return View(listBrand.ToPagedList(pageNumber, pageSize));
         }
         ///ĐƯA VÀO THÙNG RÁC
-        public ActionResult ToggleTrash(int id)
-        {
-            this.LoadData();
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
-            return View(objBrand);
-        }
-        [HttpPost]
+        //public ActionResult ToggleTrash(int id)
+        //{
+        //    this.LoadData();
+        //    var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
+        //    return View(objBrand);
+        //}
+        //[HttpPost]
         public ActionResult ToggleTrash(int id, Brand_2119110245 objBrand)
         {
             this.LoadData();
@@ -160,14 +160,14 @@ namespace Shop.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
         ///KHÔI PHỤC
-        public ActionResult Recover(int id)
-        {
-            this.LoadData();
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
-            return View(objBrand);
+        //public ActionResult Recover(int id)
+        //{
+        //    this.LoadData();
+        //    var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
+        //    return View(objBrand);
 
-        }
-        [HttpPost]
+        //}
+        //[HttpPost]
         public ActionResult Recover(int id, Brand_2119110245 objBrand)
         {
             this.LoadData();

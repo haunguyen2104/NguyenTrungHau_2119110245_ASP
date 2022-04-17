@@ -1,0 +1,121 @@
+﻿@model Shop.Context.Slider_2119110245
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+
+    <hr />
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>CHI TIẾT SẢN PHẨM</strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Edit", "Slider", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Cập nhật</a>
+                    <a href="@Url.Action("Index", "Slider")" class="btn-sm btn-info"><i class="fas fa-arrow-circle-left"></i> Về danh sách</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:150px">Thuộc tính</th>
+                    <th>Nội dung</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Avatar)
+                    </td>
+                    <td>
+                        @*@{
+                                var item = html.displayfor(model => model.avatar).tostring();
+                            }*@
+
+                        <img src="~/Public/images/slider/@Model.Avatar" alt="@Model.Name" />
+                    </td>
+                </tr>
+                <tr>
+                    @*<td>
+                        @Html.DisplayNameFor(model => model.Slug)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Slug)
+                    </td>*@
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.IsDelete)
+                    </td>
+                    @if (Model.IsDelete == true)
+                    {
+                        <a href="@Url.Action("IsDelete", "User", new { id = item.Id })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i> </a>
+
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.CreateOnUtc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CreateOnUtc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.UpdateOnUtc)
+                    </td>
+                    @if (Model.UpdateOnUtc != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(model => model.UpdateOnUtc)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Đang cập nhật
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Deleted)
+                    </td>
+                    @if (Model.Deleted == true)
+                    {
+                        <td>Trạng thái xoá</td>
+                    }
+                    else
+                    {
+                        <td>Không xoá</td>
+                    }
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
+
+    </div>
+    <!-- /.card -->
+</div>
+
+
