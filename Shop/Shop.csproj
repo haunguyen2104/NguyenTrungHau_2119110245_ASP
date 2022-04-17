@@ -3031,6 +3031,7 @@
     <Content Include="Areas\Admin\Views\Brand\ToggleTrash.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Recover.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

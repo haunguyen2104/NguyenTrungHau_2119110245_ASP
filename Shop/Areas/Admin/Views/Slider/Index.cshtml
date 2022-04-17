@@ -94,6 +94,8 @@
                 <th class="text-center">  Tên hình</th>
 
                 <th class="text-center" style="width:280px;">Chức năng</th>
+                <th class="text-center" style="width:fit-content;">Trạng thái hoạt động</th>
+
                 <th class="text-center" style="width:20px;">ID </th>
             </tr>
         </thead>
@@ -107,7 +109,7 @@
                     <td class="text-center">
                         <input type="checkbox" name="checkId" value="" class="text-center" />
                     </td>
-                    <td><img src="~/Public/images/slider/@item.Avatar" alt="Tenhinh" class="img-fluid" /></td>
+                    <td><img src="~/Public/images/slider/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
                     <td class="text-center">@item.Name</td>
                     @*<td>@item.CategoryId </td>
 
@@ -118,8 +120,9 @@
 
                         <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " title="Chỉnh sửa" class="button btn_edit"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="@Url.Action("Details", "Product", new { id = item.Id }) " title="Chi tiết" class="button btn_detail"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("Delete", "Product", new { id = item.Id }) " title="Xoá" class="button btn_delete"><i class="fa-solid fa-trash"></i></a>
-                        <style>@*
+                        @*<a href="@Url.Action("Delete", "Product", new { id = item.Id }) " title="Xoá" class="button btn_delete"><i class="fa-solid fa-trash"></i></a>*@
+                        <style>
+@*
                             .button {
                                 margin-top: 12px;
                                 padding: 10px;
@@ -154,6 +157,18 @@
                             }
                         </style>
 
+                    </td>
+                    <td class="text-center">
+                        @if (item.IsDelete == true)
+                        {
+
+                            <a href="@Url.Action("IsDelete", "Slider", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i> </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("IsDelete", "Slider", new { id = item.Id })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i> </a>
+
+                        }
                     </td>
                     <td>@item.Id</td>
 

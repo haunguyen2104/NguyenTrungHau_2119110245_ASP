@@ -4,7 +4,7 @@
 @model PagedList.IPagedList<Shop.Context.Category_2119110245>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tất cả danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -85,9 +85,10 @@
 
             @foreach (var item in Model)
             {
-                //var url_edit = "/quan-tri/danh-muc/cap-nhap/" + item.Slug + "-" + item.Id;
-                //var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.Id;
-                //var url_delete = "/quan-tri/danh-muc/xoa/" + item.Slug + "-" + item.Id;
+                var url_edit = "/quan-tri/danh-muc/cap-nhat/"+ item.Slug + "-" + item.CategoryId;
+                //var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.CategoryId; 
+                var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.CategoryId;
+                var url_delete = "/quan-tri/danh-muc/xoa/" + item.Slug + "-" + item.CategoryId;
                 <tr>
                     <td>
                         <input type="checkbox" name="checkId" value="" />
@@ -101,9 +102,12 @@
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Category", new { id = item.CategoryId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Category", new { id = item.CategoryId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("ToggleTrash", "Category", new { id = item.CategoryId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        <a href="@url_edit " style="color:blue" class="func_hover"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@url_details " style="color: green; margin:0 10px;" class="func_hover"><i class="fa-solid fa-eye"></i></a>
+                        @if (item.Deleted == false)
+                        {
+                            <a href="@url_delete" style="color:red" class="func_hover"><i class="fa-solid fa-trash"></i></a>
+                        }
 
 
                     </td>
@@ -126,7 +130,14 @@ new { page, currentFilter = ViewBag.CurrentFilter }))
 
 
 <style>
+    .func_hover {
+        width: 25px;
+    }
 
+        .func_hover:hover i {
+            color: #ff6a00;
+            transform: scale(1.5)
+        }
     .pagination {
         display: inline-block;
         padding-left: 0;

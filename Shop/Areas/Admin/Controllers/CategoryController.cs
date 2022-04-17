@@ -143,13 +143,13 @@ namespace Shop.Areas.Admin.Controllers
             return View(listCategory.ToPagedList(pageNumber, pageSize));
         }
         ///ĐƯA VÀO THÙNG RÁC
-        public ActionResult ToggleTrash(int id)
-        {
-            this.LoadData();
-            var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
-            return View(objCategory);
-        }
-        [HttpPost]
+        //public ActionResult ToggleTrash(int id)
+        //{
+        //    this.LoadData();
+        //    var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
+        //    return View(objCategory);
+        //}
+        //[HttpPost]
         public ActionResult ToggleTrash(int id, Category_2119110245 objCategory)
         {
             this.LoadData();
@@ -160,14 +160,14 @@ namespace Shop.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
         ///KHÔI PHỤC
-        public ActionResult Recover(int id)
-        {
-            this.LoadData();
-            var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
-            return View(objCategory);
+        //public ActionResult Recover(int id)
+        //{
+        //    this.LoadData();
+        //    var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
+        //    return View(objCategory);
 
-        }
-        [HttpPost]
+        //}
+        //[HttpPost]
         public ActionResult Recover(int id, Category_2119110245 objCategory)
         {
             this.LoadData();

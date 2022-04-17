@@ -32,24 +32,8 @@ namespace Shop.Controllers
             var listProducts = new List<Product_2119110245>();
             var listCategory = new List<Category_2119110245>();
             var listBrand = new List<Brand_2119110245>();
-            var listSlider = objWebsiteBanHangEntities.Slider_2119110245.ToList();
+            var listSlider = objWebsiteBanHangEntities.Slider_2119110245.Where(a=>a.IsDelete==false).ToList();
             var listPost = new List<Post_2119110245>();
-            //if (!string.IsNullOrEmpty(SearchString))
-            //{
-
-            //    //Lấy sản phẩm theo searchstring
-            //    // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
-            //     listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Deleted == false&&n.FullName.Contains(SearchString)).ToList();
-            //    //Lấy danh mục sản phẩm
-            //     listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(n=> n.CategoryName.Contains(SearchString)).ToList();
-            //    //Lấy thương hiệu
-            //     listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandName.Contains(SearchString)).ToList();
-
-            //    //Lấy post
-            //     listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false&&a.PostTitle.Contains(SearchString)).ToList();
-            //}
-            //else
-            //{
             //Lấy sản phẩm giá sốc
             // var listProduct= objWebsiteBanHangEntities.C2119110245_Product.ToList();
             listProducts = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Deleted == false).ToList();
@@ -60,7 +44,7 @@ namespace Shop.Controllers
 
             //Lấy post
             listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false).ToList();
-            //}
+         
             HomeModel objhomeModel = new HomeModel();
             objhomeModel.listCategory = listCategory;
             objhomeModel.listProduct = listProducts;

@@ -4,7 +4,7 @@
 @using PagedList.Mvc
 @model PagedList.IPagedList<Shop.Context.Brand_2119110245>
 @{
-    ViewBag.Title = "ListInTrash";
+    ViewBag.Title = "Thùng rác";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -57,13 +57,13 @@
         }
 </style>
 
-<a href="@Url.Action("Index","Brand")" class="btn btn-default btn-new" style="color:green;"><i class="fa-solid fa-circle-arrow-left" style="font-weight:600;"></i> Trở về danh mục</a>
+<a href="@Url.Action("Index","Brand")" class="btn btn-default btn-new" style="color:green;"><i class="fa-solid fa-circle-arrow-left" style="font-weight:600;"></i> Trở về</a>
 @using (Html.BeginForm("Index", "Brand", FormMethod.Get))
 {
     <p class="search__product">
         Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
-        <a href="@Url.Action("Index","Brand")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả danh mục</a>
+        <a href="@Url.Action("Index","Brand")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả thương hiệu</a>
     </p>
 }
 <div class="card-body">
@@ -82,6 +82,9 @@
         <tbody>
             @foreach (var item in Model)
             {
+                var url_delete = "/quan-tri/thuong-hieu/xoa-vinh-vien/" + item.Slug + "-" + item.BrandId;
+                var url_recover = "/quan-tri/thuong-hieu/khoi-phuc/" + item.Slug + "-" + item.BrandId;
+
                 <tr>
                     <td>
                         <input type="checkbox" name="checkId" value="" />
@@ -92,8 +95,11 @@
                         @Html.DisplayFor(modelItem => item.CreatedOnUtc)
                     </td>
                     <td class="text-center">
-                        <a href="@Url.Action("Recover", "Brand", new { id = item.BrandId }) " style="color:blue;margin-right:10px"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-                        <a href="@Url.Action("Delete", "Brand", new { id = item.BrandId }) " style="color:red; margin-left:10px"><i class="fa-solid fa-trash"></i></a>
+                        @if (item.Deleted == true)
+                        {
+                            <a href="@url_recover" style="color:blue;margin-right:10px"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                        }
+                        <a href="@url_delete " style="color:red; margin-left:10px"><i class="fa-solid fa-trash"></i></a>
                     </td>
                     <td>@item.BrandId</td>
                 </tr>

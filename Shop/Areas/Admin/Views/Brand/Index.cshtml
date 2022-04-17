@@ -74,9 +74,9 @@
                 <th class="text-center" style="width:20px;"></th>
                 <th class="text-center" style="width:200px;">Hình</th>
 
-                <th>  Tên thương hiệu</th>
+                <th class="text-center">  Tên thương hiệu</th>
 
-                <th> Ngày tạo</th>
+                <th class="text-center" s> Ngày tạo</th>
                 <th class="text-center" style="width:180px;">Chức năng</th>
                 <th class="text-center" style="width:20px;">ID </th>
             </tr>
@@ -86,24 +86,30 @@
 
             @foreach (var item in Model)
             {
-              
+                var create_date = Convert.ToDateTime(item.CreatedOnUtc).ToString("dd/MM/yyyy - hh:mm:ss");
+                var url_edit = "/quan-tri/thuong-hieu/cap-nhat/" + item.Slug + "-" + item.BrandId;
+                var url_details = "/quan-tri/thuong-hieu/chi-tiet/" + item.Slug + "-" + item.BrandId;
+                var url_delete = "/quan-tri/thuong-hieu/xoa/" + item.Slug + "-" + item.BrandId;
+
                 <tr>
                     <td>
-                        <input type="checkbox" name="checkId" value="" /> 
+                        <input type="checkbox" name="checkId" value="" />
                     </td>
                     <td><img src="~/Public/images/brand/@item.Avatar" alt="@item.BrandName" class="img-fluid" /></td>
                     <td>@item.BrandName</td>
 
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+                    <td class="text-center">
+                        @create_date
                     </td>
                     <td class="text-center">
 
-                        <a href="@Url.Action("Edit", "Brand", new { id = item.BrandId }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="@Url.Action("Details", "Brand", new { id = item.BrandId }) " style="color:green"><i class="fa-solid fa-eye"></i></a>
-                        <a href="@Url.Action("ToggleTrash", "Brand", new { id = item.BrandId }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
-
+                        <a class="func_hover" href="@url_edit" style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="func_hover" href="@url_details " style="color: green; margin: 0 10px;"><i class="fa-solid fa-eye"></i></a>
+                        @if (item.Deleted == false)
+                        {
+                            <a class="func_hover" href="@url_delete" style="color:red"><i class="fa-solid fa-trash"></i></a>
+                        }
 
                     </td>
                     <td>@item.BrandId</td>
@@ -125,6 +131,14 @@ new { page, currentFilter = ViewBag.CurrentFilter }))
 
 
 <style>
+    .func_hover {
+        width: 25px;
+    }
+
+        .func_hover:hover i {
+            color: #ff6a00;
+            transform: scale(1.5)
+        }
 
     .pagination {
         display: inline-block;
