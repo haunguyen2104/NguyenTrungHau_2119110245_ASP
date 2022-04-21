@@ -64,13 +64,12 @@
                                         <option value="comments">Only best</option>
                                         <option value="content">Latest</option>
                                     </select>*@
-                                <input type="text" class="form-control" placeholder="Tìm kiếm" name="SearchString">
-
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i> Tìm kiếm
-                                    </button>
-                                </div>
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm" name="SearchString">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search"></i> Tìm kiếm
+                                        </button>
+                                    </div>
                             </div>
                         </form> <!-- search-wrap .end// -->
                     </div> <!-- col.// -->
@@ -111,7 +110,7 @@
                                     </div><!--Message //-->
 
                                     <div class="widget-header">
-                                        <a href="@Url.Action("Logout","Home")" class="widget-view">
+                                        <a href="@Url.Action("Logout", "Home")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-sign-out-alt"></i>
                                             </div>
@@ -151,19 +150,19 @@
                                     </div><!--Orders //-->
 
                                     <div class="widget-header">
-                                        <a href="@Url.Action("Index","Cart")" class="widget-view">
+                                        <a href="@Url.Action("Index", "Cart")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-shopping-cart"></i>
-                                               
-                                                    <span class="notify" id="CartCount">@Session["count"]</span>
-                                                   
+
+                                                <span class="notify" id="CartCount">@Session["count"]</span>
+
 
                                             </div>
                                             <small class="text"> Giỏ hàng </small>
                                         </a>
                                     </div><!--Cart //-->
                                     <div class="widget-header">
-                                        <a href="@Url.Action("Logout","Home")" class="widget-view">
+                                        <a href="@Url.Action("Logout", "Home")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-sign-out-alt"></i>
                                             </div>
@@ -178,7 +177,7 @@
                             else
                             {
                                 <div class="widget-header">
-                                    <a href="@Url.Action("Login","Home")" class="widget-view">
+                                    <a href="@Url.Action("Login", "Home")" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-sign-in-alt"></i>
                                         </div>
@@ -186,7 +185,7 @@
                                     </a>
                                 </div><!--Login //-->
                                 <div class="widget-header">
-                                    <a href="@Url.Action("Register","Home")" class="widget-view">
+                                    <a href="@Url.Action("Register", "Home")" class="widget-view">
                                         <div class="icon-area">
 
                                             <i class="fa fa-cash-register"></i>

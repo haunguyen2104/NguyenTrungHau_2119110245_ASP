@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Shop.Models.CartModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -10,7 +10,7 @@
         $("#removecart").click(function () {
             var model = {};
             //lấy id sản phẩm
-            model.Id = $("#productid").val();
+            model.Id = $("#productId").val();
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("Remove", "Cart")',
@@ -19,7 +19,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function () {
                     $('#CartCount').text(@Session["count"] - 1);
-                    $( "#product-" +   model.Id ).remove();
+                    $( "#product-"  +   model.Id ).remove();
                 },
                 error: function () {
                     alert("Lỗi trong khi thêm vào giỏ hàng!");
@@ -58,7 +58,7 @@
                                     var priceSale = item.Product.PriceDiscount;
                                     var quatity = item.Quantity;
 
-                                    <tr>
+                                    <tr id="product-@item.Product.Id">
                                         <td>
                                             <figure class="itemside">
                                                 <div class="aside"><img src="~/Public/images/product/@item.Product.Avatar" class="img-sm"></div>
@@ -103,8 +103,9 @@
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
+                                            <input type="hidden" value="@item.Product.Id" id="productId"/>
                                             <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-                                            <a href="" class="btn btn-light btn-round"> Remove</a>
+                                            <a href="" class="btn btn-light btn-round" id="removecart"> Remove</a>
                                         </td>
                                     </tr>
                                 }

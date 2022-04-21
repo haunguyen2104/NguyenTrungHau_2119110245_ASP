@@ -47,8 +47,18 @@
                             <td>
                                 <label class="text-center">Hình</label>
                             </td>
-                            <td>
-                                <input name="ImageUpload" type="file" class="from-control" />
+                            <td class="row">
+                                <div style="display:none;">
+                                    @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="file" name="ImageUpload" class="img__input" style="width:296px" />
+                                </div>
+                                <div class="col-md-3">
+                                    <img width="100%" src="" id="avatarView" />
+                                </div>
+
+
                             </td>
                         </tr>
                         <tr>
