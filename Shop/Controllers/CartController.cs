@@ -55,6 +55,7 @@ namespace Shop.Controllers
                     return i;
             return -1;
         }
+        //Xoa SP khoi gio hang
         public ActionResult Remove(int Id)
         {
             List<CartModel> li = (List<CartModel>)Session["cart"];

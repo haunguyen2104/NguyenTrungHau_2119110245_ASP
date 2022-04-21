@@ -295,6 +295,7 @@
     <Content Include="Public\admin\dist\js\pages\dashboard.js" />
     <Content Include="Public\admin\dist\js\pages\dashboard2.js" />
     <Content Include="Public\admin\dist\js\pages\dashboard3.js" />
+    <Content Include="Public\admin\style.js" />
     <Content Include="Public\admin\mystyle.css" />
     <Content Include="Public\admin\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Public\admin\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
