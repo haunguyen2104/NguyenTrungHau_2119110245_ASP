@@ -85,10 +85,13 @@
 
             @foreach (var item in Model)
             {
-                var url_edit = "/quan-tri/danh-muc/cap-nhat/"+ item.Slug + "-" + item.CategoryId;
+                var slug = item.Slug;
+                var id = item.CategoryId;
+
+                var url_edit = "/quan-tri/danh-muc/cap-nhat/"+ slug + "-" +id;
                 //var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.CategoryId; 
-                var url_details = "/quan-tri/danh-muc/chi-tiet/" + item.Slug + "-" + item.CategoryId;
-                var url_delete = "/quan-tri/danh-muc/xoa/" + item.Slug + "-" + item.CategoryId;
+                var url_details = "/quan-tri/danh-muc/chi-tiet/" + slug + "-" + id;
+                var url_delete = "/quan-tri/danh-muc/xoa/" +slug + "-" + id;
                 <tr>
                     <td>
                         <input type="checkbox" name="checkId" value="" />

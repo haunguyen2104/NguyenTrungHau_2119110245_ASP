@@ -1,4 +1,4 @@
-﻿ using PagedList;
+﻿using PagedList;
 using Shop.Context;
 using Shop.Models;
 using System;
@@ -21,7 +21,6 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-
             var listProduct = new List<Product_2119110245>();
             if (SearchString != null)
             {
@@ -114,20 +113,32 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Edit(int id, Product_2119110245 objProduct)
         {
             this.LoadData();
-            if (objProduct.ImageUpload != null)
+            if (ModelState.IsValid)
             {
+                try
+                {
+                    if (objProduct.ImageUpload != null)
+                    {
 
-                string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
-                string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                fileName = fileName + extension;
-                objProduct.Avatar = fileName;
-                objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
+                        string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
+                        string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
+                        fileName = fileName + extension;
+                        objProduct.Avatar = fileName;
+                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
+                    }
+                    //objProduct.Id = id;
+                    objProduct.UpdatedOnUtc = DateTime.Now;
+                    objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
+                    objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+                    objWebsiteBanHangEntities.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Edit");
+                }
             }
-            objProduct.UpdatedOnUtc = DateTime.Now;
-            objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
-            objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
-            objWebsiteBanHangEntities.SaveChanges();
-            return RedirectToAction("Index");
+            return View(objProduct);
         }
         [HttpGet]
         public ActionResult ToggleTrash(int id)

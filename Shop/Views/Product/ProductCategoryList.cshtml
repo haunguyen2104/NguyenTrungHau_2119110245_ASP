@@ -197,12 +197,19 @@
                             <option>Cheapest</option>
                         </select>
                         <div class="btn-group">
-                            <a href="@Url.Action("ProductCategoryList", "Product",new { id=Model.Id})" class="btn btn-light   active" data-toggle="tooltip" title="List view">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                            <a href="@Url.Action("ProductCategoryGrid","Product",new { id=Model.Id})" class="btn btn-light" data-toggle="tooltip" title="Grid view">
-                                <i class="fa fa-th"></i>
-                            </a>
+                            @{
+                                var id = Model.Id;
+                                var slug = Model.Slug;
+                                var url_category_list = "/san-pham/danh-muc/danh-sach/" + slug + "-" + id;
+                                var url_category_grid = "/san-pham/danh-muc/luoi/" + slug + "-" + id;
+
+                                <a href="@url_category_list" class="btn btn-light   active" data-toggle="tooltip" title="List view">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                                <a href="@url_category_grid" class="btn btn-light" data-toggle="tooltip" title="Grid view">
+                                    <i class="fa fa-th"></i>
+                                </a>
+                            }
                         </div>
                     </div>
                 </header><!-- sect-heading -->
@@ -252,14 +259,30 @@
                                 <div class="info-aside">
                                     <div class="price-wrap">
                                         <!--nếu có phân trang lấy 5 item-->
-                                        @if (item.PriceDiscount != null)
-                                        {
-                                            <span class="h5 price">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup>  - <span style="text-decoration:line-through">@Convert.ToDecimal(item.Price).ToString("#,##0")</span> <sup>đ</sup></span>
-                                        }
-                                        else
-                                        {
-                                            <span class="h5 price">@item.Price <sup>đ</sup></span>
-                                        }
+                                     
+                                        <span class="h5 price">
+                                            @if (item.PriceDiscount != null)
+                                            {
+                                                <span style="color:red">
+                                                    @Convert.ToDecimal(item.PriceDiscount).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                                <span> -</span>
+                                                <span style="text-decoration:line-through; font-weight:normal;">
+                                                    @Convert.ToDecimal(item.Price).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red">
+
+                                                    @Convert.ToDecimal(item.Price).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                            }
+                                        </span>
+                                        
 
                                     </div> <!-- price-wrap.// -->
                                     <small class="text-success">Free shipping</small>

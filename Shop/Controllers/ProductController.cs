@@ -25,8 +25,11 @@ namespace Shop.Controllers
             //Lấy danh mục 
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).ToList();
             var lstBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
+            var slug = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault().Slug;
+
             ProductCategoryModel objProductCategoryModel = new ProductCategoryModel();
             objProductCategoryModel.Id = id;
+            objProductCategoryModel.Slug = slug;
             objProductCategoryModel.listProduct = objProCate;
             objProductCategoryModel.listCategory = objCate;
             objProductCategoryModel.listBrand = lstBrand;
@@ -40,9 +43,10 @@ namespace Shop.Controllers
             //Lấy danh mục 
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).ToList();
             var lstBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
-
+            var slug = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault().Slug;
             ProductCategoryModel objProductCategoryModel = new ProductCategoryModel();
             objProductCategoryModel.Id = id;
+            objProductCategoryModel.Slug = slug;
             objProductCategoryModel.listProduct = objProCate;
             objProductCategoryModel.listCategory = objCate;
             objProductCategoryModel.listBrand = lstBrand;
@@ -53,13 +57,17 @@ namespace Shop.Controllers
             // Lấy sản phẩm theo thương hiệu
             var objProBrand = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.BrandId == id && n.Deleted == false).ToList();
             //Lấy thương hiệu 
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandId == id).ToList();
-            var objCate = objWebsiteBanHangEntities.Category_2119110245.ToList();
+            var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandId == id).ToList();
+            var listCate = objWebsiteBanHangEntities.Category_2119110245.ToList();
+            var slug = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault().Slug;
+   
+            //var slug= objBrand
             ProductBrandModel objProductBrandModel = new ProductBrandModel();
             objProductBrandModel.Id = id;
+            objProductBrandModel.Slug = slug;
             objProductBrandModel.listProduct = objProBrand;
-            objProductBrandModel.listBrand = objBrand;
-            objProductBrandModel.listCategory = objCate;
+            objProductBrandModel.listBrand = listBrand;
+            objProductBrandModel.listCategory =listCate;
 
             return View(objProductBrandModel);
         }
@@ -71,9 +79,11 @@ namespace Shop.Controllers
             var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(x => x.BrandId == id).ToList();
 
             var objCate = objWebsiteBanHangEntities.Category_2119110245.ToList();
+            var slug = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault().Slug;
 
             ProductBrandModel objProductBrandModel = new ProductBrandModel();
             objProductBrandModel.Id = id;
+            objProductBrandModel.Slug = slug;
             objProductBrandModel.listProduct = lstProBrand;
             objProductBrandModel.listBrand = objBrand;
             objProductBrandModel.listCategory = objCate;

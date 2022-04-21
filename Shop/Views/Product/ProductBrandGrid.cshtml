@@ -116,10 +116,16 @@
                     <option>Cheapest</option>
                 </select>
                 <div class="btn-group">
-                    <a href="@Url.Action("ProductCategoryList","Product",new { id=Model.Id})" class="btn btn-light" data-toggle="tooltip" title="List view">
+                    @{
+                        var id = Model.Id;
+                        var slug = Model.Slug;
+                        var url_brandlist = "/san-pham/thuong-hieu/danh-sach/"+slug+"-"+id;
+                        var url_brandgrid = "/san-pham/thuong-hieu/luoi/"+slug+"-"+id;
+                    }
+                    <a href="@url_brandlist" class="btn btn-light" data-toggle="tooltip" title="List view">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <a href="@Url.Action("ProductCategoryGrid","Product",new { id=Model.Id})" class="btn btn-light active" data-toggle="tooltip" title="Grid view">
+                    <a href="@url_brandgrid" class="btn btn-light active" data-toggle="tooltip" title="Grid view">
                         <i class="fa fa-th"></i>
                     </a>
                 </div>

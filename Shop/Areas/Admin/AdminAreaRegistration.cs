@@ -45,34 +45,51 @@ namespace Shop.Areas.Admin
             ///Thêm danh mục
             context.MapRoute("NewCategory", "quan-tri/them-moi-danh-muc", new { controller = "Category", action = "Create", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Cập nhật danh mục
-            context.MapRoute("CategoryEdit", "danh-muc/cap-nhat/{Slug}-{BrandId}", new { controller = "Category", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("CategoryEdit", "quan-tri/danh-muc/cap-nhat/{slug}-{id}", new { controller = "Category", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xem danh mục
-            context.MapRoute("DetailCategory", "quan-tri/danh-muc/chi-tiet/{Slug}-{Id}", new { controller = "Category", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("DetailCategory", "quan-tri/danh-muc/chi-tiet/{slug}-{id}", new { controller = "Category", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá danh mục vào thùng rác
-            context.MapRoute("ToggleTrashCategory", "quan-tri/danh-muc/xoa/{Slug}-{Id}", new { controller = "Category", action = "ToggleTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("ToggleTrashCategory", "quan-tri/danh-muc/xoa/{slug}-{id}", new { controller = "Category", action = "ToggleTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Danh sách danh mục trong thùng rác
             context.MapRoute("CategoryListInTrash", "quan-tri/danh-muc/thung-rac", new { controller = "Category", action = "ListInTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá vĩnh viễn danh mục
-            context.MapRoute("DeleteCategory", "quan-tri/danh-muc/xoa-vinh-vien/{Slug}-{Id}", new { controller = "Category", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("DeleteCategory", "quan-tri/danh-muc/xoa-vinh-vien/{slug}-{id}", new { controller = "Category", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///khôi phục danh mục
-            context.MapRoute("RecoverCategory", "quan-tri/danh-muc/khoi-phuc/{Slug}-{Id}", new { controller = "Category", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("RecoverCategory", "quan-tri/danh-muc/khoi-phuc/{slug}-{id}", new { controller = "Category", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             //Quản trị thương hiệu----------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách thương hiệu
             context.MapRoute("BrandList", "quan-tri/danh-sach-thuong-hieu", new { controller = "Brand", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Thêm danh mục
             context.MapRoute("NewBrand", "quan-tri/them-moi-thuong-hieu", new { controller = "Brand", action = "Create", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Cập nhật thương hiệu
-            context.MapRoute("BrandEdit", "quan-tri/thuong-hieu/cap-nhat/{Slug}-{BrandId}", new { controller = "Brand", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+           context.MapRoute("UpdateBrand", "quan-tri/thuong-hieu/cap-nhat/{slug}-{id}", new { controller = "Brand", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xem thương hiệu
-            context.MapRoute("DetailBrand", "quan-tri/thuong-hieu/chi-tiet/{Slug}-{Id}", new { controller = "Brand", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("DetailBrand", "quan-tri/thuong-hieu/chi-tiet/{slug}-{id}", new { controller = "Brand", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá thương hiệu vào thùng rác
-            context.MapRoute("ToggleTrashBrand", "quan-tri/thuong-hieu/xoa/{Slug}-{Id}", new { controller = "Brand", action = "ToggleTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("ToggleTrashBrand", "quan-tri/thuong-hieu/xoa/{slug}-{id}", new { controller = "Brand", action = "ToggleTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Danh sách thương hiệu trong thùng rác
             context.MapRoute("BrandListInTrash", "quan-tri/thuong-hieu/thung-rac", new { controller = "Brand", action = "ListInTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá vĩnh viễn thương hiệu
-            context.MapRoute("DeleteBrand", "quan-tri/thuong-hieu/xoa-vinh-vien/{Slug}-{Id}", new { controller = "Brand", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("DeleteBrand", "quan-tri/thuong-hieu/xoa-vinh-vien/{slug}-{id}", new { controller = "Brand", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///khôi phục thương hiệu
-            context.MapRoute("RecoverBrand", "quan-tri/thuong-hieu/khoi-phuc/{Slug}-{Id}", new { controller = "Brand", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("RecoverBrand", "quan-tri/thuong-hieu/khoi-phuc/{slug}-{id}", new { controller = "Brand", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+             //Quản trị bài viết----------------------------------------------------------------------------------------------------------------------------------
+            ///Danh sách bài viết
+            context.MapRoute("PostList", "quan-tri/danh-sach-bai-viet", new { controller = "Post", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Thêm bài viết
+            context.MapRoute("NewPost", "quan-tri/them-moi-bai-viet", new { controller = "Post", action = "Create", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Cập nhật bài viết
+            context.MapRoute("PostEdit", "quan-tri/bai-viet/cap-nhat/{Slug}-{PostId}", new { controller = "Post", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Xem bài viết
+            context.MapRoute("DetailPost", "quan-tri/bai-viet/chi-tiet/{Slug}-{Id}", new { controller = "Post", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Xoá bài viết vào thùng rác
+            context.MapRoute("ToggleTrashPost", "quan-tri/bai-viet/xoa/{Slug}-{Id}", new { controller = "Post", action = "ToggleTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Danh sách bài viếtu trong thùng rác
+            context.MapRoute("PostListInTrash", "quan-tri/bai-viet/thung-rac", new { controller = "Post", action = "ListInTrash", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Xoá vĩnh viễn bài viết
+            context.MapRoute("DeletePost", "quan-tri/bai-viet/xoa-vinh-vien/{Slug}-{Id}", new { controller = "Post", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///khôi phục bài viết
+            context.MapRoute("RecoverPost", "quan-tri/bai-viet/khoi-phuc/{Slug}-{Id}", new { controller = "Post", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
 
             //Quản trị slider------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách hình ảnh slider

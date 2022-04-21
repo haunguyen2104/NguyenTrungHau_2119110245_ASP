@@ -44,18 +44,20 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-9">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
                         <div class="form-group">
-                            <label>Tên sản phẩm <span style="color:red;">(*)</span></label>
+                            <label>Tên sản phẩm đầy đủ <span style="color:red;">(*)</span></label>
                             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red;font-style:italic" })
 
-                        </div>
+                        </div> 
                         <div class="form-group">
                             <label>Tên sản phẩm đầy đủ <span style="color:red;">(*)</span></label>
                             @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.FullName, "", new { @style = "color:red;font-style:italic" })
 
-                        </div>  
+                        </div>
                         <div class="form-group row">
 
                             <div class="col-md-5">
@@ -98,10 +100,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="from-group">
-                            <label>Hình</label>
-                            <input type="file" name="ImageUpload" class="img__input" />
-                        </div>
+
                         <div class="form-group">
                             <label>Danh mục sản phẩm</label>
                             @Html.DropDownListFor(model => model.CategoryId, ViewBag.ListCategory as SelectList, "---Chọn danh mục sản phẩm--- ", new { @class = "form-control" })
@@ -122,7 +121,7 @@
                         </div>
                         <div class="form-group">
                             <label>Trạng thái xoá</label>
-                            @Html.EditorFor(model => model.Deleted, "---Chọn trạng thái--- ",new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Deleted, "---Chọn trạng thái--- ", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
 
                         </div>
@@ -132,9 +131,14 @@
                             @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
 
                         </div>
-                  
 
-                  
+                        <div class="from-group">
+                            <label>Hình</label>
+                            <input type="file" name="ImageUpload" class="img__input" />
+                            <input type="text" name="Avatar" value="@Model.Avatar" hidden="hidden" />
+
+                        </div>
+
                     </div>
                 </div>
             </div>

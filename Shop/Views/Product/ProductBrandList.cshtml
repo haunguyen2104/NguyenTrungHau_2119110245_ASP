@@ -19,7 +19,7 @@
                     {
 
                         <li class="breadcrumb-item active">@item.BrandName</li>
-                    }Guangzhou Electronic Co
+                    }
                 </ol>
             </div> <!-- card-body .// -->
         </div> <!-- card.// -->
@@ -159,10 +159,16 @@
                             <option>Cheapest</option>
                         </select>
                         <div class="btn-group">
-                            <a href="@Url.Action("ProductBrandList", "Product" ,new { id= Model.Id})" class="btn btn-light  active" data-toggle="tooltip" title="List view">
+                            @{
+                                var id = Model.Id;
+                                var slug = Model.Slug;
+                                var url_brandlist = "/san-pham/thuong-hieu/danh-sach/" + slug + "-" + id;
+                                var url_brandgrid = "/san-pham/thuong-hieu/luoi/" + slug + "-" + id;
+                            }
+                            <a href="@url_brandlist" class="btn btn-light" data-toggle="tooltip" title="List view">
                                 <i class="fa fa-bars"></i>
                             </a>
-                            <a href="@Url.Action("ProductBrandGrid","Product",new { id= Model.Id})" class="btn btn-light" data-toggle="tooltip" title="Grid view">
+                            <a href="@url_brandgrid" class="btn btn-light active" data-toggle="tooltip" title="Grid view">
                                 <i class="fa fa-th"></i>
                             </a>
                         </div>
@@ -214,21 +220,32 @@
                                 <div class="info-aside">
                                     <div class="price-wrap">
                                         <span class="h5 price">
-                                            <span style="color:red">
-                                                @Convert.ToDecimal(item.PriceDiscount).ToString("#,###0")
-                                                <sup>đ</sup>
-                                            </span>
-                                            -
-                                            <span style="text-decoration:line-through; font-weight:normal;">
-                                                @Convert.ToDecimal(item.Price).ToString("#,###0")
-                                                <sup>đ</sup>
-                                            </span>
+                                            @if (item.PriceDiscount != null)
+                                            {
+                                                <span style="color:red">
+                                                    @Convert.ToDecimal(item.PriceDiscount).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                                <span> -</span>
+                                                <span style="text-decoration:line-through; font-weight:normal;">
+                                                    @Convert.ToDecimal(item.Price).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red">
+                                                  
+                                                    @Convert.ToDecimal(item.Price).ToString("#,###0")
+                                                    <sup>đ</sup>
+                                                </span>
+                                            }
                                         </span>
                                         @*<small class="text-muted"><br>giá cho 1 sản phẩm</small>*@
                                     </div> <!-- price-wrap.// -->
                                     <small class="text-success">Free shipping</small>
 
-                                    
+
                                     <p class="mt-3">
                                         <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Liên hệ </a>
                                         <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Save </a>

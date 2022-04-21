@@ -126,61 +126,61 @@ namespace Shop.Controllers
             }
             return View();
         }
-        public ActionResult LoginFacebook()
-        {
-            //var fb = new FacebookClient();
-            //var loginUrl = fb.GetLoginUrl(new
-            //{
-            //    client_id = ConfigurationManager.AppSettings["FBAppId"],
-            //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
-            //    redirect_uri = RedirectUri.AbsoluteUri,
-            //    response_type = "code",
-            //    scope = "email"
-            //});
+        //public ActionResult LoginFacebook()
+        //{
+        //    //var fb = new FacebookClient();
+        //    //var loginUrl = fb.GetLoginUrl(new
+        //    //{
+        //    //    client_id = ConfigurationManager.AppSettings["FBAppId"],
+        //    //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
+        //    //    redirect_uri = RedirectUri.AbsoluteUri,
+        //    //    response_type = "code",
+        //    //    scope = "email"
+        //    //});
 
-            //return Redirect(loginUrl.AbsoluteUri);
-            return View();
-        }
-        public ActionResult FacebookCallback(string code)
-        {
-            //var fb = new FacebookClient();
-            //dynamic result = fb.Post("oauth/access_token", new
-            //{
-            //    client_id = ConfigurationManager.AppSettings["FBAppId"],
-            //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
-            //    redirect_uri = RedirectUri.AbsoluteUri,
-            //    code = code
-            //});
-            //var accessToken = result.access_token;
-            //if (!string.IsNullOrEmpty(accessToken))
-            //{
-            //    fb.AccessToken = accessToken;
-            //    dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
-            //    string email = me.email;
-            //    string userName = me.email;
-            //    string firstname = me.first_name;
-            //    string lastname = me.last_name;
-            //    string middlename = me.middle_name;
+        //    //return Redirect(loginUrl.AbsoluteUri);
+        //    return View();
+        //}
+        //public ActionResult FacebookCallback(string code)
+        //{
+        //    //var fb = new FacebookClient();
+        //    //dynamic result = fb.Post("oauth/access_token", new
+        //    //{
+        //    //    client_id = ConfigurationManager.AppSettings["FBAppId"],
+        //    //    client_secret = ConfigurationManager.AppSettings["FBAppSecret"],
+        //    //    redirect_uri = RedirectUri.AbsoluteUri,
+        //    //    code = code
+        //    //});
+        //    //var accessToken = result.access_token;
+        //    //if (!string.IsNullOrEmpty(accessToken))
+        //    //{
+        //    //    fb.AccessToken = accessToken;
+        //    //    dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+        //    //    string email = me.email;
+        //    //    string userName = me.email;
+        //    //    string firstname = me.first_name;
+        //    //    string lastname = me.last_name;
+        //    //    string middlename = me.middle_name;
 
-            //    var users = new User_2119110245();
-            //    users.Email = email;
-            //    users.FirstName = firstname + " " + middlename;
-            //    users.LastName = lastname;
-            //    objWebsiteBanHangEntities.User_2119110245.Add(users);
-            //    objWebsiteBanHangEntities.SaveChanges();
+        //    //    var users = new User_2119110245();
+        //    //    users.Email = email;
+        //    //    users.FirstName = firstname + " " + middlename;
+        //    //    users.LastName = lastname;
+        //    //    objWebsiteBanHangEntities.User_2119110245.Add(users);
+        //    //    objWebsiteBanHangEntities.SaveChanges();
                
-            //        //add session
-            //        Session["FullName"] = firstname + " " + middlename + " " + lastname;
-            //        Session["Email"] = email;
-            //        Session["Id"] = users.Id;
-            //        Session["IsAdmin"] = users.IsAdmin;
-            //        //TempData["success"] = "Đăng nhập thành công";
+        //    //        //add session
+        //    //        Session["FullName"] = firstname + " " + middlename + " " + lastname;
+        //    //        Session["Email"] = email;
+        //    //        Session["Id"] = users.Id;
+        //    //        Session["IsAdmin"] = users.IsAdmin;
+        //    //        //TempData["success"] = "Đăng nhập thành công";
 
                   
                
-            //}
-            return Redirect("/");
-        }
+        //    //}
+        //    return Redirect("/");
+        //}
         public ActionResult Logout()
         {
             Session.Clear();//Remove session

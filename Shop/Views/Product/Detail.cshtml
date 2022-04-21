@@ -103,20 +103,20 @@
 
 
                     <dl class="row">
-                        <dt class="col-sm-3">Create Date: </dt>
+                        <dt class="col-sm-3">Ngay: </dt>
 
                         <dd class="col-sm-9"><a href="#">@Convert.ToDateTime(Model.CreatedOnUtc).ToString("hh:mm dddd - dd/MM/yyyy")</a></dd>
 
                         <dt class="col-sm-3">Article number</dt>
                         <dd class="col-sm-9">596 065</dd>
 
-                        <dt class="col-sm-3">Guarantee</dt>
+                        <dt class="col-sm-3">Bảo hành:</dt>
                         <dd class="col-sm-9">2 year</dd>
 
-                        <dt class="col-sm-3">Delivery time</dt>
-                        <dd class="col-sm-9">3-4 days</dd>
+                        <dt class="col-sm-3">Giao hàng</dt>
+                        <dd class="col-sm-9">1-2 ngày</dd>
 
-                        <dt class="col-sm-3">Quantity</dt>
+                        <dt class="col-sm-3">Số lượng</dt>
                         @if (Model.Quantity == null || Model.Quantity < 1)
                         {
 
@@ -168,10 +168,10 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h5 class="title-description">Description</h5>
+                <h5 class="title-description">Chi tiết</h5>
                 <p>@Html.Raw(Model.FullDescription)</p>
 
-                <h5 class="title-description">Specifications</h5>
+                @*<h5 class="title-description">Specifications</h5>*@
                 @*<table class="table table-bordered">
                         <tr> <th colspan="2">Basic specs</th> </tr>
                         <tr> <td>Type of energy</td><td>Lava stone</td> </tr>

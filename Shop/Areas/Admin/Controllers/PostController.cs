@@ -1,7 +1,9 @@
-﻿using Shop.Context;
+﻿using PagedList;
+using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -13,11 +15,36 @@ namespace Shop.Areas.Admin.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Post
-        public ActionResult Index()
+        //LOAD DANH SÁCH BÀI VIẾT-------------------------------------------------------------------------------------
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false).ToList();
-            return View(listPost);
-        } public ActionResult Details(int id)
+            var listPost = new List<Post_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds post theo từ khoá tìm kiếm
+                listPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.PostTitle.Contains(SearchString) && x.isDelete == false).ToList();
+            }
+            else
+            {
+                //lấy ds post trong bảng product
+                listPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.isDelete== false).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listPost = listPost.OrderByDescending(x => x.PostId).ToList();
+            return View(listPost.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Details(int id)
         {
             var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             return View(objPost);
@@ -60,24 +87,93 @@ namespace Shop.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId == id).FirstOrDefault();
+            return View(objPost);
         }
         [HttpPost]
-        public ActionResult Edit(Post_2119110245 objPost)
+        public ActionResult Edit(int id,Post_2119110245 objPost)
         {
-            return View();
+            objPost.PostId = id;
+            if (objPost.ImageUpload != null)
+            {
+
+                string fileName = Path.GetFileNameWithoutExtension(objPost.ImageUpload.FileName);
+                string extension = Path.GetExtension(objPost.ImageUpload.FileName);
+                fileName = fileName + extension;
+                objPost.PostAvatar = fileName;
+                objPost.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/post/"), fileName));
+            }
+            //objPost.UpdatedOnUtc = DateTime.Now;
+            objPost.PostSlug = ToStringSlug.ToSlug(objPost.PostTitle);
+            objWebsiteBanHangEntities.Entry(objPost).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
         }
+        //XOÁ THƯƠNG HIỆU------------------------------------------------------------------------------------------------
+        ///DANH SÁCH THƯƠNG HIỆU TRONG THÙNG RÁC
+        public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
+        {
+            var objPost = new List<Post_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                objPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.PostTitle.Contains(SearchString) && x.isDelete == true).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                objPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.isDelete == true).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            objPost = objPost.OrderByDescending(x => x.PostId).ToList();
+            return View(objPost.ToPagedList(pageNumber, pageSize));
+        }
+        ///ĐƯA VÀO THÙNG RÁC
+        public ActionResult ToggleTrash(int id, Post_2119110245 objPost)
+        {
+            objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
+            objPost.isDelete = true;
+            objWebsiteBanHangEntities.Entry(objPost).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        ///KHÔI PHỤC
+        public ActionResult Recover(int id, Post_2119110245 objPost)
+        {
+            objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
+            objPost.isDelete = false;
+            objWebsiteBanHangEntities.Entry(objPost).State = EntityState.Modified;
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        ///XOÁ VĨNH VIỄN
+
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            return View();
+            var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
+            return View(objPost);
         }
         [HttpPost]
-        public ActionResult Delete(Post_2119110245 objPost)
+        public ActionResult Delete(int id,Post_2119110245 objPost)
         {
-            return View();
+            objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
+            objWebsiteBanHangEntities.Post_2119110245.Remove(objPost);
+            objWebsiteBanHangEntities.SaveChanges();
+            return RedirectToAction("ListInTrash");
         }
     }
 }
