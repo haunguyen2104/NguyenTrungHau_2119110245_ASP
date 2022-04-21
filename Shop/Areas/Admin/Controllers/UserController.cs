@@ -1,4 +1,5 @@
-﻿using Shop.Context;
+﻿using PagedList;
+using Shop.Context;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,33 @@ namespace Shop.Areas.Admin.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listUser = objWebsiteBanHangEntities.User_2119110245.ToList();
-            return View(listUser);
+            var listUser = new List<User_2119110245>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.FirstName.Contains(SearchString) && x.IsActive == 1).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.IsActive == 1).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listUser = listUser.OrderByDescending(x => x.IsAdmin).ToList();
+            return View(listUser.ToPagedList(pageNumber, pageSize));
         }
         //------------------toggle admin--------------
         public ActionResult IsAdmin(int? id)

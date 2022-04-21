@@ -421,7 +421,7 @@
     <ul class="row mt-4">
         @foreach (var item in Model.listBrand.Take(8))
         {
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" style="width:80px;" src="~/Public/images/brand/@item.Avatar"> <span>@item.BrandName</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" style="width:80px;" src="~/Public/images/brand/@item.Avatar"> <span>@item.BrandName</span></a></li>
         }
         <li class="col-md col-6"><a href="@Url.Action("Index","Brand")" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span>Thương hiệu</span> </a></li>
     </ul>

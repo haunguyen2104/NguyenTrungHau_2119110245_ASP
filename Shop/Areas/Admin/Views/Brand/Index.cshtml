@@ -86,10 +86,12 @@
 
             @foreach (var item in Model)
             {
+                var id = item.BrandId;
+                var slug = item.Slug;
                 var create_date = Convert.ToDateTime(item.CreatedOnUtc).ToString("dd/MM/yyyy - hh:mm:ss");
-                var url_edit = "/quan-tri/thuong-hieu/cap-nhat/" + item.Slug + "-" + item.BrandId;
-                var url_details = "/quan-tri/thuong-hieu/chi-tiet/" + item.Slug + "-" + item.BrandId;
-                var url_delete = "/quan-tri/thuong-hieu/xoa/" + item.Slug + "-" + item.BrandId;
+                var url_edit = "/quan-tri/thuong-hieu/cap-nhat/" + slug + "-" + id;
+                var url_details = "/quan-tri/thuong-hieu/chi-tiet/" + slug + "-" + id;
+                var url_delete = "/quan-tri/thuong-hieu/xoa/" +slug + "-" + id;
 
                 <tr>
                     <td>
@@ -104,7 +106,7 @@
                     </td>
                     <td class="text-center">
 
-                        <a class="func_hover" href="@url_edit" style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="func_hover" href=" @url_edit" style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a class="func_hover" href="@url_details " style="color: green; margin: 0 10px;"><i class="fa-solid fa-eye"></i></a>
                         @if (item.Deleted == false)
                         {
