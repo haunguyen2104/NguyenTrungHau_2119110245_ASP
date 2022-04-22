@@ -14,7 +14,10 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            return View();
+            var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
+            DashboardModel objModel = new DashboardModel();
+            objModel.listProduct = listProduct;
+            return View(objModel);
         }
         public ActionResult LoginAdmin()
         {
@@ -51,4 +54,5 @@ namespace Shop.Areas.Admin.Controllers
             return View();
         }
     }
+   
 }

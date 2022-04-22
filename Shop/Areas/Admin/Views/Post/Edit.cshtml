@@ -44,6 +44,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PostAvatar, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PostAvatar, "", new { @class = "text-danger" })
+                <img width="100%" src="~/Public/images/post/@Model.PostAvatar" id="avatarView" />
             </div>
         </div>
 
