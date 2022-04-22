@@ -1,5 +1,6 @@
 ﻿using PagedList;
 using Shop.Context;
+using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +34,15 @@ namespace Shop.Controllers
                 //lấy ds sản phẩm trong bảng product
                 listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted == false).ToList();
             }
+            ViewBag.KeySearch = SearchString;
+            ViewBag.NumberSearch = listProduct.Count();
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
             listProduct = listProduct.OrderByDescending(x => x.Id).ToList();
             return View(listProduct.ToPagedList(pageNumber, pageSize));
+            //return View(listProduct);
         }
     }
 }

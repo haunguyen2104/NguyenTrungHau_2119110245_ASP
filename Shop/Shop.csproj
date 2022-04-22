@@ -219,6 +219,7 @@
     <Compile Include="Models\ProductBrandModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SliderMasterData.cs" />
     <Compile Include="Models\ToStringSlug.cs" />
     <Compile Include="Models\UserMasterData.cs" />
