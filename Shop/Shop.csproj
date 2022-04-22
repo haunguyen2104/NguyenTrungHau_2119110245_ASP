@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,6 +211,7 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ContactMasterData.cs" />
     <Compile Include="Models\ConvertMD5.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PatialMetadataType.cs" />
     <Compile Include="Models\PostMasterData.cs" />
@@ -3079,6 +3081,7 @@
     <Content Include="Views\Product\SearchPage.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Contacts\SendContact.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
