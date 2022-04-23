@@ -23,7 +23,7 @@ namespace Shop
             //Tất cả thương hiệu
             routes.MapRoute(name: "AllBrand", url: "tat-ca-thuong-hieu", defaults: new { controller = "Brand", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
             //Thanh toán
-            routes.MapRoute(name: "Payment", url: "thanh-toan-thanh-cong", defaults: new { controller = "Payment", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
+            routes.MapRoute(name: "Payment", url: "thanh-toan", defaults: new { controller = "Payment", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
             //Giỏ hàng
             routes.MapRoute(name: "Cart", url: "gio-hang", defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
             //Đăng nhập
