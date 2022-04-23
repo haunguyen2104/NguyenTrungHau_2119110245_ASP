@@ -43,7 +43,7 @@
                     <nav class="nav-home-aside">
                         <h6 class="title-category">MOBILE SHOP <i class="d-md-none icon fa fa-chevron-down"></i></h6>
                         <ul class="menu-category">
-                            @foreach (var item in Model.listCategory.Where(n => n.ShowOnHomePage == true).Take(8))
+                            @foreach (var item in Model.listCategory.Where(n => n.ShowOnHomePage == true&&n.Deleted==false).Take(8))
                             {
                                
                                 <li><a href="@Url.Action("ProductCategoryList", "Product", new { id = item.CategoryId })">@item.CategoryName</a></li>

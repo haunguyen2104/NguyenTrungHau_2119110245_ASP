@@ -46,8 +46,9 @@ namespace Shop.Controllers
             objWebsiteBanHangEntities.OrderDetail_2119110245.AddRange(listOrderDetail);
             //Lưu thông tin
             objWebsiteBanHangEntities.SaveChanges();
+
                 //Session;
-           
+
             }
             return View();
         }
