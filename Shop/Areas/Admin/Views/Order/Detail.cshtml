@@ -1,0 +1,113 @@
+﻿@model Shop.Models.AdminOrderModel
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{ var itemOrder = Model.ListOrder.FirstOrDefault();}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <strong class="text-uppercase title__header" style="color:#ff6a00;">chi tiết đơn hàng</strong>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+<!-- /.content-header -->
+<section class="content">
+    <div class="form-horizontal">
+        <hr />
+
+        <!-- Main content -->
+        <section class="content my-2">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9 text-center">
+                            <h4>Tên đơn hàng: <span class="font-weight-bold">@itemOrder.Name</span></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                          
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-9">
+
+                                <table class="table table-bordered table-striped" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width:20px;"></th>
+                                            <th>  Tên sản phẩm</th>
+                                            <th>  Giá sản phẩm</th>
+                                            <th>  Số lượng</th>
+                                            <th> Id</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var itemDetail in Model.ListOrderDetail)
+                                        {
+                                            var ProductPriceDis = @Model.ListProduct.FirstOrDefault().PriceDiscount;
+                                            var ProductPrice = @Model.ListProduct.FirstOrDefault().Price;
+                                            var price = ProductPriceDis != 0 ? @Model.ListProduct.FirstOrDefault().PriceDiscount : @Model.ListProduct.FirstOrDefault().Price;
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="checkId" value="" />
+                                            </td>
+                                            <td>@Model.ListProduct.FirstOrDefault().Name</td>
+
+
+                                            <td>
+                                                @if (Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount == 0)
+                                                {
+                                                    <strong class="price text-muted">@Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().Price đ</strong>
+                                                }
+                                                else
+                                                {
+                                                    <strong class="price text-muted">@Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount đ</strong>
+                                                }
+                                            </td>
+                                            <td>@itemDetail.Quantity</td>
+                                            <td>@Model.ListProduct.FirstOrDefault().Id</td>
+
+                                        </tr>
+                                        }
+                                        </tbody>
+
+                                </table>
+                        </div>
+                        <div class="col-md-3">
+                            @{ var fullName= Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().FirstName +" "+Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().LastName;}
+                            Đơn đặt hàng từ:<span style="font-weight:bold"> @Convert.ToDateTime(itemOrder.CreateOnUtc).ToString("dd/MM/yyyy - hh:mm:ss tt")</span><br />
+                            Người đặt hàng: <span style="font-weight:bold">@fullName</span><br />
+                            Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a=>a.Id==itemOrder.UserId).FirstOrDefault().Address</span><br />
+                            Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n=>n.Id==itemOrder.UserId).FirstOrDefault().Email</span><br />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+
+
+</section>

@@ -14,6 +14,7 @@ namespace Shop.Controllers
         // GET: Cart
         public ActionResult Index()
         {
+            
             return View((List<CartModel>)Session["cart"]);
         }
         public ActionResult AddToCart(int id, int quantity)
@@ -45,6 +46,7 @@ namespace Shop.Controllers
                 }
                 Session["cart"] = cart;
             }
+            
             return Json(new { Message = "Thành công", JsonRequestBehavior.AllowGet });
         }
         private int isExist(int id)

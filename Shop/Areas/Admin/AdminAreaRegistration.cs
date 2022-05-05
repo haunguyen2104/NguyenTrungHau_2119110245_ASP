@@ -62,7 +62,7 @@ namespace Shop.Areas.Admin
             ///Thêm danh mục
             context.MapRoute("NewBrand", "quan-tri/them-moi-thuong-hieu", new { controller = "Brand", action = "Create", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Cập nhật thương hiệu
-           context.MapRoute("UpdateBrand", "quan-tri/thuong-hieu/cap-nhat/{slug}-{id}", new { controller = "Brand", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("UpdateBrand", "quan-tri/thuong-hieu/cap-nhat/{slug}-{id}", new { controller = "Brand", action = "Edit", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xem thương hiệu
             context.MapRoute("DetailBrand", "quan-tri/thuong-hieu/chi-tiet/{slug}-{id}", new { controller = "Brand", action = "Details", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá thương hiệu vào thùng rác
@@ -73,7 +73,7 @@ namespace Shop.Areas.Admin
             context.MapRoute("DeleteBrand", "quan-tri/thuong-hieu/xoa-vinh-vien/{slug}-{id}", new { controller = "Brand", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///khôi phục thương hiệu
             context.MapRoute("RecoverBrand", "quan-tri/thuong-hieu/khoi-phuc/{slug}-{id}", new { controller = "Brand", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
-             //Quản trị bài viết----------------------------------------------------------------------------------------------------------------------------------
+            //Quản trị bài viết----------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách bài viết
             context.MapRoute("PostList", "quan-tri/danh-sach-bai-viet", new { controller = "Post", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Thêm bài viết
@@ -94,6 +94,14 @@ namespace Shop.Areas.Admin
             //Quản trị slider------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách hình ảnh slider
             context.MapRoute("SliderList", "quan-tri/danh-sach-hinh-anh", new { controller = "Slider", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            //Quản trị User------------------------------------------------------------------------------------------------------------------------------
+            ///Danh sách thành viên
+            context.MapRoute("UserList", "quan-tri/danh-sach-thanh-vien", new { controller = "User", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            //Quản trị đơn hàng------------------------------------------------------------------------------------------------------------------------------
+            ///Danh sách đơn hàng
+            context.MapRoute("OrderList", "quan-tri/danh-sach-don-hang", new { controller = "Order", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            ///Danh sách đơn hàng
+            context.MapRoute("OrderDetail", "quan-tri/don-hang/chi-tiet-don-hang/{name}-{id}", new { controller = "Order", action = "Detail", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
 
 
             ////ROUTER DEFAULT--------------------------------------------------------------------------------------------------------------------------------
