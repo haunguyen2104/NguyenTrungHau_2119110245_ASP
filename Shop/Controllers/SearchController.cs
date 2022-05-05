@@ -44,5 +44,18 @@ namespace Shop.Controllers
             return View(listProduct.ToPagedList(pageNumber, pageSize));
             //return View(listProduct);
         }
+        //----------------------------
+        public JsonResult Loaddata(int pageSize, int page)
+        {
+           var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted == false).ToList();
+            int totalRow = listProduct.Count;
+            var model = listProduct.Skip((page - 1) * pageSize).Take(pageSize);
+            return Json(new
+            {
+                data = listProduct,
+                total=totalRow,
+                status = true
+            },JsonRequestBehavior.AllowGet) ;
+        }
     }
 }

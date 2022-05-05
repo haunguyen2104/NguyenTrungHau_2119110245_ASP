@@ -18,14 +18,14 @@
             <nav class="row">
                 @foreach (var item in Model.listCategory)
                 {
-                   
+                    var url_cate = "/san-pham/danh-muc/danh-sach/" + item.Slug + "-" + item.CategoryId;
                     <div class="col-md-3">
                         <div class="card card-category">
-                            <a href="@Url.Action("ProductCategoryGrid","Product",new { id=item.CategoryId})" class="img-wrap" style="background: #e3dfdf; width:100%">
+                            <a href="@url_cate)" class="img-wrap" style="background: #e3dfdf; width:100%">
                                 <img src="~/Public/images/category/@item.Avatar">
                             </a>
                             <div class="card-body">
-                                <h4 class="card-title"><a href="@Url.Action("ProductCategoryGrid","Product",new { id=item.CategoryId})">@item.CategoryName</a></h4>
+                                <h4 class="card-title"><a href="@url_cate">@item.CategoryName</a></h4>
                                 <ul class="list-menu">
                                     @*@{
                                         var lstPro = Model.listProduct.ToList();

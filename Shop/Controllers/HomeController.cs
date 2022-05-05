@@ -103,6 +103,7 @@ namespace Shop.Controllers
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["Id"] = data.FirstOrDefault().Id;
                     Session["IsAdmin"] = data.FirstOrDefault().IsAdmin;
+                    Session["AddressUser"] = data.FirstOrDefault().Address;
                     //TempData["success"] = "Đăng nhập thành công";
 
                     return RedirectToAction("Index");

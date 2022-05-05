@@ -26,6 +26,7 @@
     <!-- custom style -->
     <link href="~/Public/css/ui.css" rel="stylesheet" type="text/css" />
     <link href="~/Public/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Public/css/responsive.css" rel="stylesheet" type="text/css" />
 
     <!-- my style sheet -->
     <link href="~/Public/css/mystyle.css" rel="stylesheet" type="text/css" />
@@ -146,9 +147,17 @@
                                         <a href="@Url.Action("Index","Cart")" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-shopping-cart"></i>
-                                                
+
+                                                @if (Session["cart"] != null)
+                                                {
                                                     <span class="notify" id="CartCount">@Session["count"]</span>
-                                                
+                                                }
+                                                else
+                                                {
+                                                    <span class="" id="CartCount"></span>
+
+                                                }
+
                                             </div>
                                             <small class="text"> Giỏ hàng </small>
                                         </a>

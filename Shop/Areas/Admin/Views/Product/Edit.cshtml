@@ -136,7 +136,7 @@
                             <label>Hình</label>
                             <input type="file" name="ImageUpload" class="img__input" />
                             <input type="text" name="Avatar" value="@Model.Avatar" hidden="hidden" />
-                            <img width="100%" src="" id="avatarView" />
+                            <img width="100%" src="~/Public/images/product/@Model.Avatar" id="avatarView" />
 
                         </div>
 
@@ -151,3 +151,26 @@
     <!-------------------------------------------------------------------------->
 }
 
+<script>
+
+    //hien thị ảnh
+    const input = document.querySelector("[name='ImageUpload']");
+    const image = document.querySelector("#avatarView");
+
+    if (input) {
+        input.addEventListener("input", function (e) {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+
+                    if (image) {
+                        image.src = e.target.result;
+                    }
+                }
+            }
+        })
+    }
+//----------------------------------------------
+</script>

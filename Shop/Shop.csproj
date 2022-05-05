@@ -2750,6 +2750,7 @@
     <Content Include="Public\images\slider\slider-06.png" />
     <Content Include="Public\js\bootstrap.bundle.min.js" />
     <Content Include="Public\js\contactController.js" />
+    <Content Include="Public\js\homeController.js" />
     <Content Include="Public\js\jquery-2.0.0.min.js" />
     <Content Include="Public\js\script.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3047,6 +3048,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins\jquery.twbsPagination.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

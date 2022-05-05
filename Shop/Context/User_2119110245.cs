@@ -22,5 +22,6 @@ namespace Shop.Context
         public Nullable<int> IsAdmin { get; set; }
         public Nullable<int> Gender { get; set; }
         public Nullable<int> IsActive { get; set; }
+        public string Address { get; set; }
     }
 }

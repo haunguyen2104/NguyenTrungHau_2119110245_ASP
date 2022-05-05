@@ -18,7 +18,7 @@
             {var url_brand= "/san-pham/thuong-hieu/danh-sach/" + item.Slug + "-" + item.BrandId;
                 <div class="col-md-3">
                     <div class="card card-category" style="min-height: auto">
-                        <a href="@Url.Action("ProductBrandList","Product",new { id=item.BrandId})" class="img-wrap" style="background: #e3dfdf; height:100px;">
+                        <a href="@url_brand" class="img-wrap" style="background: #e3dfdf; height:100px;">
                             <img src="~/Public/images/brand/@item.Avatar">
                         </a>
                         <div class="card-body">
