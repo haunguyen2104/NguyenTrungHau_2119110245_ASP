@@ -144,6 +144,7 @@
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
@@ -206,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminHomeModel.cs" />
+    <Compile Include="Models\AdminOrderModel.cs" />
     <Compile Include="Models\CategoryMasterData.cs" />
     <Compile Include="Models\BrandMasterData.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -3037,6 +3039,8 @@
     <Content Include="Areas\Admin\Views\Brand\Recover.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Slider\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3071,7 +3075,6 @@
     <Content Include="Views\Product\ProductBrandList.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_LayoutRegister.cshtml" />
     <Content Include="Views\Product\ProductBrandGrid.cshtml" />
@@ -3085,6 +3088,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Contacts\SendContact.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

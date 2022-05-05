@@ -15,8 +15,15 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
+            var listUser = objWebsiteBanHangEntities.User_2119110245.Where(a => a.IsActive != 0).ToList();
+            var listOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
+            var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
+            float DeliverySuccess = objOrderSuccess*100 / listOrder.Count;
             DashboardModel objModel = new DashboardModel();
             objModel.listProduct = listProduct;
+            objModel.listUser = listUser;
+            objModel.listOrder = listOrder;
+            objModel.DeliverySuccessful = DeliverySuccess;
             return View(objModel);
         }
         public ActionResult LoginAdmin()

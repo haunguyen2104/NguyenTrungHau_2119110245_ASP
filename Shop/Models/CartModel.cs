@@ -10,5 +10,7 @@ namespace Shop.Models
     {
         public Product_2119110245 Product { get; set; }
         public int Quantity { get; set; }
+        public float TongTien{get;set;}
+      
     }
 }

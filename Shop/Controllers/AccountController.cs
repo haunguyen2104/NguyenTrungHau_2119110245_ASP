@@ -13,10 +13,10 @@ namespace Shop.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Account
-        public ActionResult Profile(int id)
+        public ActionResult UserProfile(int id)
         {
-            var lstUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Id == id).FirstOrDefault();
-            return View(lstUser);
+            var objUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Id == id).FirstOrDefault();
+            return View(objUser);
         }
      
     }
