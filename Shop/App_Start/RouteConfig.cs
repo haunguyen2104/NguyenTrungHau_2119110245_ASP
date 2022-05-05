@@ -39,7 +39,7 @@ namespace Shop
             //Liên hệ
             routes.MapRoute(name: "Contact", url: "lien-he", defaults: new { controller = "Contacts", action = "SendContact", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
             //Tìm kiếm
-            routes.MapRoute(name: "Search", url: "tim-kiem", defaults: new { controller = "Search", action = "Search", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
+            routes.MapRoute(name: "Search", url: "tim-kiem", defaults: new { controller = "Search", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
             ///URL FREINDLY DÙNG BIẾN
             ////Sản phẩm theo danh mục (List)
             routes.MapRoute(name: "ProductCategoryList", url: "san-pham/danh-muc/danh-sach/{Slug}-{id}", defaults: new { controller = "Product", action = "ProductCategoryList", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });

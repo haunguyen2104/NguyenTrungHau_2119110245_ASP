@@ -28,6 +28,8 @@ namespace Shop.Controllers
                 objOrder.UserId = int.Parse(Session["Id"].ToString());
                 objOrder.CreateOnUtc = DateTime.Now;
                 objOrder.Status = 1;
+                objOrder.Delivery = 0;
+                objOrder.Address = Session["AddressUser"].ToString();
                 objWebsiteBanHangEntities.Order_2119110245.Add(objOrder);
                 //Lưu thông tin
                 objWebsiteBanHangEntities.SaveChanges();
@@ -41,16 +43,18 @@ namespace Shop.Controllers
                     objDetail.Quantity = item.Quantity;
                     objDetail.OrderId = intOrderId;
                     objDetail.ProductId = item.Product.Id;
+                    objDetail.Price = (item.Product.PriceDiscount == null) ? item.Product.Price : item.Product.PriceDiscount;
+                    objDetail.TotalPrice = objDetail.Quantity * objDetail.Price ;
                     listOrderDetail.Add(objDetail);
                 }
-            objWebsiteBanHangEntities.OrderDetail_2119110245.AddRange(listOrderDetail);
-            //Lưu thông tin
-            objWebsiteBanHangEntities.SaveChanges();
-
+                objWebsiteBanHangEntities.OrderDetail_2119110245.AddRange(listOrderDetail);
+                //Lưu thông tin
+                objWebsiteBanHangEntities.SaveChanges();
                 //Session;
-
+                Session["cart"] = null;
             }
             return View();
         }
+        
     }
 }

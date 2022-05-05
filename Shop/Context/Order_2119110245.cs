@@ -19,5 +19,7 @@ namespace Shop.Context
         public Nullable<int> UserId { get; set; }
         public Nullable<int> Status { get; set; }
         public Nullable<System.DateTime> CreateOnUtc { get; set; }
+        public Nullable<int> Delivery { get; set; }
+        public string Address { get; set; }
     }
 }

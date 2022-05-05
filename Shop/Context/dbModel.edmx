@@ -56,6 +56,8 @@
           <Property Name="UserId" Type="int" />
           <Property Name="Status" Type="int" />
           <Property Name="CreateOnUtc" Type="datetime" />
+          <Property Name="Delivery" Type="int" />
+          <Property Name="Address" Type="text" />
         </EntityType>
         <EntityType Name="OrderDetail_2119110245">
           <Key>
@@ -65,6 +67,8 @@
           <Property Name="OrderId" Type="int" />
           <Property Name="ProductId" Type="int" />
           <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
         </EntityType>
         <EntityType Name="Post_2119110245">
           <Key>
@@ -124,6 +128,7 @@
           <Property Name="IsAdmin" Type="int" />
           <Property Name="Gender" Type="int" />
           <Property Name="IsActive" Type="int" />
+          <Property Name="Address" Type="text" />
         </EntityType>
         <EntityContainer Name="WebsiteBanHangModelStoreContainer">
           <EntitySet Name="Brand_2119110245" EntityType="Self.Brand_2119110245" Schema="dbo" store:Type="Tables" />
@@ -177,6 +182,8 @@
           <Property Name="UserId" Type="Int32" />
           <Property Name="Status" Type="Int32" />
           <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="Delivery" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetail_2119110245">
           <Key>
@@ -186,6 +193,8 @@
           <Property Name="OrderId" Type="Int32" />
           <Property Name="ProductId" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
         </EntityType>
         <EntityType Name="Product_2119110245">
           <Key>
@@ -232,6 +241,7 @@
           <Property Name="IsAdmin" Type="Int32" />
           <Property Name="Gender" Type="Int32" />
           <Property Name="IsActive" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="WebsiteBanHangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brand_2119110245" EntityType="Self.Brand_2119110245" />
@@ -310,6 +320,8 @@
           <EntitySetMapping Name="Order_2119110245">
             <EntityTypeMapping TypeName="WebsiteBanHangModel.Order_2119110245">
               <MappingFragment StoreEntitySet="Order_2119110245">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Delivery" ColumnName="Delivery" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -321,6 +333,8 @@
           <EntitySetMapping Name="OrderDetail_2119110245">
             <EntityTypeMapping TypeName="WebsiteBanHangModel.OrderDetail_2119110245">
               <MappingFragment StoreEntitySet="OrderDetail_2119110245">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -366,6 +380,7 @@
           <EntitySetMapping Name="User_2119110245">
             <EntityTypeMapping TypeName="WebsiteBanHangModel.User_2119110245">
               <MappingFragment StoreEntitySet="User_2119110245">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
