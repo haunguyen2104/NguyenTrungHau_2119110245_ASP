@@ -13,7 +13,7 @@ using static Shop.Common;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Category

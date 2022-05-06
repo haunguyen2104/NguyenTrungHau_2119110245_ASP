@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class PostController : Controller
+    public class PostController : BaseController
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Post
@@ -111,8 +111,8 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
-        //XOÁ THƯƠNG HIỆU------------------------------------------------------------------------------------------------
-        ///DANH SÁCH THƯƠNG HIỆU TRONG THÙNG RÁC
+        //XOÁ BÀI VIẾT------------------------------------------------------------------------------------------------
+        ///DANH SÁCH BÀI VIẾT TRONG THÙNG RÁC
         public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
         {
             var objPost = new List<Post_2119110245>();
@@ -126,18 +126,18 @@ namespace Shop.Areas.Admin.Controllers
             }
             if (!string.IsNullOrEmpty(SearchString))
             {
-                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                //lấy ds bài viết theo từ khoá tìm kiếm
                 objPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.PostTitle.Contains(SearchString) && x.isDelete == true).ToList();
             }
             else
             {
-                //lấy ds sản phẩm trong bảng product
+                //lấy ds bài viết trong bảng post
                 objPost = objWebsiteBanHangEntities.Post_2119110245.Where(x => x.isDelete == true).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 4;
             int pageNumber = (page ?? 1);
-            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            //Sắp xếp sp theo id bài viết, bài viết mới đc đưa lên đầu
             objPost = objPost.OrderByDescending(x => x.PostId).ToList();
             return View(objPost.ToPagedList(pageNumber, pageSize));
         }

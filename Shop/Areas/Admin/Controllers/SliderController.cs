@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class SliderController : Controller
+    public class SliderController : BaseController
     {
         // GET: Admin/Slider
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();

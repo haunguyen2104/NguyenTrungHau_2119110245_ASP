@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Home
@@ -19,16 +19,18 @@ namespace Shop.Areas.Admin.Controllers
             var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.Deleted == false).ToList();
             var listUser = objWebsiteBanHangEntities.User_2119110245.Where(a => a.IsActive != 0).ToList();
             var listOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
+            var listOrderDetail = objWebsiteBanHangEntities.OrderDetail_2119110245.ToList();
             //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
             float DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+           
 
             //--------------------ViewBag----------------------------------
-            ViewBag.TongSoSanPhamOLayout = listProduct.Count;
-            ViewBag.TongSoDanhMucOLayout = listCategory.Count;
-            ViewBag.TongSoThuongHieuOLayout = listBrand.Count;
-            ViewBag.TongSoDonHangOLayout = listOrder.Count;
-            ViewBag.TongSoThanhVienOLayout = listUser.Count;
+            //ViewBag.TongSoSanPhamOLayout = listProduct.Count;
+            //ViewBag.TongSoDanhMucOLayout = listCategory.Count;
+            //ViewBag.TongSoThuongHieuOLayout = listBrand.Count;
+            //ViewBag.TongSoDonHangOLayout = listOrder.Count;
+            //ViewBag.TongSoThanhVienOLayout = listUser.Count;
 
             //--------------------ViewBag end//----------------------------
             DashboardModel objModel = new DashboardModel();
@@ -36,6 +38,7 @@ namespace Shop.Areas.Admin.Controllers
             objModel.listUser = listUser;
             objModel.listOrder = listOrder;
             objModel.DeliverySuccessful = DeliverySuccess;
+            objModel.OrderSuccess = int.Parse(objOrderSuccess.ToString());
             return View(objModel);
         }
         public ActionResult LoginAdmin()

@@ -14,6 +14,7 @@ namespace Shop.Controllers
         // GET: Payment
         public ActionResult Index()
         {
+            double tongtien=0;
             if (Session["Id"] == null)
             {
                 return RedirectToAction("Login", "Home");
@@ -22,6 +23,22 @@ namespace Shop.Controllers
             {
                 //Lấy thông tin từ giỏ hàng từ biến session
                 var lstCart = (List<CartModel>)Session["cart"];
+                var listProduct = lstCart.ToList();
+                for (int i = 0; i < listProduct.Count; i++)
+                {
+                   double pricePro = float.Parse(listProduct.FirstOrDefault().Product.Price.ToString());
+                    double priceDisPro = float.Parse(listProduct.FirstOrDefault().Product.PriceDiscount.ToString());
+
+                    if (priceDisPro<=0)
+                    {
+                        tongtien += listProduct.FirstOrDefault().Quantity * pricePro;
+                    }
+                    else
+                    {
+                        tongtien += listProduct.FirstOrDefault().Quantity * priceDisPro;
+                    }
+           
+                }
                 //Gán dữ liệu cho bảng Order
                 Order_2119110245 objOrder = new Order_2119110245();
                 objOrder.Name = "DonHang-" + DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -29,6 +46,7 @@ namespace Shop.Controllers
                 objOrder.CreateOnUtc = DateTime.Now;
                 objOrder.Status = 1;
                 objOrder.Delivery = 0;
+                objOrder.Price = tongtien;
                 objOrder.Address = Session["AddressUser"].ToString();
                 objWebsiteBanHangEntities.Order_2119110245.Add(objOrder);
                 //Lưu thông tin

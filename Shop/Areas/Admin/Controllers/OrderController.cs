@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Order
@@ -19,7 +19,9 @@ namespace Shop.Areas.Admin.Controllers
             AdminOrderModel objModel = new AdminOrderModel();
             objModel.ListUser = objWebsiteBanHangEntities.User_2119110245.ToList();
             var pageLstOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
-
+            //------------------
+          
+            //------------------
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
