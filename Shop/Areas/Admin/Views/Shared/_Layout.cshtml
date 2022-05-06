@@ -203,7 +203,7 @@
                         <img src="~/Public/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        @if (Session["Id"]== null)
+                        @if (Session["UserAdmin"] == null)
                         {
                             <a href="#" class="d-block" style="text-transform: capitalize; color:white;">nguyễn trung hậu</a>
 
@@ -211,8 +211,7 @@
                         }
                         else
                         {
-                            <a href="#" class="d-block" style="text-transform: capitalize; color:white;">@Session["FullName"].ToString()</a>
-
+                            <a href="#" class="d-block" style="text-transform: capitalize; color:white;">@Session["FullNameAdmin"].ToString()</a>
                         }
                     </div>
                 </div>
@@ -249,24 +248,40 @@
                                     <a href="@Url.Action("Index","Product")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tất cả sản phẩm</p>
+                                        <span class="badge badge-light right">@ViewBag.TongSoSanPhamOLayout </span>
+
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index","Category")" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tất cả danh mục</p>
+                                        <span class="badge badge-light right">@ViewBag.TongSoDanhMucOLayout </span>
+
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index","Brand")" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tất cả thương hiệu</p>
+                                        <span class="badge badge-light right">@ViewBag.TongSoThuongHieuOLayout </span>
+
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index","Order")" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tất cả đơn hàng</p>
+                                        <span class="badge badge-light right">@ViewBag.TongSoDonHangOLayout </span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","User")" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tất cả thành viên</p>
+                                        <span class="badge badge-light right">@ViewBag.TongSoThanhVienOLayout </span>
+
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -282,25 +297,22 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Index","User")" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tất cả thành viên</p>
-                                    </a>
-                                </li>
+
 
                             </ul>
                         </li>
-                        <!--
+
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                            <a href="@Url.Action("Logout","Home")" class="nav-link">
+                                <i class="fa-solid fa-right-from-bracket"></i>
                                 <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
+                                    Đăng xuất
+                                    @*<span class="right badge badge-danger">New</span>*@
+
                                 </p>
                             </a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>

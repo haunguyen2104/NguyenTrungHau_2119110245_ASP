@@ -21,6 +21,8 @@ namespace Shop.Areas.Admin
                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                  new[] { "Shop.Areas.Admin.Controllers" }
            );
+            ///Đăng xuất
+            context.MapRoute("LogoutAdmin", "quan-tri/dang-xuat", new { controller = "Home", action = "Logout", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
 
             //Quản trị sản phẩm----------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách sản phẩm
