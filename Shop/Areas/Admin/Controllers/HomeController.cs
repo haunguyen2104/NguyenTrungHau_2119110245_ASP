@@ -15,10 +15,22 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
+            var listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.Deleted == false).ToList();
+            var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.Deleted == false).ToList();
             var listUser = objWebsiteBanHangEntities.User_2119110245.Where(a => a.IsActive != 0).ToList();
             var listOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
+            //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
-            float DeliverySuccess = objOrderSuccess*100 / listOrder.Count;
+            float DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+
+            //--------------------ViewBag----------------------------------
+            ViewBag.TongSoSanPhamOLayout = listProduct.Count;
+            ViewBag.TongSoDanhMucOLayout = listCategory.Count;
+            ViewBag.TongSoThuongHieuOLayout = listBrand.Count;
+            ViewBag.TongSoDonHangOLayout = listOrder.Count;
+            ViewBag.TongSoThanhVienOLayout = listUser.Count;
+
+            //--------------------ViewBag end//----------------------------
             DashboardModel objModel = new DashboardModel();
             objModel.listProduct = listProduct;
             objModel.listUser = listUser;
@@ -41,8 +53,9 @@ namespace Shop.Areas.Admin.Controllers
                 if (data.Count() > 0)
                 {
                     //add session
+
                     Session["FullNameAdmin"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
-                    var name = Session["FullNameAdmin"];
+                    var name = Session["FullNameAdmin"].ToString();
                     Session["EmailAdmin"] = data.FirstOrDefault().Email;
                     Session["UserAdmin"] = data.FirstOrDefault().Id;
 
@@ -60,6 +73,13 @@ namespace Shop.Areas.Admin.Controllers
 
             return View();
         }
+        public ActionResult Logout()
+        {
+            Session.Clear();//Remove session
+            //return RedirectToAction("Index");
+            return Redirect("/trang-chu");
+
+        }
     }
-   
+
 }

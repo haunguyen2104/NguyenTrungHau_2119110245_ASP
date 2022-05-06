@@ -11,9 +11,8 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Base
         public BaseController()
         {
-
             //Kiểm tra chưa đăng nhập
-            if (System.Web.HttpContext.Current.Session["UserAdmin"].Equals(""))
+            if (System.Web.HttpContext.Current.Session["UserAdmin"] == null)
             {
                 //Chuyển hướng website
                 System.Web.HttpContext.Current.Response.Redirect("/Admin/Home/LoginAdmin");
