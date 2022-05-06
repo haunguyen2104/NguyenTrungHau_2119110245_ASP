@@ -14,7 +14,7 @@ using static Shop.Common;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
 

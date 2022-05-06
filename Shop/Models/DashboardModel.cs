@@ -12,6 +12,8 @@ namespace Shop.Models
         public List<User_2119110245> listUser { get; set; }
         public List<Order_2119110245> listOrder { get; set; }
         public float DeliverySuccessful { get; set; }
+        public int OrderSuccess { get; set; }
+        //public float TotalRevenue { get; set; }
 
     }
 }

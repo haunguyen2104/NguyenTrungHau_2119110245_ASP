@@ -58,6 +58,7 @@
           <Property Name="CreateOnUtc" Type="datetime" />
           <Property Name="Delivery" Type="int" />
           <Property Name="Address" Type="text" />
+          <Property Name="Price" Type="float" />
         </EntityType>
         <EntityType Name="OrderDetail_2119110245">
           <Key>
@@ -184,6 +185,7 @@
           <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
           <Property Name="Delivery" Type="Int32" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
         </EntityType>
         <EntityType Name="OrderDetail_2119110245">
           <Key>
@@ -320,6 +322,7 @@
           <EntitySetMapping Name="Order_2119110245">
             <EntityTypeMapping TypeName="WebsiteBanHangModel.Order_2119110245">
               <MappingFragment StoreEntitySet="Order_2119110245">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Delivery" ColumnName="Delivery" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

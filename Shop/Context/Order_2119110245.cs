@@ -21,5 +21,6 @@ namespace Shop.Context
         public Nullable<System.DateTime> CreateOnUtc { get; set; }
         public Nullable<int> Delivery { get; set; }
         public string Address { get; set; }
+        public Nullable<double> Price { get; set; }
     }
 }
