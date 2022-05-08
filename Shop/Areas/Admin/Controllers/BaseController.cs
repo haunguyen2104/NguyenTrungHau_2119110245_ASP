@@ -34,7 +34,7 @@ namespace Shop.Areas.Admin.Controllers
             ViewBag.TongSoThuongHieuOLayout = listBrand.Count;
             ViewBag.TongSoDonHangOLayout = listOrder.Count;
             ViewBag.TongSoThanhVienOLayout = listUser.Count;
-
+           
         }
     }
 }

@@ -75,7 +75,7 @@
                         {
                             var name = item.Name.ToLower();
                             var id = item.Id;
-                            var url_details = "/quan-tri/don-hang/chi-tiet-don-hang/" + name+"-"+id;
+                            var url_details = "/quan-tri/don-hang/chi-tiet-don-hang/" + name + "-" + id;
                             <tr id="product-@item.Id">
                                 <td class="align-middle">
                                     @Model.ListUser.Where(n => n.Id == item.UserId).FirstOrDefault().FirstName
@@ -88,21 +88,21 @@
                                     @Convert.ToDecimal(item.Price).ToString("#,##0")<sup> đ</sup>
                                 </td>
                                 <td class="align-middle">
-                                    @if (item.Delivery == 1 ||item.Delivery==2|| item.Delivery == 3)
+                                    @if (item.Delivery == 1 || item.Delivery == 2 || item.Delivery == 3)
                                     {
-                                    <a class="btn" href="@Url.Action("DeliveryToggle_Confirm","Order", new { id = item.Id })">
-                                        <i class="fa-solid fa-circle-check" style="color:green"></i>  Đã xác nhận
-                                    </a>
+                                        <a class="btn" href="@Url.Action("DeliveryToggle_Confirm","Order", new { id = item.Id })">
+                                            <i class="fa-solid fa-circle-check" style="color:green"></i>  Đã xác nhận
+                                        </a>
                                     }
                                     else
                                     {
-                                <a class="btn" href="@Url.Action("DeliveryToggle_Confirm","Order", new { id = item.Id })">
-                                    <i class="fa-solid fa-circle-xmark" style="color:red"></i> Chưa xác nhận
-                                </a>
+                                        <a class="btn" href="@Url.Action("DeliveryToggle_Confirm","Order", new { id = item.Id })">
+                                            <i class="fa-solid fa-circle-xmark" style="color:red"></i> Chưa xác nhận
+                                        </a>
                                     }
                                 </td>
                                 <td class="align-middle">
-                                    @if (item.Delivery == 2||item.Delivery == 3)
+                                    @if (item.Delivery == 2 || item.Delivery == 3)
                                     {
                                         <a class="btn" href="@Url.Action("DeliveryToggle","Order", new { id = item.Id })">
                                             <i class="fa-solid fa-circle-check" style="color:green"></i> Đang giao hàng
@@ -118,15 +118,15 @@
                                 <td class="align-middle">
                                     @if (item.Delivery == 3)
                                     {
-                                    <a class="btn" href="@Url.Action("DeliveryToggle_Recieve","Order", new { id = item.Id })">
-                                        <i class="fa-solid fa-circle-check" style="color:green"></i>  Đã nhận hàng
-                                    </a>
+                                        <a class="btn" href="@Url.Action("DeliveryToggle_Recieve","Order", new { id = item.Id })">
+                                            <i class="fa-solid fa-circle-check" style="color:green"></i>  Đã nhận hàng
+                                        </a>
                                     }
                                     else
                                     {
                                         <a class="btn" href="@Url.Action("DeliveryToggle_Recieve","Order", new { id = item.Id })">
                                             <i class="fa-solid fa-circle-xmark" style="color:red"></i> Chưa nhận hàng
-</a>
+                                        </a>
                                     }
                                 </td>
 
@@ -144,9 +144,11 @@
                                             </a>
                                         }
                                     </td>*@
-                            <td class="align-middle text-center">
-                                <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-                            </td>
+                                <td class="align-middle text-center">
+                                    <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;">
+                                        <img src="~/Public/images/icons/view-files.png" />
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -169,7 +171,7 @@
 <style>
     .func_hover {
         width: 25px;
-        font-size:25px;
+        font-size: 25px;
     }
 
         .func_hover:hover i {

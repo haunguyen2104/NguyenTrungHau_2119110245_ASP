@@ -14,6 +14,10 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
+            //if (Session["UserAdmin"] == null)
+            //{
+            //    return RedirectToAction("LoginAdmin", "Home");
+            //}
             var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
             var listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.Deleted == false).ToList();
             var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.Deleted == false).ToList();
@@ -23,8 +27,11 @@ namespace Shop.Areas.Admin.Controllers
             //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
             float DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
-           
-
+            //float tongdoanhthu = 0;
+            //for (int i = 0; i < listOrder.Count; i++)
+            //{
+            //    tongdoanhthu=listOrder.Sum(Order_2119110245.)
+            //}
             //--------------------ViewBag----------------------------------
             //ViewBag.TongSoSanPhamOLayout = listProduct.Count;
             //ViewBag.TongSoDanhMucOLayout = listCategory.Count;
@@ -60,7 +67,7 @@ namespace Shop.Areas.Admin.Controllers
                     Session["FullNameAdmin"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
                     var name = Session["FullNameAdmin"].ToString();
                     Session["EmailAdmin"] = data.FirstOrDefault().Email;
-                    Session["UserAdmin"] = data.FirstOrDefault().Id;
+                  Session["UserAdmin"] = data.FirstOrDefault().Id;
 
                     //Session["IsAdmin"] = data.FirstOrDefault().IsAdmin;
                     //TempData["success"] = "Đăng nhập thành công";
@@ -80,7 +87,9 @@ namespace Shop.Areas.Admin.Controllers
         {
             Session.Clear();//Remove session
             //return RedirectToAction("Index");
-            return Redirect("/trang-chu");
+            //return Redirect("/trang-chu");
+            return Redirect("/quan-tri/dang-nhap-he-thong");
+
 
         }
     }

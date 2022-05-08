@@ -61,9 +61,11 @@
                                 <tbody>
                                     @foreach (var itemDetail in Model.ListOrderDetail)
                                     {
-                                        var ProductPriceDis = @Model.ListProduct.FirstOrDefault().PriceDiscount;
-                                        var ProductPrice = @Model.ListProduct.FirstOrDefault().Price;
-                                        var price = ProductPriceDis != 0 ? @Model.ListProduct.FirstOrDefault().PriceDiscount : @Model.ListProduct.FirstOrDefault().Price;
+                                        int i = 0;
+                                        var ProductPriceDis = Model.ListProduct.FirstOrDefault().PriceDiscount;
+                                        var ProductPrice = Model.ListProduct.FirstOrDefault().Price;
+                                        var price = ProductPriceDis != 0 ? Model.ListProduct.FirstOrDefault().PriceDiscount : Model.ListProduct.FirstOrDefault().Price;
+                                  
                                         <tr>
                                             <td>
                                                 <input type="checkbox" name="checkId" value="" />
@@ -92,10 +94,10 @@
                         </div>
                         <div class="col-md-3">
                             @{ var fullName = Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().FirstName + " " + Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().LastName;}
-                            Đơn đặt hàng từ:<span style="font-weight:bold"> @Convert.ToDateTime(itemOrder.CreateOnUtc).ToString("dd/MM/yyyy - hh:mm:ss tt")</span><br />
-                            Người đặt hàng: <span style="font-weight:bold">@fullName</span><br />
-                            Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Address</span><br />
-                            Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br />
+                            <p> Đơn đặt hàng từ:<span style="font-weight:bold"> @Convert.ToDateTime(itemOrder.CreateOnUtc).ToString("dd/MM/yyyy - hh:mm:ss tt")</span><br /></p>
+                            <p> Người đặt hàng: <span style="font-weight:bold">@fullName</span><br /></p>
+                           <p> Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Address</span><br /></p>
+                           <p> Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br /></p>
 
 
 
