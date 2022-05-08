@@ -2632,6 +2632,7 @@
     <Content Include="Public\images\icons\pay-visa.png" />
     <Content Include="Public\images\icons\stars-active.svg" />
     <Content Include="Public\images\icons\starts-disable.svg" />
+    <Content Include="Public\images\icons\view-files.png" />
     <Content Include="Public\images\items\1.jpg" />
     <Content Include="Public\images\items\10.jpg" />
     <Content Include="Public\images\items\11.jpg" />

@@ -23,6 +23,7 @@ namespace Shop.Areas.Admin
            );
             ///Đăng xuất
             context.MapRoute("LogoutAdmin", "quan-tri/dang-xuat", new { controller = "Home", action = "Logout", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("LoginAdmin", "quan-tri/dang-nhap-he-thong", new { controller = "Home", action = "LoginAdmin", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
 
             //Quản trị sản phẩm----------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách sản phẩm

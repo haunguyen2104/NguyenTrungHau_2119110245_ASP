@@ -20,7 +20,7 @@ namespace Shop.Areas.Admin.Controllers
             objModel.ListUser = objWebsiteBanHangEntities.User_2119110245.ToList();
             var pageLstOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
             //------------------
-          
+
             //------------------
 
             int pageSize = 5;
@@ -55,7 +55,8 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.Entry(obj).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
-        } public ActionResult DeliveryToggle(int id)
+        }
+        public ActionResult DeliveryToggle(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
             obj.Delivery = (obj.Delivery > 2) ? 1 : 2;
@@ -63,7 +64,8 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.Entry(obj).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
-        }public ActionResult DeliveryToggle_Recieve(int id)
+        }
+        public ActionResult DeliveryToggle_Recieve(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
             obj.Delivery = (obj.Delivery != 3) ? 3 : 2;
@@ -75,14 +77,24 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Detail(int id)
         {
-          
-                AdminOrderModel objOrderModel = new AdminOrderModel();
-                objOrderModel.ListUser = objWebsiteBanHangEntities.User_2119110245.ToList();
-                objOrderModel.ListProduct = objWebsiteBanHangEntities.Product_2119110245.ToList();
-                objOrderModel.ListOrder = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).ToList();
-                objOrderModel.ListOrderDetail = objWebsiteBanHangEntities.OrderDetail_2119110245.Where(n => n.OrderId == id).ToList();
-                return View(objOrderModel);
-            
+            var listProductToOrder = new List<Product_2119110245>();
+            var objProductToOrder = new Product_2119110245();
+            var listOrder= objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).ToList();
+            var listOrderDetail = objWebsiteBanHangEntities.OrderDetail_2119110245.Where(n => n.OrderId == id).ToList();
+            for (int i = 0; i < listOrderDetail.Count; i++)
+            {
+                var idproduct = listOrderDetail[i].ProductId;
+                objProductToOrder = objWebsiteBanHangEntities.Product_2119110245.FirstOrDefault(a => a.Id == idproduct);
+                listProductToOrder.Add(objProductToOrder);
+                //listProductToOrder = objWebsiteBanHangEntities.Product_2119110245.ToList();
+            }
+            AdminOrderModel objOrderModel = new AdminOrderModel();
+            objOrderModel.ListUser = objWebsiteBanHangEntities.User_2119110245.ToList();
+            objOrderModel.ListProduct = listProductToOrder;
+            objOrderModel.ListOrder = listOrder;
+            objOrderModel.ListOrderDetail = listOrderDetail;
+            return View(objOrderModel);
+
         }
     }
 }
