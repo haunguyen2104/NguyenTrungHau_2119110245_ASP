@@ -19,6 +19,7 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
             var listUser = new List<User_2119110245>();
+          
             if (SearchString != null)
             {
                 page = 1;
@@ -30,7 +31,7 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.FirstName.Contains(SearchString) && x.IsActive == 1).ToList();
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Email.Contains(SearchString) && x.IsActive == 1).ToList();
             }
             else
             {
@@ -38,13 +39,44 @@ namespace Shop.Areas.Admin.Controllers
                 listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.IsActive == 1).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
-            int pageSize = 8;
+            ViewBag.CountResult = listUser.Count;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
             listUser = listUser.OrderByDescending(x => x.IsAdmin).ToList();
             return View(listUser.ToPagedList(pageNumber, pageSize));
         }
-        //------------------toggle admin--------------
+        public ActionResult IsNotActive(string currentFilter, string SearchString, int? page)
+        {
+            var listUser = new List<User_2119110245>();
+
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //lấy ds sản phẩm theo từ khoá tìm kiếm
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Email.Contains(SearchString) && x.IsActive == 0).ToList();
+            }
+            else
+            {
+                //lấy ds sản phẩm trong bảng product
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.IsActive == 0).ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            ViewBag.CountResult = listUser.Count;
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listUser = listUser.OrderByDescending(x => x.IsAdmin).ToList();
+            return View(listUser.ToPagedList(pageNumber, pageSize));
+        }
+        //------------------Toggle Admin--------------
         public ActionResult IsAdmin(int? id)
         {
             var objUser = objWebsiteBanHangEntities.User_2119110245.Where(n => n.Id == id).FirstOrDefault();

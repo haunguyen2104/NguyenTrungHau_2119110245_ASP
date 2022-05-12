@@ -69,6 +69,10 @@
     </p>
 }
 <div class="card-body">
+@if (ViewBag.CurrentFilter != null)
+{
+    <p class="text-center" style="font-family: 'Poppins', sans-serif;">Có tất cả <span style="font-weight:bold">@ViewBag.CountResult</span> kết quả tìm kiếm phù hợp với từ khoá tìm kiếm là "<span style="font-weight:bold">@ViewBag.CurrentFilter</span>"</p>
+}
 
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
@@ -108,13 +112,13 @@
 
                         <a class="func_hover" href="@url_edit " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-                     
-                            <a class="func_hover" href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
-                       
+
+                        <a class="func_hover" href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
+
                         @*
-        <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-        <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                            <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
+                            <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
                         *@
 
@@ -137,12 +141,14 @@ new { page, currentFilter = ViewBag.CurrentFilter }))
 
 <style>
     .func_hover {
-    width:25px;
+        width: 25px;
     }
-    .func_hover:hover i{
-        color:#ff6a00;
-        transform:scale(1.5)
-    }
+
+        .func_hover:hover i {
+            color: #ff6a00;
+            transform: scale(1.5)
+        }
+
     .pagination {
         display: inline-block;
         padding-left: 0;
@@ -309,7 +315,7 @@ new { page, currentFilter = ViewBag.CurrentFilter }))
             background-color: #fff;
         }
 
-     a {
+    a {
         color: #ffa600;
     }
 </style>

@@ -9,13 +9,13 @@
     }
 </style>
 
-<div class="login-box">
+<div class="login-box ">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <h3><b>ĐĂNG NHẬP HỆ THỐNG</b></h3>
         </div>
-        <div class="card-body">
+        <div class="card-body 8">
             @using (Html.BeginForm("LoginAdmin", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken();
