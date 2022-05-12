@@ -14,7 +14,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a >Home</a></li>
                     <li class="breadcrumb-item active">Quản trị</li>
                 </ol>
             </div><!-- /.col -->
@@ -80,9 +80,13 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
+
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3><span style="font-size:50%; font-weight:normal;font-style:italic">Chức năng đang cập nhật</span></h3>
+                        @{
+                            var sumprice = Model.listOrder.Sum(n => n.Price);
+                        }
+                        <h3><span >@Convert.ToDecimal(sumprice).ToString("#,##0")<sup>đ</sup></span></h3>
 
                         <p>Tổng doanh thu</p>
                     </div>

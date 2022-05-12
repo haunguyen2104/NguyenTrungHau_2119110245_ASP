@@ -61,7 +61,7 @@
 @using (Html.BeginForm("Index", "Brand", FormMethod.Get))
 {
     <p class="search__product">
-        Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
+        Tìm kiếm thương hiệu: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
         <a href="@Url.Action("Index","Brand")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả thương hiệu</a>
     </p>
@@ -86,7 +86,7 @@
 </script>-->
 <!--Search ajax end// -->
 <div class="card-body">
-
+    
     <table class="table table-bordered table-striped" id="myTable">
         <thead>
             <tr>

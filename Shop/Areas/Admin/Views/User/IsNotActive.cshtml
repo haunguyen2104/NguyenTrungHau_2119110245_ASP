@@ -18,19 +18,19 @@
 
 
 @*<div class="content-header clearfix">
-    <div class="container">
-        <div class="float-left">
-            <h2>Quản lý người dùng</h2>
+        <div class="container">
+            <div class="float-left">
+                <h2>Quản lý người dùng</h2>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 @using (Html.BeginForm("Index", "User", FormMethod.Get))
 {
     <p class="search__product">
         Tìm kiếm người dùng: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
-        <a href="@Url.Action("IsNotActive","User")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả người dùng</a>
+        <a href="@Url.Action("Index","User")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả người dùng</a>
     </p>
 }
 
@@ -82,11 +82,11 @@
                             </th>
 
                             @*<th>
-                        Trang thai
-                    </th>*@
+                                    Trang thai
+                                </th>*@
                             @*<th rowspan="2" class="text-center align-middle">
-                        Chức năng
-                    </th>*@
+                                    Chức năng
+                                </th>*@
                         </tr>
                         <tr>
                             <th class="text-center align-middle">Quản trị</th>
@@ -147,34 +147,36 @@
                                 </td>
 
                                 @*<td class="align-middle">
-                            @if (item.Status == 1)
-                            {
-                                <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                    &#10004; Đang chờ
-                                </a>
-                            }
-                            else
-                            {
-                                <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                    &#10060; Huỷ đơn
-                                </a>
-                            }
-                        </td>*@
+                                        @if (item.Status == 1)
+                                        {
+                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
+                                                &#10004; Đang chờ
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
+                                                &#10060; Huỷ đơn
+                                            </a>
+                                        }
+                                    </td>*@
                                 @*<td class="align-middle text-center">
-                            <a class="func_hover" href=" " style="color:green; margin:0 10px;">
-                                <img src="~/Public/images/icons/view-files.png" />
-                            </a>
-                        </td>*@
+                                        <a class="func_hover" href=" " style="color:green; margin:0 10px;">
+                                            <img src="~/Public/images/icons/view-files.png" />
+                                        </a>
+                                    </td>*@
                             </tr>
                         }
                     </tbody>
 
                 </table>
-                <a href="@Url.Action("IsNotActive","User")" style="margin-top: 10px; margin-bottom: -10px; " class="text-right">  Danh sách không hoạt động</a>
 
             </div>
         </div>
+
         <div class="col-md-3">
+            <a href="@Url.Action("IsNotActive","User")" class="btn btn-default btn-new" style="color:blue;"><i class="fa fa-circle-left" style="font-weight:600;"></i> Trở về</a>
+
         </div>
     </div>
 </section>
@@ -186,10 +188,6 @@
 new { page, currentFilter = ViewBag.CurrentFilter }))
 
 
-@*<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
-
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, currentFilter = ViewBag.CurrentFilter }))*@
 
 
 <style>

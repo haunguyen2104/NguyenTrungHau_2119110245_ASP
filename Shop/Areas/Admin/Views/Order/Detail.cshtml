@@ -48,14 +48,16 @@
                     <div class="row">
                         <div class="col-md-9">
 
-                            <table class="table table-bordered table-striped" id="myTable">
+                            <table class="table table-bordered table-striped " id="myTable">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" style="width:20px;"></th>
-                                        <th>  Tên sản phẩm</th>
-                                        <th>  Giá sản phẩm</th>
-                                        <th>  Số lượng</th>
-                                        <th> Id</th>
+                                        @*<th class="text-center align-middle" style="width:20px;"></th>*@
+                                        <th class="align-middle text-center"> Id</th>
+                                        <th class="align-middle text-center">  Tên sản phẩm</th>
+                                        <th class="align-middle text-center">  Ảnh sản phẩm</th>
+                                        <th class="align-middle text-center">  Giá sản phẩm</th>
+                                        <th class="align-middle text-center">  Số lượng</th>
+                                        <th class="align-middle text-center">  Thành tiền</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,27 +67,32 @@
                                         var ProductPriceDis = Model.ListProduct.FirstOrDefault().PriceDiscount;
                                         var ProductPrice = Model.ListProduct.FirstOrDefault().Price;
                                         var price = ProductPriceDis != 0 ? Model.ListProduct.FirstOrDefault().PriceDiscount : Model.ListProduct.FirstOrDefault().Price;
-                                  
+                                        var itemProduct = Model.ListProduct.Where(a => a.Id == itemDetail.ProductId).FirstOrDefault();
                                         <tr>
+                                            @*<td class="align-middle text-center">
+                                                    <input type="checkbox" name="checkId" value="" />
+                                                </td>*@
+                                            <td class="align-middle text-center">@itemDetail.ProductId</td>
+
+                                            <td class="align-middle">@itemProduct.Name</td>
+
                                             <td>
-                                                <input type="checkbox" name="checkId" value="" />
+                                                <img src="~/Public/images/product/@itemProduct.Avatar" width="100px" />
                                             </td>
-                                            <td>@Model.ListProduct.FirstOrDefault().Name</td>
-
-
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 @if (Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount == 0)
                                                 {
-                                                    <strong class="price text-muted">@Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().Price đ</strong>
+                                                    <strong class="price text-muted">@Convert.ToDecimal(Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().Price).ToString("#,##0") đ</strong>
                                                 }
                                                 else
                                                 {
-                                                    <strong class="price text-muted">@Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount đ</strong>
+                                                    <strong class="price text-muted">@Convert.ToDecimal(Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount).ToString("#,##0") đ </strong>
                                                 }
                                             </td>
-                                            <td>@itemDetail.Quantity</td>
-                                            <td>@Model.ListProduct.FirstOrDefault().Id</td>
-
+                                            <td class="align-middle text-center">@itemDetail.Quantity</td>
+                                            <td class="align-middle text-center">
+                                            </td>
+                                          
                                         </tr>
                                     }
                                 </tbody>
@@ -96,8 +103,9 @@
                             @{ var fullName = Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().FirstName + " " + Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().LastName;}
                             <p> Đơn đặt hàng từ:<span style="font-weight:bold"> @Convert.ToDateTime(itemOrder.CreateOnUtc).ToString("dd/MM/yyyy - hh:mm:ss tt")</span><br /></p>
                             <p> Người đặt hàng: <span style="font-weight:bold">@fullName</span><br /></p>
-                           <p> Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Address</span><br /></p>
-                           <p> Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br /></p>
+                            <p> Số điện thoại: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Phone</span><br /></p>
+                            <p> Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Address</span><br /></p>
+                            <p> Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br /></p>
 
 
 

@@ -129,7 +129,8 @@
           <Property Name="IsAdmin" Type="int" />
           <Property Name="Gender" Type="int" />
           <Property Name="IsActive" Type="int" />
-          <Property Name="Address" Type="text" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" />
         </EntityType>
         <EntityContainer Name="WebsiteBanHangModelStoreContainer">
           <EntitySet Name="Brand_2119110245" EntityType="Self.Brand_2119110245" Schema="dbo" store:Type="Tables" />
@@ -243,7 +244,8 @@
           <Property Name="IsAdmin" Type="Int32" />
           <Property Name="Gender" Type="Int32" />
           <Property Name="IsActive" Type="Int32" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="WebsiteBanHangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brand_2119110245" EntityType="Self.Brand_2119110245" />
@@ -383,6 +385,7 @@
           <EntitySetMapping Name="User_2119110245">
             <EntityTypeMapping TypeName="WebsiteBanHangModel.User_2119110245">
               <MappingFragment StoreEntitySet="User_2119110245">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />

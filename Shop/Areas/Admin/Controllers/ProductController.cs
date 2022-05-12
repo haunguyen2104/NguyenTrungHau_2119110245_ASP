@@ -33,6 +33,7 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
+
                 listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.FullName.Contains(SearchString) && x.Deleted == false).ToList();
             }
             else
@@ -41,6 +42,8 @@ namespace Shop.Areas.Admin.Controllers
                 listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(x => x.Deleted == false).ToList();
             }
             ViewBag.CurrentFilter = SearchString;
+                ViewBag.CountResult = listProduct.Count;
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
@@ -157,8 +160,10 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult ToggleTrash(int id, Product_2119110245 objProduct)
         {
             this.LoadData();
+           
             objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             objProduct.Deleted = true;
+            objProduct.Id = id;
             objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
