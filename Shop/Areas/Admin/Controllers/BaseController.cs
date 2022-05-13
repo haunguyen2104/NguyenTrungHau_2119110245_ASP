@@ -28,7 +28,11 @@ namespace Shop.Areas.Admin.Controllers
             var listOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
             //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
-            float DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+            float DeliverySuccess = 0;
+            if (listOrder.Count > 0)
+            {
+                DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+            }
             ViewBag.TongSoSanPhamOLayout = listProduct.Count;
             ViewBag.TongSoDanhMucOLayout = listCategory.Count;
             ViewBag.TongSoThuongHieuOLayout = listBrand.Count;

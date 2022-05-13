@@ -1,16 +1,15 @@
-﻿
-
-@model Shop.Context.User_2119110245
+﻿@model Shop.Context.User_2119110245
 
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/_LayoutRegister.cshtml";
 }
 
- <style>
+<style>
     .font-chu {
         font-family: 'Poppins', sans-serif;
     }
+
     .form-control {
         width: 100%;
     }
@@ -23,133 +22,126 @@
         width: 45%;
         float: left
     }
-    .label__item{
-        font-weight:bold;
+
+    .label__item {
+        font-weight: bold;
     }
-    hr{
-        margin-left:-15px;
-        max-width:600px;
+
+    hr {
+        margin-left: -15px;
+        max-width: 600px;
     }
-    .gotohome{
-        margin-left:10px;
-        padding :10px;
-        border:1px solid #ff6a00;
-        border-radius:10px;
+
+    .gotohome {
+        margin-left: 10px;
+        padding: 10px;
+        border: 1px solid #ff6a00;
+        border-radius: 10px;
     }
-    .gotohome:hover{
-        background-color:bisque;
-    }
-    .gotohome i{
-       margin-right:5px;
-    }
+
+        .gotohome:hover {
+            background-color: bisque;
+        }
+
+        .gotohome i {
+            margin-right: 5px;
+        }
 </style>
-<section class="section-content padding-y font-chu">
-    <div class="card mx-auto" style="max-width: 620px;margin-top: 40px;">
+
+
+
+
+
+<!--============================================================-->
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
         <article class="card-body">
-            @using (Html.BeginForm())
+            <header class="mb-4"><h4 class="card-title">Đăng ký</h4></header>
+            @using (Html.BeginForm("Register","Home",FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                    <h4 style="text-align:center; margin-left:-100px;">Đăng ký</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <div class="input__name">
-                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-3 label__item" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập họ của bạn..." } })
-                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="input__name">
-                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-3 label__item" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên của bạn..." } })
-                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Họ</label>
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập họ của bạn..." } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group input__name">
+                            <label>Tên</label>
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên của bạn..." } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+                </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 label__item " })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập email" , type="email"} })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Email</label>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 label__item" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" ,placeholder = "Nhập mật khẩu" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    @if (TempData["error"] != null)
-                    {
-                        <span style="color:red;">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                            @TempData["error"]
-                        </span>
-                    }
-                    @*else
-                        if (TempData["success"]!=null) {
-                        {
-                            <span style="color:#0f0;">
-                                <i class="fa-solid fa-circle-check"></i>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập email", type = "email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    <small class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẻ email của bạn với bất kỳ ai khác.</small>
+                </div>
 
-                            @TempData["success"]
-                            </span>
-                            }
-                        }*@
+                <div class="form-group">
+                    <label>Số điện thoại</label>
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.IsAdmin, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
-                    <!---->
-                    <!---->
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập email", type = "tel" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Địa chỉ</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập địa chỉ", type = "text" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div> <!-- form-group end.// -->
+                    @*<div class="form-group col-md-6">
+                        <label>Country</label>
+                        <select id="inputState" class="form-control">
+                            <option> Choose...</option>
+                            <option>Uzbekistan</option>
+                            <option>Russia</option>
+                            <option selected="">United States</option>
+                            <option>India</option>
+                            <option>Afganistan</option>
+                        </select>
+                    </div>*@
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Mật khẩu</label>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mật khẩu", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div> <!-- form-group end.// --> 
+                    <!--<div class="form-group col-md-6">
+                        <label>Xác nhận mật khẩu</label>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập lại mật khẩu", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>--> <!-- form-group end.// -->
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Đăng ký" class="btn btn-primary btn-block" />
-                        </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="Đăng ký" class="btn btn-primary btn-block" />
                     </div>
                 </div>
+
             }
 
             <div>
-               
+
                 <a href="@Url.Action("Index","Home")" class="gotohome"><i class="fa-solid fa-circle-arrow-left"></i>Trở về trang chủ</a>
             </div>
         </article>
     </div>
 </section>
 
-<!--
-<style>
-    .width__input {
-        width: 635px;
-    }
-
-    .width__title {
-        width: auto;
-    }
-
-    .mrtop {
-        margin-top: 15px;
-    }
-
-    .title__register {
-
-        text-align: center;
-        font-size: 30px;
-        font-weight: bold;
-    }
-</style>
--->
-<!--Code do CShap tự tạo//.End-->

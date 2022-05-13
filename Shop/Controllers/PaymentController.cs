@@ -29,15 +29,17 @@ namespace Shop.Controllers
                    double pricePro = float.Parse(listProduct.FirstOrDefault().Product.Price.ToString());
                     double priceDisPro = float.Parse(listProduct.FirstOrDefault().Product.PriceDiscount.ToString());
 
-                    if (priceDisPro<=0)
+                    if (listProduct.FirstOrDefault().Product.PriceDiscount.ToString() != null)
                     {
-                        tongtien += listProduct.FirstOrDefault().Quantity * pricePro;
+                        tongtien += listProduct.FirstOrDefault().Quantity * priceDisPro;
+
                     }
                     else
                     {
-                        tongtien += listProduct.FirstOrDefault().Quantity * priceDisPro;
+                        tongtien += listProduct.FirstOrDefault().Quantity * pricePro;
+
                     }
-           
+
                 }
                 //Gán dữ liệu cho bảng Order
                 Order_2119110245 objOrder = new Order_2119110245();

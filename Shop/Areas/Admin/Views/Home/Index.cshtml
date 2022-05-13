@@ -84,7 +84,7 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         @{
-                            var sumprice = Model.listOrder.Sum(n => n.Price);
+                            var sumprice = Model.listOrderDetail.Sum(n => n.TotalPrice);
                         }
                         <h3><span >@Convert.ToDecimal(sumprice).ToString("#,##0")<sup>đ</sup></span></h3>
 

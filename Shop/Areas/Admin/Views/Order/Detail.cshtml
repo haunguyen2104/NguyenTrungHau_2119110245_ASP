@@ -68,6 +68,8 @@
                                         var ProductPrice = Model.ListProduct.FirstOrDefault().Price;
                                         var price = ProductPriceDis != 0 ? Model.ListProduct.FirstOrDefault().PriceDiscount : Model.ListProduct.FirstOrDefault().Price;
                                         var itemProduct = Model.ListProduct.Where(a => a.Id == itemDetail.ProductId).FirstOrDefault();
+                                        var totalPrice = 0;
+                                                                       
                                         <tr>
                                             @*<td class="align-middle text-center">
                                                     <input type="checkbox" name="checkId" value="" />
@@ -91,6 +93,14 @@
                                             </td>
                                             <td class="align-middle text-center">@itemDetail.Quantity</td>
                                             <td class="align-middle text-center">
+                                                @if (Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount == 0)
+                                                {
+                                                    <strong class="price text-muted">@Convert.ToDecimal(Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().Price* itemDetail.Quantity).ToString("#,##0") đ</strong>
+                                                }
+                                                else
+                                                {
+                                                    <strong class="price text-muted">@Convert.ToDecimal(Model.ListProduct.Where(n => n.Id == itemDetail.ProductId).FirstOrDefault().PriceDiscount* itemDetail.Quantity).ToString("#,##0") đ </strong>
+                                                }
                                             </td>
                                           
                                         </tr>
@@ -105,7 +115,10 @@
                             <p> Người đặt hàng: <span style="font-weight:bold">@fullName</span><br /></p>
                             <p> Số điện thoại: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Phone</span><br /></p>
                             <p> Địa chỉ giao hàng: <span style="font-weight:bold">@Model.ListUser.Where(a => a.Id == itemOrder.UserId).FirstOrDefault().Address</span><br /></p>
-                            <p> Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br /></p>
+                            <p> Địa chỉ email: <span style="font-weight:bold">@Model.ListUser.Where(n => n.Id == itemOrder.UserId).FirstOrDefault().Email</span><br /></p><br /><br />
+                            <p>Tổng thành tiền: <span style="font-weight:bold; font-size:35px;">
+                                @Convert.ToDecimal(Model.ListOrderDetail.Sum(a => a.TotalPrice)).ToString("#,##0")
+                                </span></p>
 
 
 
