@@ -2524,6 +2524,7 @@
     <Content Include="Public\css\bootstrap.css" />
     <Content Include="Public\css\mystyle.css" />
     <Content Include="Public\css\responsive.css" />
+    <Content Include="Public\css\TogglePassword.css" />
     <Content Include="Public\css\ui.css" />
     <Content Include="Public\fonts\fontawesome\css\all.css" />
     <Content Include="Public\fonts\fontawesome\css\all.min.css" />
@@ -2757,6 +2758,7 @@
     <Content Include="Public\js\homeController.js" />
     <Content Include="Public\js\jquery-2.0.0.min.js" />
     <Content Include="Public\js\script.js" />
+    <Content Include="Public\js\TogglePassword.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -3044,6 +3046,7 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\User\IsNotActive.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginAdmin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

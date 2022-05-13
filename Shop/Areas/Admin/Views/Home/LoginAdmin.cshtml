@@ -1,21 +1,32 @@
 ﻿
 @{
     ViewBag.Title = "LoginAdmin";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LoginAdmin.cshtml";
 }
 <style>
     .login-box {
-        margin-left: calc((100vw - 560px)/2)
+        margin: 0 auto;
+        margin-top: 240px;
+    }
+    .card-primary.card-outline {
+        border-top: 3px solid #ff6a00;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #ff6a00;
+        border-color: #ff6a00;
+        box-shadow: none;
+        margin-top:10px;
     }
 </style>
 
 <div class="login-box ">
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-primary" >
         <div class="card-header text-center">
             <h3><b>ĐĂNG NHẬP HỆ THỐNG</b></h3>
         </div>
-        <div class="card-body 8">
+        <div class="card-body">
             @using (Html.BeginForm("LoginAdmin", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken();

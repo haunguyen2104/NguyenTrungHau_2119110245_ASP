@@ -76,9 +76,10 @@
                             var name = item.Name.ToLower();
                             var id = item.Id;
                             var url_details = "/quan-tri/don-hang/chi-tiet-don-hang/" + name + "-" + id;
+                            var Name = Model.ListUser.Where(n => n.Id == item.UserId).FirstOrDefault().FirstName + " " + Model.ListUser.Where(n => n.Id == item.UserId).FirstOrDefault().LastName;
                             <tr id="product-@item.Id">
                                 <td class="align-middle">
-                                    @Model.ListUser.Where(n => n.Id == item.UserId).FirstOrDefault().FirstName
+                                    @Name
                                 </td>
                                 <td class="align-middle">
                                     @Html.DisplayFor(modelItem => item.Name)

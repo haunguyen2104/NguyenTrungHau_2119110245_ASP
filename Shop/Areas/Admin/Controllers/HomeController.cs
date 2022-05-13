@@ -26,13 +26,18 @@ namespace Shop.Areas.Admin.Controllers
             var listOrderDetail = objWebsiteBanHangEntities.OrderDetail_2119110245.ToList();
             //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
-            float DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+            float DeliverySuccess = 0;
+            if (listOrder.Count>0)
+            {
+                 DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+            }
     
 
             DashboardModel objModel = new DashboardModel();
             objModel.listProduct = listProduct;
             objModel.listUser = listUser;
             objModel.listOrder = listOrder;
+            objModel.listOrderDetail = listOrderDetail;
             objModel.DeliverySuccessful = DeliverySuccess;
             objModel.OrderSuccess = int.Parse(objOrderSuccess.ToString());
             return View(objModel);

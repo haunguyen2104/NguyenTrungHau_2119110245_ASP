@@ -32,7 +32,7 @@ namespace Shop.Controllers
             listBrand = objWebsiteBanHangEntities.Brand_2119110245.ToList();
 
             //Lấy post
-            listPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.isDelete == false).ToList();
+            listPost = objWebsiteBanHangEntities.Post_2119110245.ToList();
          
             HomeModel objhomeModel = new HomeModel();
             objhomeModel.listCategory = listCategory;
@@ -68,6 +68,7 @@ namespace Shop.Controllers
                     _user.Password = ConvertMD5.GetMD5(_user.Password);
                     _user.IsAdmin = 0;
                     _user.IsActive = 1;
+                    _user.Gender = 1;
                     objWebsiteBanHangEntities.Configuration.ValidateOnSaveEnabled = false;
                     objWebsiteBanHangEntities.User_2119110245.Add(_user);
                     objWebsiteBanHangEntities.SaveChanges();
