@@ -13,14 +13,6 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Base
         public BaseController()
         {
-            /*
-            //Kiểm tra chưa đăng nhập
-            if (System.Web.HttpContext.Current.Session["UserAdmin"] == null)
-            {
-                //Chuyển hướng website
-                System.Web.HttpContext.Current.Response.Redirect("/Admin/Home/LoginAdmin");
-            }
-            */
             var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
             var listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.Deleted == false).ToList();
             var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.Deleted == false).ToList();
@@ -40,5 +32,6 @@ namespace Shop.Areas.Admin.Controllers
             ViewBag.TongSoThanhVienOLayout = listUser.Count;
            
         }
+      
     }
 }

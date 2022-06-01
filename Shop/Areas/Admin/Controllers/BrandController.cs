@@ -20,6 +20,11 @@ namespace Shop.Areas.Admin.Controllers
         //LOAD DANH SÁCH THƯƠNG HIỆU-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            //this.CheckLogin();
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listBrand = new List<Brand_2119110245>();
             if (SearchString != null)
             {
@@ -49,12 +54,20 @@ namespace Shop.Areas.Admin.Controllers
         //XEM CHI TIẾT THƯƠNG HIỆU---------------------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
             return View(objBrand);
         }
         //THÊM MỚI THƯƠNG HIỆU-------------------------------------------------------------------------------------------
         public ActionResult Create()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             return View();
         }
         [HttpPost]
@@ -88,6 +101,10 @@ namespace Shop.Areas.Admin.Controllers
         //CHỈNH SỬA THƯƠNG HIỆU------------------------------------------------------------------------------------------
         public ActionResult Edit(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             //------------------------------
             var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(n => n.BrandId == id).FirstOrDefault();
@@ -116,6 +133,10 @@ namespace Shop.Areas.Admin.Controllers
         ///DANH SÁCH THƯƠNG HIỆU TRONG THÙNG RÁC
         public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listBrand = new List<Brand_2119110245>();
             if (SearchString != null)
             {
@@ -152,6 +173,10 @@ namespace Shop.Areas.Admin.Controllers
         //[HttpPost]
         public ActionResult ToggleTrash(int id, Brand_2119110245 objBrand)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
             objBrand.Deleted = true;
@@ -170,6 +195,10 @@ namespace Shop.Areas.Admin.Controllers
         //[HttpPost]
         public ActionResult Recover(int id, Brand_2119110245 objBrand)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
             objBrand.Deleted = false;
@@ -180,6 +209,10 @@ namespace Shop.Areas.Admin.Controllers
         ///XOÁ VĨNH VIỄN
         public ActionResult Delete(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
             return View(objBrand);
@@ -187,7 +220,11 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Brand_2119110245 objBrand)
         {
-             objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
+            objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == id).FirstOrDefault();
             objWebsiteBanHangEntities.Brand_2119110245.Remove(objBrand);
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("ListInTrash");
@@ -227,5 +264,6 @@ namespace Shop.Areas.Admin.Controllers
             ViewBag.Delete = objCommon.ToSelectList(dtDelete, "Value", "Name");
             //---------------------------------------------
         }
+       
     }
 }

@@ -12,12 +12,14 @@ namespace Shop.Areas.Admin.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Home
+        //LẤY DỮ LIỆU ĐƯA LÊN VIEW -------------------------------------------------------------------------------------
         public ActionResult Index()
         {
-            //if (Session["UserAdmin"] == null)
-            //{
-            //    return RedirectToAction("LoginAdmin", "Home");
-            //}
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
+            //checkLogin();
             var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Deleted == false).ToList();
             var listCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.Deleted == false).ToList();
             var listBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.Deleted == false).ToList();
@@ -27,11 +29,11 @@ namespace Shop.Areas.Admin.Controllers
             //Delivery = 3 là giao hàng thành công => Khách hàng đã nhận được hàng
             var objOrderSuccess = listOrder.Where(a => a.Delivery == 3).ToList().Count;
             float DeliverySuccess = 0;
-            if (listOrder.Count>0)
+            if (listOrder.Count > 0)
             {
-                 DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
+                DeliverySuccess = objOrderSuccess * 100 / listOrder.Count;
             }
-    
+
 
             DashboardModel objModel = new DashboardModel();
             objModel.listProduct = listProduct;
@@ -42,6 +44,7 @@ namespace Shop.Areas.Admin.Controllers
             objModel.OrderSuccess = int.Parse(objOrderSuccess.ToString());
             return View(objModel);
         }
+        //ĐĂNG NHẬP VÀO HỆ THỐNG ---------------------------------------------------------------------------------------
         public ActionResult LoginAdmin()
         {
             return View();
@@ -77,6 +80,7 @@ namespace Shop.Areas.Admin.Controllers
 
             return View();
         }
+        //ĐĂNG XUẤT KHỎI HỆ THỐNG --------------------------------------------------------------------------------------
         public ActionResult Logout()
         {
             Session.Clear();//Remove session
@@ -86,6 +90,16 @@ namespace Shop.Areas.Admin.Controllers
 
 
         }
+        //Check Login-------------------------
+        public ActionResult checkLogin()
+        {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
+            return View("/trang-chu");
+        }
+
     }
 
 }

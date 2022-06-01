@@ -12,6 +12,8 @@ namespace Shop.Models
         //Thêm các trường
         public int Id { get; set; }
         [Display(Name = "Tên sản phẩm")]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!")]
+
         public string Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!")]
         [Display(Name = "Tên sản phẩm đầy đủ")]

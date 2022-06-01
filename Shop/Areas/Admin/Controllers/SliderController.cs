@@ -17,6 +17,10 @@ namespace Shop.Areas.Admin.Controllers
         //LOAD DANH SÁCH HÌNH ẢNH-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listSlider = new List<Slider_2119110245>();
             if (SearchString != null)
             {
@@ -48,11 +52,19 @@ namespace Shop.Areas.Admin.Controllers
         //XEM CHI TIẾT HÌNH ẢNH---------------------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objSlider = objWebsiteBanHangEntities.Slider_2119110245.Where(a => a.Id == id).FirstOrDefault();
             return View(objSlider);
         }
         public ActionResult Create()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             return View();
         }
         [ValidateInput(false)]
@@ -89,6 +101,10 @@ namespace Shop.Areas.Admin.Controllers
         //TOGGLE TRẠNG THÁI XOÁ
         public ActionResult IsDelete(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objSlider = objWebsiteBanHangEntities.Slider_2119110245.Where(n => n.Id == id).FirstOrDefault();
             objSlider.IsDelete = (objSlider.IsDelete == true) ? false : true;
             objWebsiteBanHangEntities.Entry(objSlider).State = EntityState.Modified;

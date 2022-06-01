@@ -20,6 +20,10 @@ namespace Shop.Areas.Admin.Controllers
         //LOAD DANH SÁCH DANH MỤC-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listCategory = new List<Category_2119110245>();
             if (SearchString != null)
             {
@@ -49,12 +53,20 @@ namespace Shop.Areas.Admin.Controllers
         //XEM CHI TIẾT DANH MỤC---------------------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
             return View(objCategory);
         }
         //THÊM MỚI DANH MỤC-------------------------------------------------------------------------------------------
         public ActionResult Create()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             return View();
         }
@@ -88,6 +100,10 @@ namespace Shop.Areas.Admin.Controllers
         //CHỈNH SỬA DANH MỤC------------------------------------------------------------------------------------------
         public ActionResult Edit(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             //------------------------------
             var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(n => n.CategoryId == id).FirstOrDefault();
@@ -116,6 +132,10 @@ namespace Shop.Areas.Admin.Controllers
         ///DANH SÁCH DANH MỤC TRONG THÙNG RÁC
         public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listCategory = new List<Category_2119110245>();
             if (SearchString != null)
             {
@@ -152,6 +172,10 @@ namespace Shop.Areas.Admin.Controllers
         //[HttpPost]
         public ActionResult ToggleTrash(int id, Category_2119110245 objCategory)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
             objCategory.Deleted = true;
@@ -180,6 +204,10 @@ namespace Shop.Areas.Admin.Controllers
         ///XOÁ VĨNH VIỄN
         public ActionResult Delete(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             var objCategory = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
             return View(objCategory);
@@ -187,6 +215,10 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Category_2119110245 objCategory)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == id).FirstOrDefault();
             objWebsiteBanHangEntities.Category_2119110245.Remove(objCate);
             objWebsiteBanHangEntities.SaveChanges();
