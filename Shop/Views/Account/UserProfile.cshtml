@@ -1,13 +1,14 @@
-﻿@model Shop.Context.User_2119110245
+﻿@*@model Shop.Context.User_2119110245*@
+@model Shop.Models.AccountModel
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = "Thông tin cá nhân";
     Layout = "~/Views/Shared/_Layout02.cshtml";
 }
 @*@{var fullName = @Model.FirstName + @Model.LastName}*@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg-gray">
     <div class="container">
-        <h2 class="title-page">Xin chào  @Model.FirstName @Model.LastName</h2>
+        <h2 class="title-page">Xin chào  @Model.objUser.FirstName @Model.objUser.LastName</h2>
     </div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION PAGETOP END// ========================= -->
@@ -18,13 +19,14 @@
         <div class="row">
             <aside class="col-md-3">
                 <nav class="list-group">
-                    <a class="list-group-item active" href="page-profile-main.html"> Account overview  </a>
-                    <a class="list-group-item" href="page-profile-address.html"> My Address </a>
-                    <a class="list-group-item" href="page-profile-orders.html"> My Orders </a>
-                    <a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
-                    <a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
-                    <a class="list-group-item" href="page-profile-setting.html"> Settings </a>
-                    <a class="list-group-item" href="page-index-1.html"> Log out </a>
+                    <a class="list-group-item active" href="page-profile-main.html"> Tổng quan về tài khoản  </a>
+                    <a class="list-group-item" href="page-profile-address.html"> Địa chỉ </a>
+                    <a class="list-group-item" href="page-profile-orders.html"> Đơn hàng </a>
+                    <a class="list-group-item" href="page-profile-wishlist.html"> Sản phẩm yêu thích </a>
+                    <a class="list-group-item" href="page-profile-setting.html"> Cài đặt </a>
+                    <a class="list-group-item" href="@Url.Action("Logout","Home")"> Đăng xuất </a>
+                   
+
                 </nav>
             </aside> <!-- col.// -->
             <main class="col-md-9">
@@ -34,20 +36,21 @@
 
                         <figure class="icontext">
                             <div class="icon">
-                                <img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
+                                <img class="rounded-circle img-sm border" src="~/Public/images/avatars/avt.jpg">
                             </div>
                             <div class="text">
-                                <strong>  @Model.FirstName @Model.LastName </strong> <br>
-                                <p class="mb-2">@Model.Email  </p>
-                                <a href="#" class="btn btn-light btn-sm">Edit</a>
+                                <strong>  @Model.objUser.FirstName @Model.objUser.LastName </strong> <br>
+                                <p class="mb-2">@Model.objUser.Email  </p>
+                                <a href="#" class="btn btn-light btn-sm">Sửa</a>
                             </div>
                         </figure>
                         <hr>
                         <p>
-                            <i class="fa fa-map-marker text-muted"></i> &nbsp; My address:
+                            <i class="fa fa-map-marker text-muted"></i> &nbsp;   Địa chỉ của tôi:
                             <br>
-                            Tashkent city, Street name, Building 123, House 321 &nbsp
-                            <a href="#" class="btn-link"> Edit</a>
+
+                            @Model.objUser.Address<span> |</span>
+                            <a href="#" class="btn-link"> Sửa</a>
                         </p>
 
 
@@ -55,26 +58,40 @@
                         <article class="card-group card-stat">
                             <figure class="card bg">
                                 <div class="p-3">
-                                    <h4 class="title">38</h4>
-                                    <span>Orders</span>
+                                    <h4 class="title">
+                                        @Model.ListOrder.Count
+                                    </h4>
+                                    <span>Đơn hàng</span>
                                 </div>
                             </figure>
-                            <figure class="card bg">
+                            @*<figure class="card bg">
                                 <div class="p-3">
                                     <h4 class="title">5</h4>
-                                    <span>Wishlists</span>
+                                    <span>Danh sách</span>
+                                </div>
+                            </figure>*@
+                            <figure class="card bg">
+                                <div class="p-3">
+                                    <h4 class="title">
+                                        @Model.ListOrder.Count(a=>a.Delivery==0)
+                                    </h4>
+                                    <span>Chờ xác nhận</span>
                                 </div>
                             </figure>
                             <figure class="card bg">
                                 <div class="p-3">
-                                    <h4 class="title">12</h4>
-                                    <span>Awaiting delivery</span>
+                                    <h4 class="title">
+                                        @Model.ListOrder.Count(a=>a.Delivery==2)
+                                    </h4>
+                                    <span>Chờ giao hàng</span>
                                 </div>
                             </figure>
                             <figure class="card bg">
                                 <div class="p-3">
-                                    <h4 class="title">50</h4>
-                                    <span>Delivered items</span>
+                                    <h4 class="title">
+                                        @Model.ListOrder.Count(a=>a.Delivery==3)
+                                    </h4>
+                                    <span>Các đơn đã giao</span>
                                 </div>
                             </figure>
                         </article>
@@ -85,42 +102,42 @@
 
                 <article class="card  mb-3">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Recent orders </h5>
+                        <h5 class="card-title mb-4">Những đơn đặt hàng gần đây </h5>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <figure class="itemside  mb-3">
-                                    <div class="aside"><img src="images/items/1.jpg" class="border img-sm"></div>
+                                    <div class="aside"><img src="~/Public/images/items/1.jpg" class="border img-sm"></div>
                                     <figcaption class="info">
                                         <time class="text-muted"><i class="fa fa-calendar-alt"></i> 12.09.2019</time>
-                                        <p>Great book name goes here </p>
-                                        <span class="text-success">Order confirmed </span>
+                                        <p>Tên cuốn sách tuyệt vời ở đây </p>
+                                        <span class="text-success">Xác nhận đặt hàng </span>
                                     </figcaption>
                                 </figure>
                             </div> <!-- col.// -->
                             <div class="col-md-6">
                                 <figure class="itemside  mb-3">
-                                    <div class="aside"><img src="images/items/2.jpg" class="border img-sm"></div>
+                                    <div class="aside"><img src="~/Public/images/items/2.jpg" class="border img-sm"></div>
                                     <figcaption class="info">
-                                        <time class="text-muted"><i class="fa fa-calendar-alt"></i> 12.09.2019</time>
-                                        <p>How to be rich</p>
-                                        <span class="text-success">Departured</span>
+                                        <time class="text-muted"><i class="fa fa-calendar-alt"></i> 12.09.2022</time>
+                                        <p>Làm thế nào để trở nên giàu có</p>
+                                        <span class="text-success">Đã khởi hành</span>
                                     </figcaption>
                                 </figure>
                             </div> <!-- col.// -->
                             <div class="col-md-6">
                                 <figure class="itemside mb-3">
-                                    <div class="aside"><img src="images/items/3.jpg" class="border img-sm"></div>
+                                    <div class="aside"><img src="~/Public/images/items/3.jpg" class="border img-sm"></div>
                                     <figcaption class="info">
                                         <time class="text-muted"><i class="fa fa-calendar-alt"></i> 12.09.2019</time>
-                                        <p>Harry Potter book </p>
-                                        <span class="text-success">Shipped  </span>
+                                        <p>Sách Harry Potter </p>
+                                        <span class="text-success">Đã vận chuyển  </span>
                                     </figcaption>
                                 </figure>
                             </div> <!-- col.// -->
                         </div> <!-- row.// -->
 
-                        <a href="#" class="btn btn-outline-primary btn-block"> See all orders <i class="fa fa-chevron-down"></i>  </a>
+                        <a href="#" class="btn btn-outline-primary btn-block"> Xem tất cả các đơn đặt hàng <i class="fa fa-chevron-down"></i>  </a>
                     </div> <!-- card-body .// -->
                 </article> <!-- card.// -->
 

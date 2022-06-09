@@ -60,7 +60,7 @@
 @using (Html.BeginForm("Index", "Category", FormMethod.Get))
 {
     <p class="search__product">
-        Tìm kiếm sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
+        Tìm kiếm danh mục: @Html.TextBox("SearchString", ViewBag.CurrentFilter as String)
         <input type="submit" value="Tìm kiếm" class="btn-outline-danger" />
         <a href="@Url.Action("Index","Category")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả danh mục</a>
     </p>

@@ -207,6 +207,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AdminHomeModel.cs" />
     <Compile Include="Models\AdminOrderModel.cs" />
     <Compile Include="Models\CategoryMasterData.cs" />
@@ -2548,6 +2549,7 @@
     <Content Include="Public\images\avatars\avatar1.jpg" />
     <Content Include="Public\images\avatars\avatar2.jpg" />
     <Content Include="Public\images\avatars\avatar3.jpg" />
+    <Content Include="Public\images\avatars\avt.jpg" />
     <Content Include="Public\images\banners\ad-sm.png" />
     <Content Include="Public\images\banners\ad.png" />
     <Content Include="Public\images\banners\banner-item1.jpg" />

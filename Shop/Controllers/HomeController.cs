@@ -103,6 +103,9 @@ namespace Shop.Controllers
                     Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["Id"] = data.FirstOrDefault().Id;
+                    Session["Slug_Name"] =ToStringSlug.ToSlug(Session["FullName"].ToString());
+                    // ToStringSlug.ToSlug(objUser.FirstName+objUser.LastName);
+                    //ViewBag.NameToSlug = Session["Slug_Name"].ToString();
                     Session["IsAdmin"] = data.FirstOrDefault().IsAdmin;
                     Session["AddressUser"] = data.FirstOrDefault().Address;
                     //TempData["success"] = "Đăng nhập thành công";

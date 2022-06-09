@@ -82,8 +82,8 @@
                                 <i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <small class="label-rating text-muted">132 reviews</small>
-                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
+                        @*<small class="label-rating text-muted">132 reviews</small>*@
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 đã bán </small>
                     </div> <!-- rating-wrap.// -->
 
                     @if (Model.PriceDiscount != null)
@@ -92,12 +92,12 @@
                         var sale = Math.Round((float)rateSale, 0);
                         <div class="mb-3">
                             <var class="price h4">@Convert.ToDecimal(@Model.PriceDiscount).ToString("#,##0")<sup>đ</sup> </var>
-                            <span class="text-muted"> incl. VAT ( @sale% - Giá gốc: @Convert.ToDecimal(@Model.Price).ToString("#,##0")<sup>đ</sup>)</span>
+                            <span class="text-muted">  VAT ( @sale% - Giá gốc: @Convert.ToDecimal(@Model.Price).ToString("#,##0")<sup>đ</sup>)</span>
                         </div> <!-- price-detail-wrap .// --> }
                     else
                     {<div class="mb-3">
                             <var class="price h4">@Convert.ToDecimal(@Model.Price).ToString("#,##0")<sup>đ</sup></var>
-                            <span class="text-muted"> incl. VAT</span>
+                            <span class="text-muted"> VAT</span>
                         </div> <!-- price-detail-wrap .// -->
                     }
 
@@ -110,13 +110,13 @@
                     <dl class="row">
                         <dt class="col-sm-3">Ngày: </dt>
 
-                        <dd class="col-sm-9"><a href="#">@Convert.ToDateTime(Model.CreatedOnUtc).ToString("hh:mm dddd - dd/MM/yyyy")</a></dd>
+                        <dd class="col-sm-9"><a href="#">@Convert.ToDateTime(Model.CreatedOnUtc).ToString("hh:mm - dd/MM/yyyy")</a></dd>
 
                         @*<dt class="col-sm-3">Article number</dt>
         <dd class="col-sm-9">596 065</dd>*@
 
                         <dt class="col-sm-3">Bảo hành:</dt>
-                        <dd class="col-sm-9">2 year</dd>
+                        <dd class="col-sm-9">2 năm</dd>
 
                         <dt class="col-sm-3">Giao hàng</dt>
                         <dd class="col-sm-9">1-2 ngày</dd>

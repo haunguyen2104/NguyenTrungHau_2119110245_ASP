@@ -69,7 +69,7 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult DeliveryToggle(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            obj.Delivery = (obj.Delivery > 2) ? 1 : 2;
+            obj.Delivery = (obj.Delivery == 2) ? 1 : 2;
             //obj.UpdatedOnUtc = DateTime.Now;
             objWebsiteBanHangEntities.Entry(obj).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();

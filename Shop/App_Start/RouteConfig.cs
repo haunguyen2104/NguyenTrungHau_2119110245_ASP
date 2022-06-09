@@ -51,6 +51,8 @@ namespace Shop
             routes.MapRoute(name: "ProductBrandGrid", url: "san-pham/thuong-hieu/luoi/{Slug}-{id}",defaults: new { controller = "Product", action = "ProductBrandGrid", id = UrlParameter.Optional },new[] { "Shop.Controllers" });
             //Chi tiết sản phẩm
             routes.MapRoute(name: "ProductDetail", url: "chi-tiet/{Slug}-{Id}", defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
+            //Xem tài khoản
+            routes.MapRoute(name: "AccountProfile", url: "tai-khoan/{Name}-{Id}", defaults: new { controller = "Account", action = "UserProfile", id = UrlParameter.Optional }, new[] { "Shop.Controllers" });
 
             //Url Default
             routes.MapRoute(
