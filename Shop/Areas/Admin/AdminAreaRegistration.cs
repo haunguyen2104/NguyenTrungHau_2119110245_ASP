@@ -100,6 +100,7 @@ namespace Shop.Areas.Admin
             //Quản trị User------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách thành viên
             context.MapRoute("UserList", "quan-tri/danh-sach-thanh-vien", new { controller = "User", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("UserNoActive", "quan-tri/danh-sach-thanh-vien-khong-hoat-dong", new { controller = "User", action = "IsNotActive", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             //Quản trị đơn hàng------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách đơn hàng
             context.MapRoute("OrderList", "quan-tri/danh-sach-don-hang", new { controller = "Order", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
