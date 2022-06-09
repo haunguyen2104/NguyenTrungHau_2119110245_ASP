@@ -18,6 +18,10 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listUser = new List<User_2119110245>();
           
             if (SearchString != null)
@@ -31,7 +35,7 @@ namespace Shop.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(SearchString))
             {
                 //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Email.Contains(SearchString) && x.IsActive == 1).ToList();
+                listUser = objWebsiteBanHangEntities.User_2119110245.Where(x =>( x.Email.Contains(SearchString) || (x.FirstName+" "+x.LastName).Contains(SearchString)) && x.IsActive == 1).ToList();
             }
             else
             {

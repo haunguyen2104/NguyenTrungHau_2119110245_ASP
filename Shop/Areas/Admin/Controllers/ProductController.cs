@@ -21,6 +21,10 @@ namespace Shop.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listProduct = new List<Product_2119110245>();
             if (SearchString != null)
             {
@@ -53,6 +57,10 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             return View();
         }
@@ -92,6 +100,10 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             AdminHomeModel objHomeModel = new AdminHomeModel();
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
@@ -105,6 +117,10 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             //------------------------------
             this.LoadData();
             //------------------------------
@@ -130,6 +146,10 @@ namespace Shop.Areas.Admin.Controllers
                         objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Public/images/product/"), fileName));
                     }
                     //objProduct.Id = id;
+                    if (objProduct.PriceDiscount<=0)
+                    {
+                        objProduct.PriceDiscount = null;
+                    }
                     objProduct.UpdatedOnUtc = DateTime.Now;
                     objProduct.Slug = ToStringSlug.ToSlug(objProduct.FullName);
                     objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
@@ -143,26 +163,31 @@ namespace Shop.Areas.Admin.Controllers
             }
             return View(objProduct);
         }
-        [HttpGet]
-        public ActionResult ToggleTrash(int id)
-        {
-            this.LoadData();
-            AdminHomeModel objHomeModel = new AdminHomeModel();
-            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
-            var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
-            objHomeModel.objProduct = objProduct;
-            objHomeModel.BrandName = objBrand.BrandName;
-            objHomeModel.CategoryName = objCate.CategoryName;
-            return View(objHomeModel);
-        }
-        [HttpPost]
+        //[HttpGet]
+        //public ActionResult ToggleTrash(int id)
+        //{
+        //    if (Session["UserAdmin"] == null)
+        //    {
+        //        return RedirectToAction("LoginAdmin", "Home");
+        //    }
+        //    this.LoadData();
+        //    AdminHomeModel objHomeModel = new AdminHomeModel();
+        //    var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+        //    var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
+        //    var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
+        //    objHomeModel.objProduct = objProduct;
+        //    objHomeModel.BrandName = objBrand.BrandName;
+        //    objHomeModel.CategoryName = objCate.CategoryName;
+        //    return View(objHomeModel);
+        //}
+        //[HttpPost]
         public ActionResult ToggleTrash(int id, Product_2119110245 objProduct)
         {
             this.LoadData();
-           
+
             objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
             objProduct.Deleted = true;
+            objProduct.UpdatedOnUtc = DateTime.Now;
             objProduct.Id = id;
             objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
@@ -170,6 +195,10 @@ namespace Shop.Areas.Admin.Controllers
         }
         public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listProduct = new List<Product_2119110245>();
             if (SearchString != null)
             {
@@ -193,27 +222,32 @@ namespace Shop.Areas.Admin.Controllers
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
-            listProduct = listProduct.OrderByDescending(x => x.Id).ToList();
+            listProduct = listProduct.OrderByDescending(x => x.UpdatedOnUtc).ToList();
             return View(listProduct.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Recover(int id)
-        {
-            this.LoadData();
-            AdminHomeModel objHomeModel = new AdminHomeModel();
-            var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
-            var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
-            objHomeModel.objProduct = objProduct;
-            objHomeModel.BrandName = objBrand.BrandName;
-            objHomeModel.CategoryName = objCate.CategoryName;
-            return View(objHomeModel);
-        }
-        [ValidateInput(false)]
-        [HttpPost]
+        //public ActionResult Recover(int id)
+        //{
+        //    if (Session["UserAdmin"] == null)
+        //    {
+        //        return RedirectToAction("LoginAdmin", "Home");
+        //    }
+        //    this.LoadData();
+        //    AdminHomeModel objHomeModel = new AdminHomeModel();
+        //    var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
+        //    var objBrand = objWebsiteBanHangEntities.Brand_2119110245.Where(a => a.BrandId == objProduct.BrandId).FirstOrDefault();
+        //    var objCate = objWebsiteBanHangEntities.Category_2119110245.Where(a => a.CategoryId == objProduct.CategoryId).FirstOrDefault();
+        //    objHomeModel.objProduct = objProduct;
+        //    objHomeModel.BrandName = objBrand.BrandName;
+        //    objHomeModel.CategoryName = objCate.CategoryName;
+        //    return View(objHomeModel);
+        //}
+        //[ValidateInput(false)]
+        //[HttpPost]
         public ActionResult Recover(Product_2119110245 objPro)
         {
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == objPro.Id).FirstOrDefault();
             objProduct.Deleted = false;
+            objProduct.UpdatedOnUtc = DateTime.Now;
             //objWebsiteBanHangEntities.Product_2119110245.Remove(objProduct);
             objWebsiteBanHangEntities.Entry(objProduct).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
@@ -221,6 +255,10 @@ namespace Shop.Areas.Admin.Controllers
         }
         public ActionResult Delete(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             this.LoadData();
             AdminHomeModel objHomeModel = new AdminHomeModel();
             var objProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.Id == id).FirstOrDefault();
@@ -231,7 +269,7 @@ namespace Shop.Areas.Admin.Controllers
             objHomeModel.CategoryName = objCate.CategoryName;
             return View(objHomeModel);
         }
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         public ActionResult Delete(Product_2119110245 objProduct)
         {
             var objPro = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.Id == objProduct.Id).FirstOrDefault();

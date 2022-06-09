@@ -14,8 +14,13 @@ namespace Shop.Areas.Admin.Controllers
     {
         WebsiteBanHangEntities objWebsiteBanHangEntities = new WebsiteBanHangEntities();
         // GET: Admin/Order
+        //LOAD DANH SÁCH ĐƠN HÀNG-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             AdminOrderModel objModel = new AdminOrderModel();
             objModel.ListUser = objWebsiteBanHangEntities.User_2119110245.ToList();
             var pageLstOrder = objWebsiteBanHangEntities.Order_2119110245.ToList();
@@ -47,6 +52,9 @@ namespace Shop.Areas.Admin.Controllers
             ViewBag.CurrentFilter = SearchString;
             return View(objModel);
         }
+        //TOGGLE TRẠNG THÁI ĐƠN HÀNG----------------------------------------------------------------------------------
+        ///XÁC NHẬN ĐƠN HÀNG
+        //////--Field: Delivery có giá trị 0: Chưa xác nhận, 1: Đã xác nhận
         public ActionResult DeliveryToggle_Confirm(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
@@ -56,15 +64,19 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
+        ///XÁC NHẬN ĐƠN HÀNG
+        //////--Field: Delivery có giá trị 1: Đơn hàng đã xác nhận nhưng chưa giao hàng, 2: Trạng thái đang giao hàng
         public ActionResult DeliveryToggle(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
-            obj.Delivery = (obj.Delivery > 2) ? 1 : 2;
+            obj.Delivery = (obj.Delivery == 2) ? 1 : 2;
             //obj.UpdatedOnUtc = DateTime.Now;
             objWebsiteBanHangEntities.Entry(obj).State = EntityState.Modified;
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
+        ///XÁC NHẬN ĐƠN HÀNG
+        //////--Field: Delivery có giá trị 3: Khách hàng chưa nhận hàng (Đang giao), 3: Đã nhận hàng (Đơn hàng kết thúc)
         public ActionResult DeliveryToggle_Recieve(int id)
         {
             var obj = objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).FirstOrDefault();
@@ -74,9 +86,14 @@ namespace Shop.Areas.Admin.Controllers
             objWebsiteBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
+        //XEM CHI TIẾT ĐƠN HÀNG---------------------------------------------------------------------------------------
 
         public ActionResult Detail(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listProductToOrder = new List<Product_2119110245>();
             var objProductToOrder = new Product_2119110245();
             var listOrder= objWebsiteBanHangEntities.Order_2119110245.Where(n => n.Id == id).ToList();

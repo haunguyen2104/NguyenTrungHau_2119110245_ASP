@@ -1,4 +1,5 @@
 ﻿using Shop.Context;
+using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,13 @@ namespace Shop.Controllers
         // GET: Account
         public ActionResult UserProfile(int id)
         {
+            AccountModel acc = new AccountModel();
             var objUser = objWebsiteBanHangEntities.User_2119110245.Where(x => x.Id == id).FirstOrDefault();
-            return View(objUser);
+            ViewBag.Url_Name = ToStringSlug.ToSlug(objUser.FirstName+objUser.LastName);
+            var listOrder = objWebsiteBanHangEntities.Order_2119110245.Where(a => a.UserId == id).ToList();
+            acc.objUser = objUser;
+            acc.ListOrder = listOrder;
+            return View(acc);
         }
      
     }

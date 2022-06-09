@@ -18,12 +18,13 @@
 
 
 @*<div class="content-header clearfix">
-        <div class="container">
-            <div class="float-left">
-                <h2>Quản lý người dùng</h2>
+            <div class="container">
+                <div class="float-left">
+    <a href="~/Areas/Admin/Views/User/IsNotActive.cshtml">~/Areas/Admin/Views/User/IsNotActive.cshtml</a>
+                    <h2>Quản lý người dùng</h2>
+                </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 
 @using (Html.BeginForm("Index", "User", FormMethod.Get))
 {
@@ -175,7 +176,7 @@
         </div>
 
         <div class="col-md-3">
-            <a href="@Url.Action("IsNotActive","User")" class="btn btn-default btn-new" style="color:blue;"><i class="fa fa-circle-left" style="font-weight:600;"></i> Trở về</a>
+            <a href="@Url.Action("Index","User")" class="btn btn-default btn-new" style="color:blue;"><i class="fa fa-circle-left" style="font-weight:600;"></i> Trở về</a>
 
         </div>
     </div>

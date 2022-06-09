@@ -18,6 +18,10 @@ namespace Shop.Areas.Admin.Controllers
         //LOAD DANH SÁCH BÀI VIẾT-------------------------------------------------------------------------------------
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var listPost = new List<Post_2119110245>();
             if (SearchString != null)
             {
@@ -46,12 +50,20 @@ namespace Shop.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             return View(objPost);
         }
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             return View();
         }
         [ValidateInput(false)]
@@ -89,6 +101,10 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(n => n.PostId == id).FirstOrDefault();
             return View(objPost);
         }
@@ -115,6 +131,10 @@ namespace Shop.Areas.Admin.Controllers
         ///DANH SÁCH BÀI VIẾT TRONG THÙNG RÁC
         public ActionResult ListInTrash(string currentFilter, string SearchString, int? page)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objPost = new List<Post_2119110245>();
             if (SearchString != null)
             {
@@ -144,6 +164,10 @@ namespace Shop.Areas.Admin.Controllers
         ///ĐƯA VÀO THÙNG RÁC
         public ActionResult ToggleTrash(int id, Post_2119110245 objPost)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             objPost.isDelete = true;
             objWebsiteBanHangEntities.Entry(objPost).State = EntityState.Modified;
@@ -153,6 +177,10 @@ namespace Shop.Areas.Admin.Controllers
         ///KHÔI PHỤC
         public ActionResult Recover(int id, Post_2119110245 objPost)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             objPost.isDelete = false;
             objWebsiteBanHangEntities.Entry(objPost).State = EntityState.Modified;
@@ -164,12 +192,20 @@ namespace Shop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             var objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             return View(objPost);
         }
         [HttpPost]
         public ActionResult Delete(int id,Post_2119110245 objPost)
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "Home");
+            }
             objPost = objWebsiteBanHangEntities.Post_2119110245.Where(a => a.PostId == id).FirstOrDefault();
             objWebsiteBanHangEntities.Post_2119110245.Remove(objPost);
             objWebsiteBanHangEntities.SaveChanges();

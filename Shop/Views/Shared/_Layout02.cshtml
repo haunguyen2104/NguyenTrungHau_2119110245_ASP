@@ -71,6 +71,9 @@
                         <div class="widgets-wrap float-md-right">
                             @if (Session["Id"] != null)
                             {
+                                var idUser = Convert.ToInt32(Session["Id"].ToString());
+                                var Slug = Session["Slug_Name"].ToString();
+                                var Url_User = "/tai-khoan/" + Slug + "-" + idUser;
                                 if (Session["IsAdmin"].ToString() == "1")
                                 {
                                     <div class="widget-header mr-3">
@@ -83,7 +86,7 @@
                                         </a>
                                     </div>//Dashboard
                                     <div class="widget-header mr-3">
-                                        <a href="#" class="widget-view">
+                                        <a href="@Url_User" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-user"></i>
                                                 <span class="notify">3</span>
@@ -93,15 +96,6 @@
                                     </div><!--My profile //-->
 
 
-                                    <div class="widget-header mr-3">
-                                        <a href="#" class="widget-view">
-                                            <div class="icon-area">
-                                                <i class="fa fa-comment-dots"></i>
-                                                <span class="notify">1</span>
-                                            </div>
-                                            <small class="text"> Tin nhắn </small>
-                                        </a>
-                                    </div><!--Message //-->
 
                                     <div class="widget-header">
                                         <a href="@Url.Action("Logout","Home")" class="widget-view">
@@ -115,7 +109,7 @@
                                 else
                                 {
                                     <div class="widget-header mr-3">
-                                        <a href="#" class="widget-view">
+                                        <a href="@Url_User" class="widget-view">
                                             <div class="icon-area">
                                                 <i class="fa fa-user"></i>
                                                 <span class="notify">3</span>
@@ -216,41 +210,41 @@
             <section class="footer-top padding-y-lg text-white">
                 <div class="row">
                     <aside class="col-md col-6">
-                        <h6 class="title">Brands</h6>
+                        <h6 class="title">Thương hiệu</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Adidas</a></li>
-                            <li> <a href="#">Puma</a></li>
-                            <li> <a href="#">Reebok</a></li>
-                            <li> <a href="#">Nike</a></li>
+                            <li> <a href="@Url.Action("ProductBrandList","Product", new { @id=24})">Oppo</a></li>
+                            <li> <a href="@Url.Action("ProductBrandList","Product", new { @id=4})">ASUS</a></li>
+                            <li> <a href="@Url.Action("ProductBrandList","Product", new { @id=26})">Samsung</a></li>
+                            <li> <a href="@Url.Action("ProductBrandList","Product", new { @id=25})">realme</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Company</h6>
+                        <h6 class="title">Cửa hàng</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">About us</a></li>
-                            <li> <a href="#">Career</a></li>
-                            <li> <a href="#">Find a store</a></li>
-                            <li> <a href="#">Rules and terms</a></li>
-                            <li> <a href="#">Sitemap</a></li>
+                            <li> <a href="/ve-chung-toi">Về chúng tôi</a></li>
+                            @*<li> <a href="#">Career</a></li>
+                                <li> <a href="#">Find a store</a></li>
+                                <li> <a href="#">Rules and terms</a></li>
+                                <li> <a href="#">Sitemap</a></li>*@
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Help</h6>
+                        <h6 class="title">Hỗ trợ</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Contact us</a></li>
-                            <li> <a href="#">Money refund</a></li>
-                            <li> <a href="#">Order status</a></li>
-                            <li> <a href="#">Shipping info</a></li>
-                            <li> <a href="#">Open dispute</a></li>
+                            <li> <a href="/lien-he">Liên hệ</a></li>
+                            <li> <a href="#">Hỗ trợ trực tuyến</a></li>
+                            <li> <a href="#">Trung tâm bảo hành</a></li>
+                            @*<li> <a href="#">Shipping info</a></li>
+                                <li> <a href="#">Open dispute</a></li>*@
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Account</h6>
+                        <h6 class="title">Tài khoản</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#"> User Login </a></li>
-                            <li> <a href="#"> User register </a></li>
-                            <li> <a href="#"> Account Setting </a></li>
-                            <li> <a href="#"> My Orders </a></li>
+                            <li> <a href="/dang-nhap"> Đăng nhập </a></li>
+                            <li> <a href="/dang-ky"> Đăng kí </a></li>
+                            <li> <a href="#"> Thông tin </a></li>
+                            <li> <a href="#"> Đơn hàng </a></li>
                         </ul>
                     </aside>
                     <aside class="col-md">
@@ -267,9 +261,8 @@
 
             <section class="footer-bottom text-center">
 
-                <p class="text-white">Privacy Policy - Terms of Use - User Information Legal Enquiry Guide</p>
-                <p class="text-muted"> &copy 2019 Company name, All rights reserved </p>
-                <br>
+                <p class="text-white">Chính sách bảo mật - Điều khoản sử dụng - Thông tin người dùng Hướng dẫn hỏi đáp pháp lý</p>
+                <p class="text-muted"> &copy 2019 Tên công ty, Mọi quyền được bảo lưu </p>                <br>
             </section>
         </div><!-- //container -->
     </footer>

@@ -41,7 +41,7 @@ namespace Shop.Areas.Admin
             ///Khôi phục sản phẩm
             context.MapRoute("RecoverProduct", "quan-tri/san-pham/khoi-phuc/{Slug}-{Id}", new { controller = "Product", action = "Recover", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             ///Xoá vĩnh viễn sản phẩm
-            context.MapRoute("DeleteProduct", "quan-tri/san-pham/xoa/{Slug}-{Id}", new { controller = "Product", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
+            context.MapRoute("DeleteProduct", "quan-tri/san-pham/xoa-vinh-vien/{Slug}-{Id}", new { controller = "Product", action = "Delete", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });
             //Quản trị danh mục----------------------------------------------------------------------------------------------------------------------------------
             ///Danh sách danh mục
             context.MapRoute("CategoryList", "quan-tri/danh-sach-danh-muc", new { controller = "Category", action = "Index", id = UrlParameter.Optional }, new[] { "Shop.Areas.Admin.Controllers" });

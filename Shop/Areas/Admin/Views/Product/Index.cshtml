@@ -81,7 +81,7 @@
                 <th class="text-center" style="width:100px;">Hình</th>
 
                 <th>  Tên sản phẩm</th>
-                <th> Danh mục sản phẩm  </th>
+                <th> Giá sản phẩm  </th>
                 <th> Ngày tạo</th>
                 <th class="text-center" style="width:180px;">Chức năng</th>
                 <th class="text-center" style="width:20px;">ID </th>
@@ -96,36 +96,43 @@
                 var url_details = "/quan-tri/san-pham/chi-tiet/" + item.Slug + "-" + item.Id;
                 var url_delete = "/quan-tri/san-pham/xoa/" + item.Slug + "-" + item.Id;
 
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkId" value="" />
-                    </td>
-                    <td><img src="~/Public/images/product/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
-                    <td>@item.Name</td>
-                    <td>@item.CategoryId </td>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkId" value="" />
+                </td>
+                <td><img src="~/Public/images/product/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
+                <td>@item.Name</td>
+                @if (item.PriceDiscount != null)
+                {
+                    <td class="text-right align-middle">@Convert.ToDecimal(item.PriceDiscount).ToString("#,##0")<sup>đ</sup></td>
+                }
+                else
+                {
+                    <td class="text-right align-middle">@Convert.ToDecimal(item.Price).ToString("#,##0")<sup>đ</sup></td>
+                }
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
-                    </td>
-                    <td class="text-center">
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+                </td>
+                <td class="text-center">
 
 
-                        <a class="func_hover" href="@url_edit " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
+                    <a class="func_hover" href="@url_edit " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
 
-                        <a class="func_hover" href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                    <a class="func_hover" href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
-                        @*
-                            <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-                            <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
+                    @*
+            <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
+            <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
-                        *@
+                    *@
 
-                    </td>
-                    <td>@item.Id</td>
+                </td>
+                <td>@item.Id</td>
 
-                </tr>
+            </tr>
             }
         </tbody>
 
@@ -133,7 +140,7 @@
 </div>
 
 
-<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
+<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) trên @Model.PageCount</p>
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page, currentFilter = ViewBag.CurrentFilter }))

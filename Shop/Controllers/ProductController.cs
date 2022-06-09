@@ -89,28 +89,28 @@ namespace Shop.Controllers
             objProductBrandModel.listCategory = objCate;
             return View(objProductBrandModel);
         }
-        public ActionResult Offers(string currentFilter, string SearchString, int? page)
+        public ActionResult Offers(/*string currentFilter, string SearchString, */int? page)
         {
             var listProduct = new List<Product_2119110245>();
-            if (SearchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                SearchString = currentFilter;
-            }
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                //lấy ds sản phẩm theo từ khoá tìm kiếm
-                listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.FullName.Contains(SearchString) && n.PriceDiscount != null && n.Deleted == false).ToList();
-            }
-            else
+            //if (SearchString != null)
+            //{
+            //    page = 1;
+            //}
+            //else
+            //{
+            //    SearchString = currentFilter;
+            //}
+            //if (!string.IsNullOrEmpty(SearchString))
+            //{
+            //    //lấy ds sản phẩm theo từ khoá tìm kiếm
+            //    listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.FullName.Contains(SearchString) && n.PriceDiscount != null && n.Deleted == false).ToList();
+            //}
+            //else
             {
                 //lấy ds sản phẩm trong bảng product
                 listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(n => n.PriceDiscount != null && n.Deleted == false).ToList();
             }
-            ViewBag.CurrentFilter = SearchString;
+            //ViewBag.CurrentFilter = SearchString;
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
@@ -121,6 +121,17 @@ namespace Shop.Controllers
         public ActionResult SearchPage()
         {
             return View();
+        }
+        public ActionResult AllPecommendedProducts( int?page)
+        {
+            //ViewBag. = SearchString;
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var listProduct = objWebsiteBanHangEntities.Product_2119110245.Where(a => a.TypeId == 2).ToList();
+            ViewBag.CountProduct = listProduct.Count;
+            //Sắp xếp sp theo id sản phẩm, sp mới đc đưa lên đầu
+            listProduct = listProduct.OrderBy(x => x.Id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
         }
     }
 }
