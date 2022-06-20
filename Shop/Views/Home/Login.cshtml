@@ -49,22 +49,10 @@
                             @TempData["error"]
                         </span>
                     }
-                    @*else
-                        {
-                            if(TempData["success"]!=null)
-                            {
-                            <span style="color:#0f0;">
-                                <i class="fa-solid fa-circle-check"></i>
-
-                                @TempData["success"]
-                            </span>
-                            }
-                        }*@
+               
                     <div class="form-group align-middle text-center">
                         <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
-                        @*<a class="btn btn-block btn-social btn-facebook" href="@Url.Action("LoginFacebook")">
-                                <i class="fa-brands fa-facebook-f"></i> Đăng nhập bằng facebook
-                            </a>*@
+                      
                     </div>
                 }
             </div>

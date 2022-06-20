@@ -1,7 +1,7 @@
 ﻿@model Shop.Models.AdminHomeModel
 
 @{
-    ViewBag.Title = "Xoá";
+    ViewBag.Title = "Xoá " + Model.objProduct.Name;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,9 +9,6 @@
 <h3>Bạn có chắc chắn muốn xoá sản phẩm?</h3>
 <div>
     <hr />
-    <div class="card-body row">
-        @*<a href="@Url.Action("Index","Product")" class="btn btn-block btn-warning btnTop__active"> <i class="fa-solid fa-arrow-alt-circle-left"></i> Trở về trang trước</a>
-        <a href="@Url.Action("Edit","Product",new { id = Model.objProduct.Id })" class="btn btn-block btn-warning btnTop__active"><i class="fa-solid fa-pen-to-square"></i> Chỉnh sửa</a>*@
 
         <div class="col-md-9">
             <table class="table table-bordered table-striped" id="myTable">

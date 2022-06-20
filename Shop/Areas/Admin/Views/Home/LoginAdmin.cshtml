@@ -33,21 +33,12 @@
         @Html.Raw(ViewBag.Error)
         <form action="#" method="post">
             <div class="form__group mb-3">
-                @*<input type="text" name="Email" required class="form-control" placeholder="Tên đăng nhập">*@
                 <input type="email" name="Email" required class="form__input" placeholder="Nhập Email của bạn">
                 <label for="name" class="form__label">Email</label>
                 <i class="fa fa-envelope form__icon"></i>
                 @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red;font-style:italic" })
-
-
-                @*<div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-            </div>
-        </div>*@
             </div>
             <div class="form__group mb-3">
-                @*<input type="password" name="Password" required class="form-control" placeholder="Mật khẩu">*@
                 <input type="password" name="Password" required class="form__input" id="input" placeholder="Nhập mật khẩu của bạn">
                 <label for="name" class="form__label">Mật khẩu</label>
                 <svg xmlns="http://www.w3.org/2000/svg" class="eye eye-close" fill="none" viewBox="0 0 24 24"
@@ -63,15 +54,10 @@
                 </svg>
                 @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;font-style:italic" })
 
-                @*<div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-            </div>
-        </div>*@
+              
             </div>
 
             <div class="form__group">
-                @*<button type="submit" class="btn btn-primary btn-block">ĐĂNG NHẬP</button>*@
                 <button type="submit" class="form__submit">
                     <span class="form__submit-text">Đăng nhập</span><i class="fa-solid fa-arrow-right form__submit-icon"></i>
                 </button>
@@ -82,13 +68,7 @@
 
 
 </div>
-<!-- /.login-box -->
-<!--=====================================================-->
-<!--=====================================================-->
-<!--=====================================================-->
-<!--=====================================================-->
-<!--=====================================================-->
-<!--=====================================================-->
+
 <!--========================Style========================-->
 <style>
     :root {
@@ -99,7 +79,6 @@
     body {
         width: 100%;
         height: 100vh;
-        /* background-image: linear-gradient(to right top, #ff4988, #ffc781, #fffefc); */
         background-color: rgba(255,106,000,0.5);
         display: flex;
         justify-content: center;

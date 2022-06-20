@@ -50,12 +50,7 @@
                             }
                             <li class="has-submenu">
                                 <a href="@Url.Action("Index", "Category")">Tất cả danh mục</a>
-                                @*<ul class="submenu">
-                                        <li><a href="#">Submenu name</a></li>
-                                        <li><a href="#">Great submenu</a></li>
-                                        <li><a href="#">Another menu</a></li>
-                                        <li><a href="#">Some others</a></li>
-                                    </ul>*@
+                            
                             </li>
                         </ul>
                     </nav>
@@ -77,14 +72,7 @@
                                     <img src="~/Public/images/slider/@item.Avatar" alt="@item.Name">
                                 </div>
                             }
-                            @*
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/slider/slider02.png" alt="Second slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/slider/slider03.png" alt="Third slide">
-                                </div>
-                            *@
+                         
                         </div>
                         <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -145,7 +133,6 @@
                 var url = "/chi-tiet/" + item.Slug + "-" + item.Id;
                 <div class="col-md col-6">
                     <figure class="card-product-grid card-sm">
-                        @*<a href="@Url.Content(link)" class="img-wrap">*@
                         <a href="@url" class="img-wrap">
                             <img src="~/Public/images/product/@item.Avatar" alt="@item.Name">
                         </a>
@@ -170,7 +157,7 @@
 <!-- =============== SECTION 1 =============== -->
 <section class="padding-bottom">
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Điện thoại</h4>
+        <h4 class="title-section text-uppercase">OPPO</h4>
     </header>
 
     <div class="card card-home-category">
@@ -178,8 +165,7 @@
             <div class="col-md-3">
 
                 <div class="home-category-banner bg-light-orange">
-                    <h5 class="title">Điện thoại - Tốt nhất mọi thời đại</h5>
-                    <p>@*A smartphone is considered as a mobile computer combined with a digital camera and handheld game console, as it has a separate operating system designed to properly display web pages in a normal manner. often with many other functions of a computer such as design, graphics, video games, as well as photography and videography.*@ </p>
+                    <h5 class="title">Điện thoại OPPO - Tốt nhất mọi thời đại</h5>
                     <a href="@Url.Action("ProductBrandList", "Product", new {@id = 24})" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
                     <img src="~/Public/images/category/category-dien-thoai.png" class="img-bg">
                 </div>
@@ -248,7 +234,6 @@
 
                 <div class="home-category-banner bg-light-orange">
                     <h5 class="title">Laptop cho mọi người.</h5>
-                    <p>@*Accessories are indispensable devices for people who are using smart devices such as phones, computers and other electronic devices....*@ </p>
                     <a href="@Url.Action("ProductBrandList", "Product", new {@id = 4})" class="btn btn-outline-primary rounded-pill">Xem thêm</a>
                     <img src="~/Public/images/category/category-laptop.png" class="img-bg">
                 </div>
@@ -290,70 +275,6 @@
     </div>
 </section>
 <!-- =============== SECTION 2 END =============== -->
-<!-- =============== SECTION REQUEST =============== -->
-
-<section class="padding-bottom">
-    @*
-        <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Request for Quotation</h4>
-        </header>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card-banner banner-quote overlay-gradient" style="background-image: url('images/banners/banner9.jpg');">
-                    <div class="card-img-overlay white">
-                        <h3 class="card-title">An easy way to send request to suppliers</h3>
-                        <p class="card-text" style="max-width: 400px">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt.
-                        </p>
-                        <a href="" class="btn btn-primary rounded-pill">Learn more</a>
-                    </div>
-                </div>
-            </div> <!-- col // -->
-            <div class="col-md-4">
-
-                <div class="card card-body">
-                    <h4 class="title py-3">One Request, Multiple Quotes</h4>
-                    <form>
-                        <div class="form-group">
-                            <input class="form-control" name="" placeholder="What are you looking for?" type="text">
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Quantity" name="" type="text">
-
-                                <select class="custom-select form-control">
-                                    <option>Pieces</option>
-                                    <option>Litres</option>
-                                    <option>Tons</option>
-                                    <option>Gramms</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group text-muted">
-                            <p>Select template type:</p>
-                            <label class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="option1">
-                                <span class="form-check-label">Request price</span>
-                            </label>
-                            <label class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="option2">
-                                <dspaniv class="form-check-label">Request a sample</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-warning">Request for quote</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div> <!-- col // -->
-        </div> <!-- row // -->
-    *@
-</section>
-
-<!-- =============== SECTION REQUEST .//END =============== -->
 <!-- =============== SECTION ITEMS =============== -->
 <section class="padding-bottom-sm">
 
@@ -400,7 +321,6 @@
                         <img src="~/Public/images/post/@item.PostAvatar" class="card-img-top">
                         <div class="card-body">
                             <h6 class="title" style="min-height:110px;">@item.PostTitle</h6>
-                            @*<p class="small text-uppercase text-muted">Logistic services</p>*@
                         </div>
                     </a>
                 </article> <!-- card.// -->

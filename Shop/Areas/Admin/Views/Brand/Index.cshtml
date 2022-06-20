@@ -66,25 +66,7 @@
         <a href="@Url.Action("Index","Brand")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả thương hiệu</a>
     </p>
 }
-<!--Search ajax -->
-<!--<div class="col-sm-4 col-sm-offset-7 text-right">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Tìm kiếm" id="txtSearch" />
-        <div class="input-group-btn">
-            <button class="btn btn-primary" type="submit" id="btnSearch">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-</div>
-<script>
-    //sự kiện click
-    $("#btnSearch").click(function () {
-        let search = $('#txtSearch').val();
-        alert(search);
-    });
-</script>-->
-<!--Search ajax end// -->
+
 <div class="card-body">
     
     <table class="table table-bordered table-striped" id="myTable">
@@ -144,7 +126,7 @@
 
 
 <p style="margin-left: 20px; font-family: 'Poppins', sans-serif; ">
-    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) trên @Model.PageCount
 </p>
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

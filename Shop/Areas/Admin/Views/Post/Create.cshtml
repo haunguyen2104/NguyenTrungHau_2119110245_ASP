@@ -34,12 +34,7 @@
                             @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
 
                         </div>
-                        @*<div class="form-group">
-                            <label>Slug </label>
-                            @Html.EditorFor(model => model.PostSlug, new { htmlAttributes = new { @class = "form-control" ,id="postSlug"} })
-                            @Html.ValidationMessageFor(model => model.PostSlug, "", new { @class = "text-danger" })
-
-                        </div>*@
+                   
                         <div class="form-group">
                             <label>Nội dung bài viết <span class="text danger">(*)</span></label>
                             @Html.TextAreaFor(model => model.PostDetail, new { htmlAttributes = new { @class = "form-control", @id = "PostDetail" } })

@@ -83,13 +83,11 @@
                                             </figure>
                                         </td>
                                         <td>
-                                            @*<input type="text" value="@item.Quantity" />*@
                                             <label>@item.Quantity</label>
                                         </td>
                                         <td>
                                             <div class="price-wrap">
                                                 <var class="price">@Convert.ToDecimal(productPrice).ToString("#,##0")<sup>đ</sup></var>
-                                                @*<small class="text-muted"> $578.00 each</small>*@
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td>
@@ -98,7 +96,6 @@
 
                                                 <var class="price">@Convert.ToDecimal(productPrice * quantity).ToString("#,##0")<sup>đ</sup></var>
 
-                                                @*<small class="text-muted"> $578.00 each</small>*@
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
@@ -138,19 +135,7 @@
             <aside class="col-md-3">
                 <div class="card mb-3">
                     <div class="card-body">
-                            <!--
-                        <form>
-                            <div class="form-group">
-                                <label>Phiếu giảm giá <span style="color:red;">(Nếu có)</span></label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="" placeholder="Mã giảm giá">
-                                    <span class="input-group-append">
-                                        <button class="btn btn-primary">Áp dụng</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                                -->
+                           
                     </div> <!-- card-body.// -->
                 </div>  <!-- card .// -->
                 <div class="card">

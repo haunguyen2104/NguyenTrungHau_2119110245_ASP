@@ -50,16 +50,12 @@
                             <th rowspan="2" class="text-center align-middle">
                                 Tên đơn hàng
                             </th>
-                            @*<th rowspan="2" class="text-center align-middle">
-                                Giá
-                            </th>*@
+                         
                             <th colspan="3" class="text-center align-middle">
                                 Vận chuyển
                             </th>
 
-                            @*<th>
-                                    Trang thai
-                                </th>*@
+                         
                             <th rowspan="2" class="text-center align-middle">
                                 Chức năng
                             </th>
@@ -84,10 +80,7 @@
                                 <td class="align-middle">
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-                                <!--<td class="align-middle text-right font-italic font-weight-bold">-->
-                                    @*10.000.000 đ*@
-                                    <!--@Convert.ToDecimal(item.Price).ToString("#,##0")<sup> đ</sup>
-                                </td>-->
+                            
                                 <td class="align-middle">
                                     @if (item.Delivery == 1 || item.Delivery == 2 || item.Delivery == 3)
                                     {
@@ -131,20 +124,7 @@
                                     }
                                 </td>
 
-                                @*<td class="align-middle">
-                                        @if (item.Status == 1)
-                                        {
-                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                                &#10004; Đang chờ
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                                &#10060; Huỷ đơn
-                                            </a>
-                                        }
-                                    </td>*@
+                            
                                 <td class="align-middle text-center">
                                     <a class="func_hover" href="@url_details " style="color:green; margin:0 10px;">
                                         <img src="~/Public/images/icons/view-files.png" />
@@ -157,16 +137,11 @@
             </div>
         </div>
         <div class="col-md-3">
-            @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
             @Html.PagedListPager(Model.ILstOder, page => Url.Action("Index", new { page, CurrentFilter = ViewBag.CurrentFilter }))
         </div>
     </div>
 </section>
 
-@*<p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
-
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, currentFilter = ViewBag.CurrentFilter }))*@
 
 
 <style>

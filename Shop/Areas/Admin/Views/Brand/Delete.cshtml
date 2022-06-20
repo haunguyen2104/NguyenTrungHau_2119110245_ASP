@@ -1,6 +1,6 @@
 ﻿@model Shop.Context.Brand_2119110245
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xoá "+Model.BrandName;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <h3>Bạn có muốn xoá vĩnh viễn sản phẩm này không?</h3>
@@ -88,8 +88,8 @@
         </table>
     </div>
     <div class="col-md-3">
-        <img src="~/Public/images/category/@Model.Avatar" alt="@Model.CategoryName" class="img-fluid" />
-        <p class="text-center">Hình ảnh danh mục <span class="font-weight-bold">@Model.CategoryName</span></p>
+        <img src="~/Public/images/brand/@Model.Avatar" alt="@Model.BrandName" class="img-fluid" />
+        <p class="text-center">Hình ảnh danh mục <span class="font-weight-bold">@Model.BrandName</span></p>
     </div>
 
 
