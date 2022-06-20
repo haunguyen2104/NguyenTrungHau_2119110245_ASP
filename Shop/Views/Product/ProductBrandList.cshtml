@@ -44,27 +44,7 @@
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group  .// -->
-                @* <article class="filter-group">
-                        <h6 class="title">
-                            <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Thương hiệu </a>
-                        </h6>
-                        <div class="filter-content collapse show" id="collapse_2">
-                            <div class="inner">
-                                @foreach (var item in Model.listBrand)
-                                {
-
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" checked="" class="custom-control-input">
-                                        <div class="custom-control-label">
-                                            @item.BrandName
-                                            <b class="badge badge-pill badge-light float-right">35</b>
-                                        </div>
-                                    </label>
-                                }
-
-                            </div> <!-- inner.// -->
-                        </div>
-                    </article> <!-- filter-group .// -->*@
+               
                 <article class="filter-group">
                     <h6 class="title">
                         <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Giá: </a>
@@ -86,64 +66,7 @@
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
-                <!--<article class="filter-group">
-                    <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Sizes </a>
-                    </h6>
-                    <div class="filter-content collapse show" id="collapse_4">
-                        <div class="inner">
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> XS </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> SM </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> LG </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> XXL </span>
-                            </label>
-                        </div>-->
-                <!-- inner.// -->
-                <!--</div>
-                </article>-->
-                <!-- filter-group .// -->
-                <article class="filter-group">
-                    <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Condition </a>
-                    </h6>
-                    <div class="filter-content collapse show" id="collapse_5">
-                        <div class="inner">
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Any condition</div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Brand new </div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Used items</div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Very old</div>
-                            </label>
-                        </div> <!-- inner.// -->
-                    </div>
-                </article> <!-- filter-group .// -->
+               
 
             </aside> <!-- col.// -->
             <main class="col-md-10">
@@ -153,10 +76,10 @@
                     <div class="form-inline">
                         <strong class="mr-md-auto">@Model.listProduct.Count() Sản phẩm được tìm thấy </strong>
                         <select class="mr-2 form-control">
-                            <option>Latest items</option>
-                            <option>Trending</option>
-                            <option>Most Popular</option>
-                            <option>Cheapest</option>
+                            <option>Mặt hàng mới nhất</option>
+                            <option>Xu hướng</option>
+                            <option>Phổ biến</option>
+                            <option>Giá thấp nhất</option>
                         </select>
                         <div class="btn-group">
                             @{
@@ -203,11 +126,12 @@
                                         <div class="label-rating">7/10</div>
                                     </div> <!-- rating-wrap.// -->
 
+                                   
                                     <p class="mb-3">
-                                        <span class="tag"> <i class="fa fa-check"></i> Verified</span>
-                                        <span class="tag"> 4 Years </span>
-                                        <span class="tag"> 60 reviews </span>
-                                        <span class="tag"> China </span>
+                                        <span class="tag"> <i class="fa fa-check"></i> Đã xác minh</span>
+                                        <span class="tag"> 4 năm </span>
+                                        <span class="tag"> 60 nhận xét </span>
+                                        <span class="tag"> Việt Nam </span>
                                     </p>
 
                                     <p>
@@ -243,7 +167,7 @@
                                         </span>
                                         @*<small class="text-muted"><br>giá cho 1 sản phẩm</small>*@
                                     </div> <!-- price-wrap.// -->
-                                    <small class="text-success">Free shipping</small>
+                                    <small class="text-success">Miễn phí vận chuyển</small>
 
 
                                     <p class="mt-3">
@@ -251,12 +175,7 @@
                                         <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Save </a>
                                     </p>
 
-                                    <label class="custom-control mt-3 custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <div class="custom-control-label">
-                                            Add to compare
-                                        </div>
-                                    </label>
+                                   
 
                                 </div> <!-- info-aside.// -->
                             </aside> <!-- col.// -->
@@ -278,11 +197,7 @@
                 </nav>
 
 
-                <div class="box text-center">
-                    <p>Did you find what you were looking for？</p>
-                    <a href="" class="btn btn-light">Yes</a>
-                    <a href="" class="btn btn-light">No</a>
-                </div>
+                
 
 
             </main> <!-- col.// -->

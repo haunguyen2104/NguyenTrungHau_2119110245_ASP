@@ -111,39 +111,11 @@
                     </td>
                     <td><img src="~/Public/images/slider/@item.Avatar" alt="@item.Name" class="img-fluid" /></td>
                     <td class="text-center">@item.Name</td>
-                    @*<td>@item.CategoryId </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreatedOnUtc)
-                        </td>*@
                     <td class="text-center">
 
                         <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " title="Chỉnh sửa" class="button btn_edit"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="@Url.Action("Details", "Product", new { id = item.Id }) " title="Chi tiết" class="button btn_detail"><i class="fa-solid fa-eye"></i></a>
-                        @*<a href="@Url.Action("Delete", "Product", new { id = item.Id }) " title="Xoá" class="button btn_delete"><i class="fa-solid fa-trash"></i></a>*@
                         <style>
-@*
-                            .button {
-                                margin-top: 12px;
-                                padding: 10px;
-                                border: 1px solid;
-                                width: 80px;
-                                height: 80px;
-                                border-radius: 100%;
-                                /*position:relative;*/
-                            }
-                                .button:hover .btn_edit, button:hover .btn-delete, button:hover .btn_detail {
-                                    color: #ff6a00;
-                                }
-
-                                .button i {
-                                    font-size: 20px;
-                                    /* position: absolute;
-                                            top:50%;
-                                           left:50%;
-                                            transform: translate(-50%,-50%)*/
-                                }
-                                *@
                             .btn_edit {
                                 color: blue
                             }
@@ -180,7 +152,7 @@
 
 
     <div id="page__number">
-        <p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount</p>
+        <p style="margin-left: 20px; font-family: 'Poppins', sans-serif; "> Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) trên @Model.PageCount</p>
 
         @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, currentFilter = ViewBag.CurrentFilter }))

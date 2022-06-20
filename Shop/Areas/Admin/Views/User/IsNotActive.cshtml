@@ -4,28 +4,8 @@
 
 @{
     ViewBag.Title = "Quản lý người dùng";
-    //Layout = "~/Views/Shared/_Layout01.cshtml";
 }
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-
-
-
-
-
-@*<div class="content-header clearfix">
-            <div class="container">
-                <div class="float-left">
-    <a href="~/Areas/Admin/Views/User/IsNotActive.cshtml">~/Areas/Admin/Views/User/IsNotActive.cshtml</a>
-                    <h2>Quản lý người dùng</h2>
-                </div>
-            </div>
-        </div>*@
-
 @using (Html.BeginForm("Index", "User", FormMethod.Get))
 {
     <p class="search__product">
@@ -34,29 +14,8 @@
         <a href="@Url.Action("Index","User")" style="font-family: 'Poppins', sans-serif;margin-left:50px;margin-top:10px;">Xem tất cả người dùng</a>
     </p>
 }
-
-@*<section class="search">
-        <div class="container">
-            @using (Html.BeginForm("Index", "User", FormMethod.Get))
-            {
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new { @placeholder = "Tìm bằng tên người dùng", @class = "form-control text-box single-line" })
-                    </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-primary btn-search" type="submit">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                        </button>
-                    </div>
-                </div>
-            }
-        </div>
-    </section>*@
 <br>
 <hr />
-
-
 <img href="" />
 <section>
     <div class="container-fluid">
@@ -82,12 +41,6 @@
                                 Thao tác
                             </th>
 
-                            @*<th>
-                                    Trang thai
-                                </th>*@
-                            @*<th rowspan="2" class="text-center align-middle">
-                                    Chức năng
-                                </th>*@
                         </tr>
                         <tr>
                             <th class="text-center align-middle">Quản trị</th>
@@ -98,9 +51,6 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            //var name = item.Name.ToLower();
-                            //var id = item.Id;
-                            //var url_details = "/quan-tri/don-hang/chi-tiet-don-hang/" + name + "-" + id;
                             var Name = item.FirstName + " " + item.LastName;
                             <tr id="user-@item.Id">
                                 <td class="align-middle text-center">
@@ -112,8 +62,6 @@
                                 <td class="align-middle text-center">
                                     @if (item.Gender == 1)
                                     {
-
-
                                         <p>Nữ</p>
                                     }
                                     else
@@ -146,26 +94,6 @@
                                     <a class="btn btn-sm btn-success" href="@Url.Action("Details", "User", new { id = item.Id }) " style="color: white; margin: 0 10px;"><i class="fa-solid fa-eye"></i></a>
 
                                 </td>
-
-                                @*<td class="align-middle">
-                                        @if (item.Status == 1)
-                                        {
-                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                                &#10004; Đang chờ
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn" href="@Url.Action("Status","Order", new { id = item.Id })">
-                                                &#10060; Huỷ đơn
-                                            </a>
-                                        }
-                                    </td>*@
-                                @*<td class="align-middle text-center">
-                                        <a class="func_hover" href=" " style="color:green; margin:0 10px;">
-                                            <img src="~/Public/images/icons/view-files.png" />
-                                        </a>
-                                    </td>*@
                             </tr>
                         }
                     </tbody>
@@ -187,10 +115,6 @@
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page, currentFilter = ViewBag.CurrentFilter }))
-
-
-
-
 <style>
     .func_hover {
         width: 25px;

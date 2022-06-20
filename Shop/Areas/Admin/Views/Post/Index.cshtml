@@ -84,7 +84,6 @@
                 <th class="text-center" style="width:200px;">Hình</th>
 
                 <th style="width:400px;">  Tên bài viết</th>
-                @*<th>  Nội dung bài viết  </th>*@
                 <th> Ngày tạo</th>
                 <th class="text-center" style="width:180px;">Chức năng</th> 
                 <th class="text-center" style="width:20px;">ID </th>
@@ -106,9 +105,6 @@
                     </td>
                     <td><img src="~/Public/images/post/@item.PostAvatar" alt="Tenhinh" class="img-fluid" /></td>
                     <td>@item.PostTitle</td>
-                    @*<td style="max-height: 200px; max-width: 300px; overflow: hidden; display: block ">
-                        @Html.Raw(item.PostDetail)                   </td>*@
-
                     <td>
                         @Html.DisplayFor(modelItem => item.PostDateCreate)
                     </td>
@@ -133,7 +129,7 @@
 </div>
 
 <p style="margin-left: 20px; font-family: 'Poppins', sans-serif; ">
-    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) trên @Model.PageCount
 </p>
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

@@ -26,7 +26,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <ol class="breadcrumb float-left">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action("Index","Category")">Danh mục</a></li>
                     @foreach (var item in Model.listCategory)
                     {
@@ -59,51 +59,8 @@
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group  .// -->
-                <article class="filter-group">
-                    <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
-                    </h6>
-                    <div class="filter-content collapse show" id="collapse_2">
-                        <div class="inner">
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">
-                                    Adidas
-                                    <b class="badge badge-pill badge-light float-right">120</b>
-                                </div>
-                            </label>
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">
-                                    Nike
-                                    <b class="badge badge-pill badge-light float-right">15</b>
-                                </div>
-                            </label>
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">
-                                    The Noth Face
-                                    <b class="badge badge-pill badge-light float-right">35</b>
-                                </div>
-                            </label>
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">
-                                    The cat
-                                    <b class="badge badge-pill badge-light float-right">89</b>
-                                </div>
-                            </label>
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input">
-                                <div class="custom-control-label">
-                                    Honda
-                                    <b class="badge badge-pill badge-light float-right">30</b>
-                                </div>
-                            </label>
-                        </div> <!-- inner.// -->
-                    </div>
-                </article> <!-- filter-group .// -->
-                <article class="filter-group">
+              
+            <article class="filter-group">
                     <h6 class="title">
                         <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Giá: </a>
                     </h6>
@@ -112,77 +69,19 @@
                             <input type="range" class="custom-range" min="0" max="100" name="">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Min</label>
+                                    <label>Thấp nhất</label>
                                     <input class="form-control" placeholder="0 VND" type="number">
                                 </div>
                                 <div class="form-group text-right col-md-6">
-                                    <label>Max</label>
+                                    <label>Cao nhất</label>
                                     <input class="form-control" placeholder="100Tr VND" type="number">
                                 </div>
                             </div> <!-- form-row.// -->
-                            <button class="btn btn-block btn-primary">Apply</button>
+                            <button class="btn btn-block btn-primary">Lọc</button>
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
-                <!--<article class="filter-group">
-                    <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Sizes </a>
-                    </h6>
-                    <div class="filter-content collapse show" id="collapse_4">
-                        <div class="inner">
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> XS </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> SM </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> LG </span>
-                            </label>
-
-                            <label class="checkbox-btn">
-                                <input type="checkbox">
-                                <span class="btn btn-light"> XXL </span>
-                            </label>
-                        </div>-->
-                <!-- inner.// -->
-                <!--</div>
-                </article>-->
-                <!-- filter-group .// -->
-                <article class="filter-group">
-                    <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Condition </a>
-                    </h6>
-                    <div class="filter-content collapse show" id="collapse_5">
-                        <div class="inner">
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Any condition</div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Brand new </div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Used items</div>
-                            </label>
-
-                            <label class="custom-control custom-radio">
-                                <input type="radio" name="myfilter_radio" class="custom-control-input">
-                                <div class="custom-control-label">Very old</div>
-                            </label>
-                        </div> <!-- inner.// -->
-                    </div>
-                </article> <!-- filter-group .// -->
-
+                
             </aside> <!-- col.// -->
             <main class="col-md-10">
 
@@ -191,10 +90,10 @@
                     <div class="form-inline">
                         <strong class="mr-md-auto">@Model.listProduct.Count() Sản phẩm được tìm thấy </strong>
                         <select class="mr-2 form-control">
-                            <option>Latest items</option>
-                            <option>Trending</option>
-                            <option>Most Popular</option>
-                            <option>Cheapest</option>
+                            <option>Mặt hàng mới nhất</option>
+                            <option>Xu hướng</option>
+                            <option>Phổ biến</option>
+                            <option>Giá thấp nhất</option>
                         </select>
                         <div class="btn-group">
                             @{
@@ -242,11 +141,12 @@
                                         <div class="label-rating">7/10</div>
                                     </div> <!-- rating-wrap.// -->
 
+
                                     <p class="mb-3">
-                                        <span class="tag"> <i class="fa fa-check"></i> Verified</span>
-                                        <span class="tag"> 4 Years </span>
-                                        <span class="tag"> 60 reviews </span>
-                                        <span class="tag"> China </span>
+                                        <span class="tag"> <i class="fa fa-check"></i> Đã xác minh</span>
+                                        <span class="tag"> 4 năm </span>
+                                        <span class="tag"> 60 nhận xét </span>
+                                        <span class="tag"> Việt Nam </span>
                                     </p>
 
                                     <p>
@@ -285,20 +185,13 @@
                                         
 
                                     </div> <!-- price-wrap.// -->
-                                    <small class="text-success">Free shipping</small>
+                                    <small class="text-success">Miễn phí vận chuyển</small>
 
 
                                     <p class="mt-3">
-                                        <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
-                                        <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Save </a>
+                                        <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Liên hệ </a>
+                                        <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Yêu thích </a>
                                     </p>
-
-                                    <label class="custom-control mt-3 custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <div class="custom-control-label">
-                                            Add to compare
-                                        </div>
-                                    </label>
 
                                 </div> <!-- info-aside.// -->
                             </aside> <!-- col.// -->

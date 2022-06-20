@@ -125,7 +125,7 @@
 
 
 <p style="margin-left: 20px; font-family: 'Poppins', sans-serif; ">
-    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+    Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber) trên @Model.PageCount
 </p>
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

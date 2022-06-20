@@ -1,8 +1,6 @@
 ﻿@using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<Shop.Context.Product_2119110245>
-@*@model IEnumerable<Shop.Context.Product_2119110245>*@
-@*@model IEnumerable<Shop.Context.Product>*@
 
 @{
     ViewBag.Title = "Tất cả sản phẩm";
@@ -122,13 +120,7 @@
 
                     <a class="func_hover" href="@url_delete " style="color:red"><i class="fa-solid fa-trash"></i></a>
 
-                    @*
-            <a href="@Url.Action("Edit", "Product", new { id = item.Id }) " style="color:blue"><i class="fa-solid fa-pen-to-square"></i></a>
-            <a href="@Url.Action("Details", "Product", new { id = item.Id }) " style="color:green; margin:0 10px;"><i class="fa-solid fa-eye"></i></a>
-            <a href="@Url.Action("ToggleTrash", "Product", new { id = item.Id }) " style="color:red"><i class="fa-solid fa-trash"></i></a>
-
-                    *@
-
+                   
                 </td>
                 <td>@item.Id</td>
 
